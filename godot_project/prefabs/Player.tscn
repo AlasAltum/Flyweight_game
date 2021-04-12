@@ -142,6 +142,10 @@ cast_to = Vector2( -10, 0 )
 enabled = true
 cast_to = Vector2( 0, 13 )
 
+[node name="DownRayCast2" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 13 )
+
 [node name="UpRayCast" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, -14 )
@@ -171,6 +175,8 @@ START_STATE = NodePath("Jump")
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource( 1 )
+RUN_ACCEL = 10.0
+MAX_RUN_SPEED = 300.0
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
@@ -194,7 +200,7 @@ one_shot = true
 
 [node name="Skill" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )
-START_SKILL = NodePath("Hook")
+START_SKILL = NodePath("Dash")
 
 [node name="Dash" type="Node" parent="StateMachine/Skill"]
 script = ExtResource( 9 )

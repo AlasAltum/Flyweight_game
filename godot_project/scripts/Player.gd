@@ -3,11 +3,11 @@ extends KinematicBody2D
 
 export var GRAVITY = 10
 const MAX_FALLS_SPEED = 200
-const RUN_ACCEL = 5
-const MAX_RUN_SPEED = 150
-const JUMP_SPEED = 320
+const RUN_ACCEL = 50
+const MAX_RUN_SPEED = 200
+const JUMP_SPEED = 380
 const SLIDE_ACCEL = 1
-const MAX_SLIDE_SPEED = 40
+const MAX_SLIDE_SPEED = 20
 
 var down_ray_cast : RayCast2D
 var front_ray_cast : RayCast2D

@@ -1,6 +1,7 @@
+class_name Player
 extends KinematicBody2D
 
-const GRAVITY = 10
+export var GRAVITY = 10
 const MAX_FALLS_SPEED = 200
 const RUN_ACCEL = 5
 const MAX_RUN_SPEED = 150

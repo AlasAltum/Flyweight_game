@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/skill_menu/Chip.gd" type="Script" id=1]
+[ext_resource path="res://sprites/chip_jump.png" type="Texture" id=2]
+[ext_resource path="res://sprites/chip_none.png" type="Texture" id=3]
+
+[node name="Chip" type="Node2D"]
+z_index = 1
+script = ExtResource( 1 )
+enabled_tex = ExtResource( 2 )
+enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -19.7098
+margin_top = -16.5089
+margin_right = 20.2902
+margin_bottom = 23.4911
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}

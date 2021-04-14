@@ -32,7 +32,8 @@ func is_front_ray_colliding() -> bool:
 	return $FrontRayCast.is_colliding()
 	
 func is_down_ray_colliding() -> bool:
-	return $DownRayCast.is_colliding()
+	var is_colliding = $DownRayCast.is_colliding() or $DownRayCast2.is_colliding() or $DownRayCast3.is_colliding()
+	return is_colliding
 
 func is_up_ray_colliding() -> bool:
 	return $UpRayCast.is_colliding()
@@ -45,7 +46,7 @@ func get_front_ray_cast_to() -> Vector2:
 	
 func set_front_ray_cast_to(direction : Vector2):
 	$FrontRayCast.set_cast_to(direction)
-
+	
 func change_direction():
 	var cast_to = get_front_ray_cast_to()
 	set_front_ray_cast_to(Vector2(cast_to.x * -1, cast_to.y))

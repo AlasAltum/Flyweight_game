@@ -23,6 +23,7 @@ func update(delta):
 		player.change_direction()
 	if not player.is_down_ray_colliding():
 		emit_signal("finished", "fall")
+		print("xD")
 		player.is_grounded = true
 		player.get_node("GroundedTimer").start()
 		return

@@ -143,6 +143,12 @@ enabled = true
 cast_to = Vector2( 0, 13 )
 
 [node name="DownRayCast2" type="RayCast2D" parent="."]
+position = Vector2( -7, 0 )
+enabled = true
+cast_to = Vector2( 0, 13 )
+
+[node name="DownRayCast3" type="RayCast2D" parent="."]
+position = Vector2( 7, 0 )
 enabled = true
 cast_to = Vector2( 0, 13 )
 
@@ -161,13 +167,16 @@ anims/hurt = SubResource( 6 )
 anims/normal = SubResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -65, 40 )
-offset = Vector2( 150, -120 )
+offset = Vector2( 0, -70 )
 current = true
-zoom = Vector2( 0.7, 0.7 )
-limit_left = -200
-limit_right = 350
+zoom = Vector2( 0.9, 0.9 )
+limit_left = -400
+limit_right = 520
 drag_margin_v_enabled = true
+drag_margin_top = 0.0
+drag_margin_bottom = 0.36
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -175,8 +184,8 @@ START_STATE = NodePath("Jump")
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource( 1 )
-RUN_ACCEL = 10.0
-MAX_RUN_SPEED = 300.0
+RUN_ACCEL = 5.0
+MAX_RUN_SPEED = 200.0
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )

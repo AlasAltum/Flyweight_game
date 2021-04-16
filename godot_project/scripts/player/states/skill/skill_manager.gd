@@ -16,10 +16,16 @@ func update(delta):
 	current_skill.update_skill(delta)
 
 func _input(event):
+	if current_skill == null :
+		return
+	
 	if not current_skill.enable:
 		current_skill.activation_input(event)
 	
 func _physics_process(delta):
+	if current_skill == null :
+		return
+		
 	if not current_skill.enable:
 		current_skill.prepare_skill_update(delta)
 

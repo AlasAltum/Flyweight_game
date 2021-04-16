@@ -21,17 +21,18 @@ func _ready():
 
 func pick_from_slot():
 	remove_child(chip)
-	var menu_node = find_parent("SkillMenu")
+	var menu_node = find_parent("SkillMenu").get_node("HoldingChip")
 	menu_node.add_child(chip)
-	chip.set_scale(Vector2(1.7, 1.7))
+	chip.set_to_board_position()
+	chip.set_to_board_scale()
 	chip = null
 	refresh_style()
 	
 func put_into_slot(new_chip):
 	chip = new_chip
-	chip.position = Vector2(20, 20)
-	chip.set_scale(Vector2(1, 1))
-	var menu_node = find_parent("SkillMenu")
+	chip.set_to_slot_position()
+	chip.set_to_slot_scale()
+	var menu_node = find_parent("SkillMenu").get_node("HoldingChip")
 	menu_node.remove_child(chip)
 	add_child(chip)
 	refresh_style()

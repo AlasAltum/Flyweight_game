@@ -5,7 +5,6 @@
 [ext_resource path="res://sprites/chip_none.png" type="Texture" id=3]
 
 [node name="Chip" type="Node2D"]
-z_index = 1
 script = ExtResource( 1 )
 enabled_tex = ExtResource( 2 )
 enabled = true

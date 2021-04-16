@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/debug/life_displayer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/debug/state_name_displayer.gd" type="Script" id=2]
+[ext_resource path="res://scripts/debug/cooldown.gd" type="Script" id=3]
 
 [node name="DebugLayer" type="CanvasLayer"]
 
 [node name="PushDownDebug" type="Panel" parent="."]
 margin_left = 24.0
-margin_top = 8.0
+margin_top = 16.0
 margin_right = 240.0
-margin_bottom = 48.0
+margin_bottom = 43.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -20,9 +21,9 @@ anchor_top = 0.067
 anchor_right = 0.381
 anchor_bottom = 0.092
 margin_left = -76.472
-margin_top = 11.32
+margin_top = 5.856
 margin_right = -11.296
-margin_bottom = 25.32
+margin_bottom = 19.856
 text = "STATE:"
 align = 1
 valign = 1
@@ -32,9 +33,9 @@ __meta__ = {
 
 [node name="State" type="Label" parent="PushDownDebug"]
 margin_left = 64.0
-margin_top = 14.0
+margin_top = 7.464
 margin_right = 104.0
-margin_bottom = 28.0
+margin_bottom = 21.464
 text = "aa"
 script = ExtResource( 2 )
 __meta__ = {
@@ -45,9 +46,9 @@ __meta__ = {
 anchor_top = 0.26
 anchor_bottom = 0.313
 margin_left = 24.0
-margin_top = -92.0
+margin_top = -108.0
 margin_right = 240.0
-margin_bottom = -83.8
+margin_bottom = -112.8
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,10 +57,10 @@ __meta__ = {
 anchor_top = 0.175
 anchor_right = 0.327
 anchor_bottom = 0.486
-margin_left = -24.0
-margin_top = 1.0
-margin_right = 16.0
-margin_bottom = 15.0
+margin_left = -27.75
+margin_top = -1.25
+margin_right = 12.25
+margin_bottom = 12.75
 text = "LIFE: "
 align = 1
 valign = 1
@@ -69,11 +70,47 @@ __meta__ = {
 
 [node name="Amount" type="Label" parent="LifeDebug"]
 margin_left = 64.0
-margin_top = 16.0
+margin_top = 6.45
 margin_right = 104.0
-margin_bottom = 30.0
+margin_bottom = 20.45
 text = "aa"
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CooldownDebug" type="Panel" parent="."]
+anchor_top = 0.26
+anchor_bottom = 0.313
+margin_left = 24.0
+margin_top = -75.4215
+margin_right = 240.0
+margin_bottom = -80.2215
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tittle" type="Label" parent="CooldownDebug"]
+anchor_top = 0.175
+anchor_right = 0.327
+anchor_bottom = 0.486
+margin_top = -0.77806
+margin_right = 40.0
+margin_bottom = 13.2219
+text = "COOLDOWN: "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="CooldownDebug"]
+margin_left = 110.632
+margin_top = 7.39388
+margin_right = 150.632
+margin_bottom = 21.3939
+text = "aa"
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

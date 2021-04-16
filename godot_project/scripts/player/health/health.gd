@@ -33,3 +33,14 @@ func _on_InvincibleTimer_timeout():
 	owner.get_node("AnimationPlayer2").play("normal")
 	status = PlayerStatus.NONE
 	
+func increase_max_health(amount):
+	if health == max_health:
+		health = max_health + amount
+	max_health += amount
+	emit_signal("lives_increased", health)
+
+func decrease_max_health(amount):
+	max_health -= amount
+	if health >= max_health:
+		health = max_health
+	emit_signal("lives_increased", health)

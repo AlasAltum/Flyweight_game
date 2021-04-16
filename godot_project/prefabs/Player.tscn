@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/player/states/motion/on_ground/run.gd" type="Script" id=1]
 [ext_resource path="res://scripts/player/player_controller.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scripts/player/states/skill/skills/dash.gd" type="Script" id=9]
 [ext_resource path="res://scripts/player/states/skill/skill_manager.gd" type="Script" id=10]
 [ext_resource path="res://scripts/player/states/skill/skills/hook.gd" type="Script" id=11]
+[ext_resource path="res://scripts/player/states/skill/skill.gd" type="Script" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
@@ -184,7 +185,6 @@ START_STATE = NodePath("Jump")
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource( 1 )
-RUN_ACCEL = 5.0
 MAX_RUN_SPEED = 200.0
 
 [node name="Jump" type="Node" parent="StateMachine"]
@@ -209,7 +209,7 @@ one_shot = true
 
 [node name="Skill" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )
-START_SKILL = NodePath("Dash")
+START_SKILL = NodePath("Null")
 
 [node name="Dash" type="Node" parent="StateMachine/Skill"]
 script = ExtResource( 9 )
@@ -230,6 +230,9 @@ one_shot = true
 [node name="GripplingLine" type="Line2D" parent="StateMachine/Skill/Hook"]
 width = 1.0
 default_color = Color( 0.733333, 0.733333, 0.733333, 1 )
+
+[node name="Null" type="Node" parent="StateMachine/Skill"]
+script = ExtResource( 12 )
 
 [node name="CooldownTimer" type="Timer" parent="StateMachine/Skill"]
 one_shot = true

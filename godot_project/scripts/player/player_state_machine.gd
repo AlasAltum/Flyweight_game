@@ -23,9 +23,11 @@ func _change_state(state_name):
 		$Jump.initialize()
 	._change_state(state_name)
 	
-func _input(event):
+func _physics_process(delta):
 	if not(current_state.get_name() in ["Hurt", "Skill"]):
-		if (event.is_action_pressed("skill") and ($Skill.can_use_skill)
-		and $Skill.current_skill.waiting_input):
-			$Skill.current_skill.enable = true
-			_change_state("skill")
+		if Input.is_action_pressed("skill"): 
+			if $Skill.current_skill.get_name() == "Null":
+				return
+			if ($Skill.can_use_skill) and $Skill.current_skill.waiting_input:
+				$Skill.current_skill.enable = true
+				_change_state("skill")

@@ -73,3 +73,33 @@ func _on_Player_jump_not_pressed():
 
 func _on_Player_is_not_grounded():
 	is_grounded = false
+	
+func skill_on(skill_name, skill_value):
+	print("activate: " + skill_name + ", " + str(skill_value))
+	match skill_name:
+		"Hook":
+			$StateMachine/Skill.current_skill = $StateMachine/Skill/Hook
+		"Dash":
+			$StateMachine/Skill.current_skill = $StateMachine/Skill/Dash
+		"Health":
+			$Health.increase_max_health(skill_value)
+		"Speed":
+			$StateMachine/Run.MAX_RUN_SPEED += skill_value
+		"Jump":
+			$StateMachine/Jump.JUMP_SPEED_X += skill_value
+			$StateMachine/Jump.JUMP_SPEED_Y += skill_value
+			
+func skill_off(skill_name, skill_value):
+	print("deactivate: " + skill_name + ", " + str(skill_value))
+	match skill_name:
+		"Hook":
+			$StateMachine/Skill.current_skill = $StateMachine/Skill/Null
+		"Dash":
+			$StateMachine/Skill.current_skill = $StateMachine/Skill/Null
+		"Health":
+			$Health.decrease_max_health(skill_value)
+		"Speed":
+			$StateMachine/Run.MAX_RUN_SPEED -= skill_value
+		"Jump":
+			$StateMachine/Jump.JUMP_SPEED_X -= skill_value
+			$StateMachine/Jump.JUMP_SPEED_Y -= skill_value

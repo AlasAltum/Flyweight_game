@@ -33,10 +33,8 @@ func _ready():
 	trajectory_line = get_node("/root/World/TrajectoryLine2D")
 
 func _physics_process(delta):
-	
 	update_trajectory(delta)
 	motion.y += GRAVITY
-	
 	if down_ray_cast.is_colliding():
 		animation.play("run")
 		is_colliding_floor = true
@@ -102,5 +100,3 @@ func update_trajectory(delta):
 			trajectory_line.add_point(temp_pos)
 			temp_vel.y += GRAVITY
 			temp_pos += temp_vel * delta
-		
-	

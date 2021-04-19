@@ -197,6 +197,8 @@ DECREASE_IN_RELEASE = 0.209
 
 [node name="Grab" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
+SLIDE_ACCEL = 3.0
+MAX_SLIDE_SPEED = 150.0
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )
@@ -222,7 +224,8 @@ one_shot = true
 
 [node name="Hook" type="Node" parent="StateMachine/Skill"]
 script = ExtResource( 11 )
-THROW_SPEED = 400.0
+THROW_SPEED = 500.0
+MAX_GRAPPLING_DISTANCE = 500.0
 
 [node name="ThrowingTimer" type="Timer" parent="StateMachine/Skill/Hook"]
 one_shot = true

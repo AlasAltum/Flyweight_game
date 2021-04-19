@@ -144,7 +144,7 @@ script = ExtResource( 1 )
 position = Vector2( 20, 20 )
 description = "Aumenta la fuerza de salto"
 skill_name = "Jump"
-skill_value = 200.0
+skill_value = 130.0
 
 [node name="Slot2" type="Panel" parent="SkillMenu/GridContainer"]
 margin_left = 52.0

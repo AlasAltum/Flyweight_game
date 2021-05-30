@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/Dialogue/dialogTexture.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Dialogue/ContinueButton.png" type="Texture" id=2]
+[ext_resource path="res://scripts/dialogs/Dialogue.gd" type="Script" id=3]
+[ext_resource path="res://prefabs/DialoguePlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fonts/PressStart2P.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ButtonMovement"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 750, 330 ), Vector2( 750, 320 ), Vector2( 750, 330 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+extra_spacing_top = 3
+extra_spacing_bottom = 2
+extra_spacing_char = 2
+font_data = ExtResource( 5 )
+
+[node name="DialogueBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueBoxQuad" type="TextureRect" parent="."]
+anchor_left = 0.121985
+anchor_top = 0.333172
+anchor_right = 0.875181
+anchor_bottom = 0.855622
+margin_right = 79.7277
+margin_bottom = 105.53
+rect_scale = Vector2( 0.906313, 0.748139 )
+texture = ExtResource( 1 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="DialogueBoxQuad"]
+margin_left = 23.0
+margin_top = 15.0
+margin_right = 830.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonNext" type="Button" parent="DialogueBoxQuad/Panel"]
+margin_left = 750.0
+margin_top = 330.0
+margin_right = 802.0
+margin_bottom = 380.0
+icon = ExtResource( 2 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButtonAnimation" type="AnimationPlayer" parent="DialogueBoxQuad/Panel/ButtonNext"]
+anims/ButtonMovement = SubResource( 1 )
+
+[node name="DialogText" type="Label" parent="DialogueBoxQuad"]
+margin_left = 43.0
+margin_top = 32.0
+margin_right = 812.0
+margin_bottom = 345.0
+rect_min_size = Vector2( 30, 30 )
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0784314, 0.788235, 0.0117647, 1 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialoguePlayer" parent="." instance=ExtResource( 4 )]
+
+[connection signal="pressed" from="DialogueBoxQuad/Panel/ButtonNext" to="." method="_on_ButtonNext_pressed"]

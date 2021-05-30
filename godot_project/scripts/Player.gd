@@ -100,3 +100,10 @@ func update_trajectory(delta):
 			trajectory_line.add_point(temp_pos)
 			temp_vel.y += GRAVITY
 			temp_pos += temp_vel * delta
+
+func enter_station():
+	print('Enter station')
+#	set_mode(self.MODE_STATIC)
+
+func exit_station():
+	pass

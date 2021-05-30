@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/player/states/motion/on_ground/run.gd" type="Script" id=1]
 [ext_resource path="res://scripts/player/player_controller.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scripts/player/states/skill/skill_manager.gd" type="Script" id=10]
 [ext_resource path="res://scripts/player/states/skill/skills/hook.gd" type="Script" id=11]
 [ext_resource path="res://scripts/player/states/skill/skill.gd" type="Script" id=12]
+[ext_resource path="res://prefabs/Camera2D.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
@@ -124,6 +125,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 3 )
 hframes = 15
 frame = 13
@@ -167,17 +169,7 @@ anims/run = SubResource( 5 )
 anims/hurt = SubResource( 6 )
 anims/normal = SubResource( 7 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2( 0, -70 )
-current = true
-zoom = Vector2( 0.9, 0.9 )
-limit_left = -400
-limit_right = 520
-drag_margin_v_enabled = true
-drag_margin_top = 0.0
-drag_margin_bottom = 0.36
-editor_draw_limits = true
-editor_draw_drag_margin = true
+[node name="Camera2D" parent="." instance=ExtResource( 13 )]
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )

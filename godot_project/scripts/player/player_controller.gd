@@ -2,11 +2,15 @@ class_name PlayerController
 extends KinematicBody2D
 
 var motion : Vector2 = Vector2.ZERO
+var fixed_position: Vector2 = Vector2.ZERO
+var previous_motion : Vector2 = Vector2.ZERO
+var previous_direction : Vector2 = Vector2.ZERO
 var direction : Vector2 = Vector2.RIGHT
 var is_jump_pressed = false
 var is_grounded = false
 
 func _ready():
+	GameManager.player = self
 	$JumpPressedTimer.connect("timeout", self, "_on_Player_jump_not_pressed")
 	$GroundedTimer.connect("timeout", self, "_on_Player_is_not_grounded")
 
@@ -24,7 +28,7 @@ func get_motion() -> Vector2 :
 
 func set_motion(new_motion:Vector2) -> void:
 	motion = new_motion
-	
+
 func move(new_motion : Vector2) -> void:
 	motion = move_and_slide(new_motion, Vector2.UP)
 
@@ -88,7 +92,7 @@ func skill_on(skill_name, skill_value):
 		"Jump":
 			$StateMachine/Jump.JUMP_SPEED_X += skill_value
 			$StateMachine/Jump.JUMP_SPEED_Y += skill_value
-			
+
 func skill_off(skill_name, skill_value):
 	print("deactivate: " + skill_name + ", " + str(skill_value))
 	match skill_name:
@@ -103,3 +107,6 @@ func skill_off(skill_name, skill_value):
 		"Jump":
 			$StateMachine/Jump.JUMP_SPEED_X -= skill_value
 			$StateMachine/Jump.JUMP_SPEED_Y -= skill_value
+	
+
+

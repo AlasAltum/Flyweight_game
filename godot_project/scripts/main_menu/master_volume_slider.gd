@@ -5,9 +5,9 @@ onready var _bus_index := AudioServer.get_bus_index(audio_bus_name)
 
 
 func _ready() -> void:
-	pass
-	# value = db2linear(AudioServer.get_bus_volume_db(_bus_index))
-	# TODO: hacer que se correlacione el nivel inicial con el volumen inicial.
+	_on_MasterVolumeSlider_value_changed(-0.05)
+	self.set_value(0.5)
+	self.anchor_left = 110
 
 # Cambia linealmente el audio según se modifica el hslide.
 func _on_MasterVolumeSlider_value_changed(value):

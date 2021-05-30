@@ -24,10 +24,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/player/states/skill/skills/dash.gd"
 }, {
-"base": "Node",
-"class": "GameManager",
+"base": "Control",
+"class": "DialogueBox",
 "language": "GDScript",
-"path": "res://scripts/GameManager.gd"
+"path": "res://scripts/dialogs/Dialogue.gd"
+}, {
+"base": "Node",
+"class": "DialoguePlayer",
+"language": "GDScript",
+"path": "res://scripts/DialoguePlayer.gd"
 }, {
 "base": "Motion",
 "class": "Grab",
@@ -118,7 +123,8 @@ _global_script_class_icons={
 "Chip": "",
 "ChipSlot": "",
 "Dash": "",
-"GameManager": "",
+"DialogueBox": "",
+"DialoguePlayer": "",
 "Grab": "",
 "Health": "",
 "Hook": "",
@@ -141,12 +147,13 @@ _global_script_class_icons={
 [application]
 
 config/name="flyweight_game"
-run/main_scene="res://scenes/Menu.tscn"
+run/main_scene="res://scenes/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 PlayerStatus="*res://scripts/autoload/player_status.gd"
+GameManager="*res://scripts/GameManager.gd"
 
 [input]
 

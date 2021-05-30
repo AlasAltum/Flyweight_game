@@ -10,7 +10,7 @@ func _ready():
 		menu_slot.connect("gui_input", self, "slot_gui_input", [menu_slot])
 	for board_slot in board_slots.get_children():
 		board_slot.connect("gui_input", self, "board_gui_input", [board_slot])
-		
+
 func slot_gui_input(event: InputEvent, slot: Slot):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT && event.pressed:

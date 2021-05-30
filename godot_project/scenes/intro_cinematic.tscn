@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/cinematics/robot_eyes.png" type="Texture" id=1]
+[ext_resource path="res://scenes/AnimationPlayer.gd" type="Script" id=2]
+[ext_resource path="res://prefabs/Dialogue.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/Fade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/intro_cinematic.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "RobotEyes"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[node name="IntroCinematic" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Fade" parent="." instance=ExtResource( 4 )]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_right = 1024.0
+margin_bottom = 597.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RobotSprite" type="Sprite" parent="Control/ColorRect"]
+position = Vector2( 513.717, 193.136 )
+scale = Vector2( 13.5556, 6.50824 )
+texture = ExtResource( 1 )
+offset = Vector2( -1, 0 )
+hframes = 3
+region_filter_clip = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/ColorRect/RobotSprite"]
+method_call_mode = 1
+anims/RobotEyes = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="DialogueBox" parent="." instance=ExtResource( 3 )]
+margin_left = 102.0
+margin_top = 255.0
+margin_right = 102.0
+margin_bottom = 255.0

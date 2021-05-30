@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/skill_menu/Slot.gd" type="Script" id=1]
 [ext_resource path="res://sprites/default_inventory_background.png" type="Texture" id=2]
@@ -11,9 +11,11 @@
 [ext_resource path="res://sprites/m_chip_shape.png" type="Texture" id=9]
 [ext_resource path="res://sprites/chip_dash.png" type="Texture" id=10]
 [ext_resource path="res://sprites/item_slot_default_background.png" type="Texture" id=11]
+[ext_resource path="res://scripts/skill_menu/SkillMenuLayer.gd" type="Script" id=12]
 [ext_resource path="res://scripts/skill_menu/ChipSlot.gd" type="Script" id=13]
 [ext_resource path="res://scripts/skill_menu/ContinueButton.gd" type="Script" id=14]
 [ext_resource path="res://prefabs/Chip.tscn" type="PackedScene" id=15]
+[ext_resource path="res://fonts/PressStart2P.tres" type="DynamicFontData" id=16]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 11 )
@@ -100,10 +102,23 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0 ) ]
 }
 
+[sub_resource type="DynamicFont" id=11]
+size = 18
+font_data = ExtResource( 16 )
+
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.415686, 0.611765, 0.772549, 1 )
 
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 13
+font_data = ExtResource( 16 )
+
 [node name="SkillMenuLayer" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 12 )
 
 [node name="SkillMenu" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -424,10 +439,11 @@ z_index = 1
 anims/enabled = SubResource( 7 )
 
 [node name="Tittle" type="Label" parent="SkillMenu"]
-margin_left = 423.409
-margin_top = 132.009
-margin_right = 653.409
-margin_bottom = 162.009
+margin_left = 337.0
+margin_top = 132.423
+margin_right = 733.0
+margin_bottom = 162.423
+custom_fonts/font = SubResource( 11 )
 text = "Tarjeta de habilidades"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -448,14 +464,16 @@ margin_left = 8.0
 margin_top = 4.0
 margin_right = 84.0
 margin_bottom = 18.0
+custom_fonts/font = SubResource( 9 )
 text = "Descripcion"
 max_lines_visible = 1
 
 [node name="SkillInfo" type="Label" parent="SkillMenu/DescriptionPanel"]
 margin_left = 2.0
-margin_top = 20.0
+margin_top = 26.0
 margin_right = 279.0
 margin_bottom = 73.0
+custom_fonts/font = SubResource( 10 )
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

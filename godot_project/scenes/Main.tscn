@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=55 format=2]
-=======
-[gd_scene load_steps=60 format=2]
->>>>>>> enemies
 
 [ext_resource path="res://prefabs/Canvas/PerformanceLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset/Level 1/Sky.png" type="Texture" id=2]
@@ -13,16 +9,7 @@
 [ext_resource path="res://new_animatedtexture.tres" type="Texture" id=8]
 [ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://prefabs/SkillMenuLayer.tscn" type="PackedScene" id=10]
-<<<<<<< HEAD
 [ext_resource path="res://sprites/map_elements/gen_anim.png" type="Texture" id=11]
-=======
-[ext_resource path="res://prefabs/enemies/basicGroundEnemy.tscn" type="PackedScene" id=11]
-[ext_resource path="res://prefabs/enemies/wallAirEnemy.tscn" type="PackedScene" id=12]
-[ext_resource path="res://prefabs/enemies/ControlPoint.tscn" type="PackedScene" id=13]
-[ext_resource path="res://prefabs/enemies/basicAirEnemy.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scripts/enemies/wallAirEnemy.gd" type="Script" id=15]
-[ext_resource path="res://prefabs/enemies/platformAirEnemy.tscn" type="PackedScene" id=16]
->>>>>>> enemies
 
 [sub_resource type="TileSet" id=1]
 0/name = "new_animatedtexture.tres 0"
@@ -625,55 +612,9 @@ script = SubResource( 44 )
 
 [node name="SkillMenuLayer" parent="." instance=ExtResource( 10 )]
 
-<<<<<<< HEAD
 [node name="gen_anim" type="Sprite" parent="."]
 position = Vector2( 216.501, 1285.46 )
 texture = ExtResource( 11 )
 hframes = 3
 vframes = 5
 frame = 6
-=======
-[node name="basicGroundEnemy" parent="." instance=ExtResource( 11 )]
-position = Vector2( 147, 1280 )
-wait_on_point = true
-
-[node name="ControlPoint" parent="basicGroundEnemy" instance=ExtResource( 13 )]
-position = Vector2( -50, 0 )
-
-[node name="ControlPoint2" parent="basicGroundEnemy" instance=ExtResource( 13 )]
-position = Vector2( 30, 0 )
-
-[node name="ControlPoint3" parent="basicGroundEnemy" instance=ExtResource( 13 )]
-position = Vector2( 100, 0 )
-
-[node name="basicAirEnemy" parent="." instance=ExtResource( 14 )]
-position = Vector2( 185.2, 988.8 )
-
-[node name="ControlPoint" parent="basicAirEnemy" instance=ExtResource( 13 )]
-position = Vector2( -100, 0 )
-
-[node name="ControlPoint2" parent="basicAirEnemy" instance=ExtResource( 13 )]
-position = Vector2( 70, 0 )
-
-[node name="ControlPoint3" parent="basicAirEnemy" instance=ExtResource( 13 )]
-position = Vector2( 70, -130 )
-
-[node name="wallAirEnemy" parent="." instance=ExtResource( 12 )]
-position = Vector2( -70.4, 469 )
-script = ExtResource( 15 )
-
-[node name="ControlPoint" parent="wallAirEnemy" instance=ExtResource( 13 )]
-position = Vector2( 0.1, 0 )
-
-[node name="ControlPoint2" parent="wallAirEnemy" instance=ExtResource( 13 )]
-position = Vector2( -0.1, 0 )
-
-[node name="platformAirEnemy" parent="." instance=ExtResource( 16 )]
-position = Vector2( 304, 1008 )
-wait_on_point = true
-
-[node name="ControlPoint" parent="platformAirEnemy" instance=ExtResource( 13 )]
-
-[node name="ControlPoint2" parent="platformAirEnemy" instance=ExtResource( 13 )]
-position = Vector2( 0, -300 )
->>>>>>> enemies

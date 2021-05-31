@@ -118,6 +118,8 @@ tracks/0/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 64, -40 )
+z_index = 1
+collision_layer = 5
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -134,6 +136,7 @@ shape = SubResource( 1 )
 [node name="FrontRayCast" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 10, 0 )
+collision_mask = 5
 
 [node name="BackRayCast" type="RayCast2D" parent="."]
 enabled = true
@@ -142,16 +145,19 @@ cast_to = Vector2( -10, 0 )
 [node name="DownRayCast" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 13 )
+collision_mask = 5
 
 [node name="DownRayCast2" type="RayCast2D" parent="."]
 position = Vector2( -7, 0 )
 enabled = true
 cast_to = Vector2( 0, 13 )
+collision_mask = 5
 
 [node name="DownRayCast3" type="RayCast2D" parent="."]
 position = Vector2( 7, 0 )
 enabled = true
 cast_to = Vector2( 0, 13 )
+collision_mask = 5
 
 [node name="UpRayCast" type="RayCast2D" parent="."]
 enabled = true

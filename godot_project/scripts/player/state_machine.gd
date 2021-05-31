@@ -52,7 +52,6 @@ func _change_state(state_name):
 	
 	current_state = states_stack[0]
 	emit_signal("state_changed", current_state)
-	print(current_state.get_name())
 	
 	if state_name != "fall":
 		current_state.enter()

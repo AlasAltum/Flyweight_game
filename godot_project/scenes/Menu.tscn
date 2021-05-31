@@ -57,7 +57,7 @@ __meta__ = {
 position = Vector2( 0, -17.9336 )
 scale = Vector2( 0.8, 0.833333 )
 frames = SubResource( 1 )
-frame = 25
+frame = 24
 playing = true
 centered = false
 
@@ -202,6 +202,7 @@ __meta__ = {
 [node name="RainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 31 )
 autoplay = true
+
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="OptionsTextureRect" method="_on_OptionsButton_pressed"]
 [connection signal="value_changed" from="OptionsTextureRect/MasterVolumeSlider" to="OptionsTextureRect/MasterVolumeSlider" method="_on_MasterVolumeSlider_value_changed"]
 [connection signal="pressed" from="OptionsTextureRect/CloseOptionsButton" to="OptionsTextureRect" method="_on_CloseOptionsButton_pressed"]

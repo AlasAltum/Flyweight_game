@@ -3,7 +3,7 @@ extends CanvasLayer
 onready var menu_slots = $SkillMenu/GridContainer
 onready var board_slots = $SkillMenu/Board/Slots
 onready var skill_menu : SkillMenu = $SkillMenu
-onready var player = GameManager.player
+onready var player = LevelManager.Game.player
 signal continue_skill_menu
 
 # Called when the node enters the scene tree for the first time.

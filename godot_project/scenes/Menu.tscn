@@ -101,24 +101,24 @@ glow_bicubic_upscale = true
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 2.95197, -1.12247 )
+position = Vector2( 2.38419e-07, -2.38419e-07 )
 scale = Vector2( 0.8, 0.833333 )
 frames = SubResource( 1 )
-frame = 8
+frame = 6
 playing = true
 centered = false
 
 [node name="RayFade" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 light_mask = 0
-margin_left = 2.95197
-margin_right = 1080.95
+margin_right = 1078.0
 margin_bottom = 647.0
 script = ExtResource( 37 )
 __meta__ = {
@@ -133,7 +133,7 @@ anims/RayAnimation = SubResource( 5 )
 [node name="ThunderClap" type="AudioStreamPlayer" parent="RayFade"]
 stream = ExtResource( 38 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainButtons" type="VBoxContainer" parent="."]
 margin_left = 389.0
 margin_top = 162.0
 margin_right = 600.0
@@ -143,7 +143,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+[node name="NewGameButton" type="Button" parent="MainButtons"]
 modulate = Color( 0, 1, 0.203922, 1 )
 margin_right = 213.0
 margin_bottom = 49.0
@@ -159,9 +159,9 @@ __meta__ = {
 }
 scene_to_load = ExtResource( 29 )
 
-[node name="NewGameLabel" parent="VBoxContainer/NewGameButton" instance=ExtResource( 35 )]
+[node name="NewGameLabel" parent="MainButtons/NewGameButton" instance=ExtResource( 35 )]
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="MainButtons"]
 modulate = Color( 0, 1, 0.203922, 1 )
 margin_top = 53.0
 margin_right = 213.0
@@ -176,10 +176,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionsLabel" parent="VBoxContainer/OptionsButton" instance=ExtResource( 35 )]
+[node name="OptionsLabel" parent="MainButtons/OptionsButton" instance=ExtResource( 35 )]
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="ExitButton" type="Button" parent="MainButtons"]
 modulate = Color( 0, 1, 0.203922, 1 )
 margin_top = 106.0
 margin_right = 213.0
@@ -194,7 +194,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitLabel" parent="VBoxContainer/ExitButton" instance=ExtResource( 35 )]
+[node name="ExitLabel" parent="MainButtons/ExitButton" instance=ExtResource( 35 )]
 text = "Exit Game"
 
 [node name="OptionsTextureRect" type="TextureRect" parent="."]
@@ -276,6 +276,8 @@ autoplay = true
 environment = SubResource( 6 )
 
 [connection signal="timeout" from="RayFade/RayTimer" to="RayFade" method="_on_RayTimer_timeout"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="OptionsTextureRect" method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="MainButtons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="MainButtons/OptionsButton" to="OptionsTextureRect" method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="MainButtons/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="value_changed" from="OptionsTextureRect/MenuOptions/Volume/MasterVolumeSlider" to="OptionsTextureRect/MenuOptions/Volume/MasterVolumeSlider" method="_on_MasterVolumeSlider_value_changed"]
 [connection signal="pressed" from="OptionsTextureRect/CloseOptionsButton" to="OptionsTextureRect" method="_on_CloseOptionsButton_pressed"]

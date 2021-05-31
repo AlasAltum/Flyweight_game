@@ -152,8 +152,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
+LevelManager="*res://scripts/autoload/level_manager.gd"
 PlayerStatus="*res://scripts/autoload/player_status.gd"
-GameManager="*res://scripts/GameManager.gd"
 
 [input]
 

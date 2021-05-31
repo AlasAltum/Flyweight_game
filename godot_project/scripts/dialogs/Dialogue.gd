@@ -2,6 +2,10 @@ extends Control
 class_name DialogueBox
 
 signal event_after_dialogue_begin()
+signal dialogue_finished()
+
+export (String, FILE, "*.json") var dialogue_file_path : String
+
 
 onready var dialogue_player: DialoguePlayer = $DialoguePlayer
 onready var text_label : = $DialogueBoxQuad/DialogText as Label
@@ -12,12 +16,13 @@ var finished : bool = false
 
 func _ready():
 	dialogue_player.connect('dialogue_finished', self, '_on_dialogue_finished')
-	var dialogue_dict = load_dialogue(dialogue_player.dialogue_file_path)
+	var dialogue_dict = load_dialogue(dialogue_file_path)
 	start(dialogue_dict)
 	animation_buttton.play('ButtonMovement')
 
 func start(dialogue : Dictionary) -> void:
 	"""
+	Initializes the dialogue
 	"""
 	button_next.show()
 	button_next.grab_focus()
@@ -49,4 +54,5 @@ func _on_ButtonNext_pressed():
 
 func _on_dialogue_finished():
 	finished = true
+	emit_signal('dialogue_finished')
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/debug/life_displayer.gd" type="Script" id=1]
-[ext_resource path="res://scripts/debug/state_name_displayer.gd" type="Script" id=2]
-[ext_resource path="res://scripts/debug/cooldown.gd" type="Script" id=3]
+[ext_resource path="res://scripts/autoload/debug_layer.gd" type="Script" id=4]
 
 [node name="DebugLayer" type="CanvasLayer"]
+script = ExtResource( 4 )
 
 [node name="PushDownDebug" type="Panel" parent="."]
 margin_left = 24.0
@@ -37,7 +36,6 @@ margin_top = 7.464
 margin_right = 104.0
 margin_bottom = 21.464
 text = "aa"
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -74,7 +72,6 @@ margin_top = 6.45
 margin_right = 104.0
 margin_bottom = 20.45
 text = "aa"
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -110,7 +107,6 @@ margin_top = 7.39388
 margin_right = 150.632
 margin_bottom = 21.3939
 text = "aa"
-script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

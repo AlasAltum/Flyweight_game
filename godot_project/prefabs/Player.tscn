@@ -118,7 +118,7 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 64, -40 )
+position = Vector2( 48, -40 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

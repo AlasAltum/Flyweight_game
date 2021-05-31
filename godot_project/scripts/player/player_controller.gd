@@ -8,9 +8,12 @@ var previous_direction : Vector2 = Vector2.ZERO
 var direction : Vector2 = Vector2.RIGHT
 var is_jump_pressed = false
 var is_grounded = false
+var health_object := $Health as Health
+var player_state_machine := $StateMachine as PlayerStateMachine 
+
 
 func _ready():
-	GameManager.player = self
+	LevelManager.Game.player = self
 	$JumpPressedTimer.connect("timeout", self, "_on_Player_jump_not_pressed")
 	$GroundedTimer.connect("timeout", self, "_on_Player_is_not_grounded")
 
@@ -109,4 +112,8 @@ func skill_off(skill_name, skill_value):
 			$StateMachine/Jump.JUMP_SPEED_Y -= skill_value
 	
 
+func enter_station():
+	print('Enter station')
 
+func exit_station():
+	pass

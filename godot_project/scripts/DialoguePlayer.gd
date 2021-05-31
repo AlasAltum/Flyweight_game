@@ -1,13 +1,12 @@
 extends Node
 class_name DialoguePlayer
 
-export (String, FILE, "*.json") var dialogue_file_path : String
 
 signal dialogue_finished
 var text : String = ''
 var _conversation : Array
 var _index_current : int = 0
-
+var dialogue_file_path
 
 func start(dialogue_dict : Dictionary) -> void:
 	"""

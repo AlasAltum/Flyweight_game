@@ -4,4 +4,3 @@
 
 [node name="DialoguePlayer" type="Node"]
 script = ExtResource( 1 )
-dialogue_file_path = "res://dialogues/intro_cinematic_dialog.json"

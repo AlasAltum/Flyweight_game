@@ -1,5 +1,5 @@
-class_name PlayerController
 extends KinematicBody2D
+class_name PlayerController
 
 var motion : Vector2 = Vector2.ZERO
 var fixed_position: Vector2 = Vector2.ZERO
@@ -25,6 +25,9 @@ func _input(event):
 	if event.is_action_pressed("basic_jump") and not is_jump_pressed:
 		is_jump_pressed = true
 		$JumpPressedTimer.start()
+
+func apply_damage(amount):
+	$Health.take_damage(amount)
 
 func get_motion() -> Vector2 :
 	return motion

@@ -111,7 +111,11 @@ __meta__ = {
 position = Vector2( 2.38419e-07, -2.38419e-07 )
 scale = Vector2( 0.8, 0.833333 )
 frames = SubResource( 1 )
+<<<<<<< HEAD
 frame = 6
+=======
+frame = 24
+>>>>>>> enemies
 playing = true
 centered = false
 
@@ -272,6 +276,7 @@ __meta__ = {
 stream = ExtResource( 31 )
 autoplay = true
 
+<<<<<<< HEAD
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
 
@@ -280,4 +285,8 @@ environment = SubResource( 6 )
 [connection signal="pressed" from="MainButtons/OptionsButton" to="OptionsTextureRect" method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="MainButtons/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="value_changed" from="OptionsTextureRect/MenuOptions/Volume/MasterVolumeSlider" to="OptionsTextureRect/MenuOptions/Volume/MasterVolumeSlider" method="_on_MasterVolumeSlider_value_changed"]
+=======
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="OptionsTextureRect" method="_on_OptionsButton_pressed"]
+[connection signal="value_changed" from="OptionsTextureRect/MasterVolumeSlider" to="OptionsTextureRect/MasterVolumeSlider" method="_on_MasterVolumeSlider_value_changed"]
+>>>>>>> enemies
 [connection signal="pressed" from="OptionsTextureRect/CloseOptionsButton" to="OptionsTextureRect" method="_on_CloseOptionsButton_pressed"]

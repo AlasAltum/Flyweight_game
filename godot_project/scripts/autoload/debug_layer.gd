@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var player := LevelManager.Game.player as PlayerController
+onready var player := LevelManager.player as PlayerController
 onready var state_label := $PushDownDebug/State as Label
 onready var life_label := $LifeDebug/Amount as Label
 onready var cd_time_label := $CooldownDebug/Time as Label

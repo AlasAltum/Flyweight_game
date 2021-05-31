@@ -1,5 +1,6 @@
 extends Node
 
+var player : PlayerController
 onready var Game = get_tree().get_root().get_node("Game")
 
 var checkpoint: Node setget set_checkpoint

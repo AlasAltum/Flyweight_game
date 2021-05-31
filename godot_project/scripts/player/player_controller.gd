@@ -13,7 +13,7 @@ var player_state_machine := $StateMachine as PlayerStateMachine
 
 
 func _ready():
-	LevelManager.Game.player = self
+	LevelManager.player = self
 	$JumpPressedTimer.connect("timeout", self, "_on_Player_jump_not_pressed")
 	$GroundedTimer.connect("timeout", self, "_on_Player_is_not_grounded")
 

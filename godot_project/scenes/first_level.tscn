@@ -1,15 +1,18 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://prefabs/Canvas/PerformanceLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset/Level 1/Sky.png" type="Texture" id=2]
 [ext_resource path="res://prefabs/Canvas/DebugLayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tileset/Level 1/platforms.png" type="Texture" id=4]
 [ext_resource path="res://tileset/Level 1/Windows.png" type="Texture" id=5]
+[ext_resource path="res://prefabs/enemies/basicAirEnemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tileset/Level 1/runes.tres" type="Texture" id=7]
 [ext_resource path="res://new_animatedtexture.tres" type="Texture" id=8]
 [ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://prefabs/SkillMenuLayer.tscn" type="PackedScene" id=10]
-[ext_resource path="res://sprites/map_elements/gen_anim.png" type="Texture" id=11]
+[ext_resource path="res://prefabs/enemies/platformAirEnemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://prefabs/enemies/ControlPoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://prefabs/enemies/basicGroundEnemy.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "new_animatedtexture.tres 0"
@@ -584,6 +587,18 @@ position = Vector2( 502, -868.617 )
 scale = Vector2( 3.34619, 3.21635 )
 texture = ExtResource( 2 )
 
+[node name="basicAirEnemy" parent="Sky" instance=ExtResource( 6 )]
+position = Vector2( -156.166, 617.906 )
+
+[node name="basicGroundEnemy" parent="Sky" instance=ExtResource( 13 )]
+position = Vector2( -121.753, 590.321 )
+
+[node name="ControlPoint" parent="Sky" instance=ExtResource( 12 )]
+position = Vector2( -89.8784, 592.375 )
+
+[node name="platformAirEnemy" parent="Sky/ControlPoint" instance=ExtResource( 11 )]
+position = Vector2( 13.2575, 72.4849 )
+
 [node name="Windows" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 format = 1
@@ -611,10 +626,3 @@ position = Vector2( 48, 1280 )
 script = SubResource( 44 )
 
 [node name="SkillMenuLayer" parent="." instance=ExtResource( 10 )]
-
-[node name="gen_anim" type="Sprite" parent="."]
-position = Vector2( 216.501, 1285.46 )
-texture = ExtResource( 11 )
-hframes = 3
-vframes = 5
-frame = 6

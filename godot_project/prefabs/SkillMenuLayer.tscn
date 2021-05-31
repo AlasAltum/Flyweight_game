@@ -102,17 +102,17 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=8]
 size = 18
 font_data = ExtResource( 16 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.415686, 0.611765, 0.772549, 1 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=11]
 size = 13
 font_data = ExtResource( 16 )
 
@@ -443,7 +443,7 @@ margin_left = 337.0
 margin_top = 132.423
 margin_right = 733.0
 margin_bottom = 162.423
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 8 )
 text = "Tarjeta de habilidades"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -454,7 +454,7 @@ margin_left = 504.0
 margin_top = 202.0
 margin_right = 789.0
 margin_bottom = 278.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -464,7 +464,7 @@ margin_left = 8.0
 margin_top = 4.0
 margin_right = 84.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Descripcion"
 max_lines_visible = 1
 
@@ -473,7 +473,7 @@ margin_left = 2.0
 margin_top = 26.0
 margin_right = 279.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

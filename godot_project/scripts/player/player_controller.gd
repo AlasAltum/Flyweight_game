@@ -8,8 +8,8 @@ var previous_direction : Vector2 = Vector2.ZERO
 var direction : Vector2 = Vector2.RIGHT
 var is_jump_pressed = false
 var is_grounded = false
-var health_object := $Health as Health
-var player_state_machine := $StateMachine as PlayerStateMachine 
+onready var health_object := $Health as Health
+onready var player_state_machine := $StateMachine as PlayerStateMachine 
 
 
 func _ready():

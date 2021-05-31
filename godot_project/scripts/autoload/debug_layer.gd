@@ -8,17 +8,16 @@ var timer: Timer
 
 
 func _ready():
-	pass
+# pass
 	# Connect state machine
-#	player.player_state_machine.connect("state_changed", self, "_on_Player_state_changed")
-#	player.connect("health_changed", self, "_on_Player_health_changed")
+	player.player_state_machine.connect("state_changed", self, "_on_Player_state_changed")
+	player.connect("health_changed", self, "_on_Player_health_changed")
 #	# Connect to health Node
-#	var health = player.health_object as Health
-#	health.connect("lives_increased",self,"_on_Player_health_changed")
-#	health.connect("lives_decreased",self,"_on_Player_health_changed")
-#	timer = player.get_cd_timer
-#	life_label.set_text(str(health.health))
-#	timer = get_node("/root/World/Player/StateMachine/Skill/CooldownTimer")
+	var health = player.health_object as Health
+	health.connect("lives_increased",self,"_on_Player_health_changed")
+	health.connect("lives_decreased",self,"_on_Player_health_changed")
+	life_label.set_text(str(health.health))
+	timer = player.get_node("StateMachine/Skill/CooldownTimer")
 
 func _on_Player_state_changed(state):
 	state_label.set_text(state.get_name())

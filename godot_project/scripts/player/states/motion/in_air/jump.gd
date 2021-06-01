@@ -45,9 +45,13 @@ func update(delta):
 		return
 
 func _start_jump():
+	
+	print(player.jump_buff)
 	player.get_node("AnimationPlayer").play("jump")
 	var jump_direction = player.get_mouse_direction()
 	motion = player.get_motion()
-	motion.x = motion.x * MOTION_CONSERVATION_X + jump_direction.x * JUMP_SPEED_X
-	motion.y = motion.y * MOTION_CONSERVATION_Y + jump_direction.y * JUMP_SPEED_Y
+	var jump_x = JUMP_SPEED_X + player.jump_buff
+	var jump_y = JUMP_SPEED_Y + player.jump_buff
+	motion.x = motion.x * MOTION_CONSERVATION_X + jump_direction.x * jump_x
+	motion.y = motion.y * MOTION_CONSERVATION_Y + jump_direction.y * jump_y
 	player.move(motion)

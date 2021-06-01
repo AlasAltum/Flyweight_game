@@ -8,9 +8,11 @@ var previous_direction : Vector2 = Vector2.ZERO
 var direction : Vector2 = Vector2.RIGHT
 var is_jump_pressed = false
 var is_grounded = false
+var jump_buff : float = 0.0 setget set_jump_buff
 onready var health_object := $Health as Health
 onready var player_state_machine := $StateMachine as PlayerStateMachine 
 
+signal buff_changed(buff_amount)
 
 func _ready():
 	LevelManager.player = self
@@ -120,3 +122,7 @@ func enter_station():
 
 func exit_station():
 	pass
+	
+func set_jump_buff(value : float):
+	jump_buff = value
+	emit_signal("buff_changed", value)

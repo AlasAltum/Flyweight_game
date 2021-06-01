@@ -110,3 +110,39 @@ text = "aa"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="JumpBuffDebug" type="Panel" parent="."]
+anchor_top = 0.26
+anchor_bottom = 0.313
+margin_left = 24.0
+margin_top = -39.1047
+margin_right = 240.0
+margin_bottom = -43.9047
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tittle" type="Label" parent="JumpBuffDebug"]
+anchor_top = 0.175
+anchor_right = 0.327
+anchor_bottom = 0.486
+margin_left = -4.67722
+margin_top = -0.555327
+margin_right = 35.3228
+margin_bottom = 13.4446
+text = "JUMP BUFF: "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="JumpBuffDebug"]
+margin_left = 99.7805
+margin_top = 7.98848
+margin_right = 139.78
+margin_bottom = 21.9885
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}

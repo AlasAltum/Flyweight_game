@@ -3,6 +3,9 @@ extends Motion
 
 export(float) var SLIDE_ACCEL = 1
 export(float) var MAX_SLIDE_SPEED = 40
+export(float) var MAX_BUFF_VALUE = 200
+export(float) var BUFF_INCREASE = 20
+export(float) var BUFF_DECREASE = 1
 
 func enter():
 	player = owner
@@ -22,6 +25,11 @@ func update(delta):
 		return
 	if owner.is_jump_pressed:
 		player.change_direction()
+		# Al saltar sobre la pared se añade el buff
+		if (player.jump_buff < MAX_BUFF_VALUE):
+			player.jump_buff += BUFF_INCREASE
+		else:
+			player.jump_buff = MAX_BUFF_VALUE
 		emit_signal("finished", "jump")
 		owner.is_jump_pressed = false
 		return
@@ -29,5 +37,12 @@ func update(delta):
 	motion = player.get_motion()
 	if motion.y < MAX_SLIDE_SPEED:
 		motion.y += SLIDE_ACCEL
+		
+	# REstamos el buff al estar deslizandose en la pared
+	if (player.jump_buff > 0):
+		player.jump_buff -= BUFF_DECREASE
+	else:
+		player.jump_buff = 0
+	print(player.jump_buff)
 	player.move(motion)
 	

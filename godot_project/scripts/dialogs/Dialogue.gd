@@ -8,7 +8,7 @@ export (String, FILE, "*.json") var dialogue_file_path : String
 
 
 onready var dialogue_player: DialoguePlayer = $DialoguePlayer
-onready var text_label : = $DialogueBoxQuad/DialogText as Label
+onready var text_label : = $DialogText as Label
 onready var button_next : = $DialogueBoxQuad/Panel/ButtonNext as Button
 onready var animation_buttton = $DialogueBoxQuad/Panel/ButtonNext/ContinueButtonAnimation
 

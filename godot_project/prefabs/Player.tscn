@@ -196,7 +196,6 @@ DECREASE_IN_RELEASE = 0.209
 [node name="Grab" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
 SLIDE_ACCEL = 3.0
-MAX_SLIDE_SPEED = 150.0
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )

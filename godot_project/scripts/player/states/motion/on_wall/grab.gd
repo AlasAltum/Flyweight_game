@@ -26,10 +26,12 @@ func update(delta):
 	if owner.is_jump_pressed:
 		player.change_direction()
 		# Al saltar sobre la pared se añade el buff
-		if (player.jump_buff < MAX_BUFF_VALUE):
-			player.jump_buff += BUFF_INCREASE
+		var tmp_value
+		if (player.jump_buff >= MAX_BUFF_VALUE - player.jump_buff):
+			tmp_value = MAX_BUFF_VALUE
 		else:
-			player.jump_buff = MAX_BUFF_VALUE
+			tmp_value = player.jump_buff + BUFF_INCREASE
+		player.jump_buff = tmp_value
 		emit_signal("finished", "jump")
 		owner.is_jump_pressed = false
 		return
@@ -43,6 +45,5 @@ func update(delta):
 		player.jump_buff -= BUFF_DECREASE
 	else:
 		player.jump_buff = 0
-	print(player.jump_buff)
 	player.move(motion)
 	

@@ -45,6 +45,8 @@ func update(delta):
 		return
 
 func _start_jump():
+	player.get_node("SoundJump").update_pitch(player.jump_buff)
+	player.get_node("SoundJump").play()
 	player.get_node("AnimationPlayer").play("jump")
 	var jump_direction = player.get_mouse_direction()
 	motion = player.get_motion()

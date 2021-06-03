@@ -16,6 +16,8 @@ func _ready():
 func take_damage(amount, effect=null):
 	if status == PlayerStatus.INVINCIBLE:
 		return
+	
+	owner.get_node("SoundHurt").play()
 	status = PlayerStatus.INVINCIBLE
 	health -= amount
 	owner.get_node("AnimationPlayer2").play("hurt")

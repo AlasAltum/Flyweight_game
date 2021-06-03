@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/player/states/motion/on_ground/run.gd" type="Script" id=1]
 [ext_resource path="res://scripts/player/player_controller.gd" type="Script" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://scripts/player/states/skill/skills/hook.gd" type="Script" id=11]
 [ext_resource path="res://scripts/player/states/skill/skill.gd" type="Script" id=12]
 [ext_resource path="res://prefabs/Camera2D.tscn" type="PackedScene" id=13]
+[ext_resource path="res://audio/player/player_jump.ogg" type="AudioStream" id=14]
+[ext_resource path="res://scripts/player/jump_sound.gd" type="Script" id=15]
+[ext_resource path="res://audio/player/player_hurt.ogg" type="AudioStream" id=16]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
@@ -254,3 +257,13 @@ one_shot = true
 
 [node name="HookRayCast" type="RayCast2D" parent="."]
 collision_mask = 2
+
+[node name="SoundJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -16.0
+pitch_scale = 1.17
+script = ExtResource( 15 )
+
+[node name="SoundHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -8.0

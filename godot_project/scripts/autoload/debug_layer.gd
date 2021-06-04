@@ -21,6 +21,9 @@ func _ready():
 	timer = player.get_node("StateMachine/Skill/CooldownTimer")
 	# Connect to player Node
 	player.connect("buff_changed", self, "_on_Player_buff_changed")
+	
+	for child in get_children():
+			child.set_visible(false) 
 
 func _on_Player_state_changed(state):
 	state_label.set_text(state.get_name())
@@ -36,3 +39,8 @@ func _physics_process(_delta):
 			cd_time_label.text = str(stepify(timer.get_time_left(), 0.01)) + " s"
 func _on_Player_buff_changed(buff_value):
 	jump_buff_label.set_text(str(buff_value))
+	
+func _input(event):
+	if event.is_action_pressed("debug_info"):
+		for child in get_children():
+			child.set_visible(not child.visible) 

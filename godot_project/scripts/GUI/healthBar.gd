@@ -4,7 +4,7 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-const max_lifes : int = 10
+var max_lifes = 0
 
 var dPeriod = 0
 var dPersistance = 0
@@ -18,23 +18,28 @@ const hight_hp_pers : float = 0.3
 const low_hp_lac : float = 0.1
 const hight_hp_lac : float = 2.0
 
+onready var player := LevelManager.player as PlayerController
 onready var noiseTexture : NoiseTexture = $batteryBar/lightTexture.texture
 export(Color) var low_color = Color.red;
 export(Color) var hight_color = Color.green;
-export(int, 0, 10) onready var current_life setget setLife
 
+var health : Health
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health = player.health_object 
+	max_lifes = health.max_health
 	dPeriod = (hight_hp_period - low_hp_period) / max_lifes
 	dPersistance = (hight_hp_pers - low_hp_pers) / max_lifes
 	dLacunarity = (hight_hp_lac - low_hp_lac) / max_lifes
 	dColor = (hight_color - low_color) / max_lifes
+	health.connect("lives_increased",self,"_setLife")
+	health.connect("lives_decreased",self,"_setLife")
 	pass # Replace with function body.
 
-func setNoise(period, persistence, lacunarity, color):
+func setNoise(period, persistence, lacunarity, color : Color):
 	if noiseTexture == null:
 		return
 	var new_noise = OpenSimplexNoise.new()
@@ -42,20 +47,21 @@ func setNoise(period, persistence, lacunarity, color):
 	new_noise.persistence = persistence
 	new_noise.lacunarity = lacunarity
 	noiseTexture.noise = new_noise
+	var tmp = Vector2(color.r, color.g).normalized()
 	
-	$batteryBar/lightTexture.material.set_shader_param("color", color)
+	$batteryBar/lightTexture.material.set_shader_param("color", Color(tmp.x, tmp.y, 0, 1))
 	$batteryBar/lightTexture.material.set_shader_param("border_color", color)
 
-func setLife(life):
+func _setLife(lifes):
 	if noiseTexture == null:
 		return
-	var tmp_period = low_hp_period + dPeriod * life
-	var tmp_persistance = low_hp_pers + dPersistance*life
-	var tmp_lacunarity = low_hp_lac + dLacunarity*life
-	var tmp_color = low_color + dColor*life
+	var tmp_period = low_hp_period + dPeriod * lifes
+	var tmp_persistance = low_hp_pers + dPersistance*lifes
+	var tmp_lacunarity = low_hp_lac + dLacunarity*lifes
+	var tmp_color = low_color + dColor*lifes
 	setNoise(tmp_period, tmp_persistance, tmp_lacunarity, tmp_color)
 	
-	if life == 0:
+	if lifes == 0:
 		noiseTexture.as_normalmap = true
 	else:
 		noiseTexture.as_normalmap = false

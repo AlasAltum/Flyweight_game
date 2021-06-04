@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/cinematics/intro_cinematic.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/Fade.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/AnimationPlayer.gd" type="Script" id=3]
 [ext_resource path="res://prefabs/Dialogue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/cinematics/robot_eyes.png" type="Texture" id=5]
+[ext_resource path="res://audio/cinematic/intro2.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "RobotEyes"
@@ -17,10 +18,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2 ]
+"values": [ 5, 0, 1, 2, 3, 4, 5 ]
 }
 
 [node name="Cinematic2" type="Node2D"]
@@ -47,10 +48,10 @@ __meta__ = {
 
 [node name="RobotSprite" type="Sprite" parent="Control/ColorRect"]
 position = Vector2( 513.717, 193.136 )
-scale = Vector2( 13.5556, 6.50824 )
+scale = Vector2( 10, 8 )
 texture = ExtResource( 5 )
-offset = Vector2( -1, 0 )
-hframes = 3
+hframes = 6
+frame = 5
 region_filter_clip = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/ColorRect/RobotSprite"]
@@ -64,5 +65,10 @@ margin_top = 67.8467
 margin_right = 1027.06
 margin_bottom = 667.847
 dialogue_file_path = "res://dialogues/intro2_cinematic_dialog.json"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -16.0
+autoplay = true
 
 [connection signal="dialogue_finished" from="Control/DialogueBox" to="." method="_on_DialogueBox_dialogue_finished"]

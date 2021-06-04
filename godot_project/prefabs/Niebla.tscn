@@ -4,7 +4,7 @@
 [ext_resource path="res://prefabs/Niebla.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 600, 100 )
+extents = Vector2( 600, 300 )
 
 [sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 2
@@ -24,6 +24,7 @@ collision_mask = 0
 [node name="Area2D" type="Area2D" parent="Body"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Area2D"]
+position = Vector2( 0, 200 )
 shape = SubResource( 1 )
 
 [node name="ParticulasHumo5" type="Particles2D" parent="Body"]

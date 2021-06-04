@@ -12,7 +12,7 @@
 [ext_resource path="res://sprites/gui/gear/gear0 6.png" type="Texture" id=10]
 [ext_resource path="res://scripts/GUI/healthBar.gd" type="Script" id=11]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -51,21 +51,21 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/line_width = 0.02
 shader_param/color = Color( 0.196078, 1, 0, 1 )
 shader_param/border_color = Color( 0.0196078, 0.564706, 0, 1 )
 
-[sub_resource type="OpenSimplexNoise" id=4]
+[sub_resource type="OpenSimplexNoise" id=3]
 persistence = 0.305
 lacunarity = 2.05
 
-[sub_resource type="NoiseTexture" id=5]
+[sub_resource type="NoiseTexture" id=4]
 seamless = true
-noise = SubResource( 4 )
+noise = SubResource( 3 )
 
-[sub_resource type="AnimatedTexture" id=1]
+[sub_resource type="AnimatedTexture" id=5]
 flags = 4
 frames = 8
 fps = 16.0
@@ -95,7 +95,6 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-current_life = 10
 
 [node name="batteryBar" type="NinePatchRect" parent="."]
 margin_left = 63.0
@@ -108,7 +107,7 @@ __meta__ = {
 }
 
 [node name="lightTexture" type="TextureRect" parent="batteryBar"]
-material = SubResource( 3 )
+material = SubResource( 2 )
 anchor_left = 0.056
 anchor_top = 0.459
 anchor_right = 0.056
@@ -118,7 +117,7 @@ margin_top = -46.1397
 margin_right = 259.307
 margin_bottom = 122.86
 rect_rotation = 90.0
-texture = SubResource( 5 )
+texture = SubResource( 4 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -130,7 +129,7 @@ margin_top = -43.8728
 margin_right = 506.345
 margin_bottom = 509.127
 rect_scale = Vector2( 0.15, 0.15 )
-texture = SubResource( 1 )
+texture = SubResource( 5 )
 expand = true
 stretch_mode = 5
 __meta__ = {

@@ -6,7 +6,7 @@ onready var _bus_index := AudioServer.get_bus_index(audio_bus_name)
 
 func _ready() -> void:
 	_on_MasterVolumeSlider_value_changed(-0.05)
-	self.set_value(0.5)
+	self.set_value(1.0)
 	self.anchor_left = 110
 
 # Cambia linealmente el audio según se modifica el hslide.

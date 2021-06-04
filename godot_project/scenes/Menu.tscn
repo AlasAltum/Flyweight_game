@@ -111,7 +111,7 @@ __meta__ = {
 position = Vector2( 2.38419e-07, -2.38419e-07 )
 scale = Vector2( 0.8, 0.833333 )
 frames = SubResource( 1 )
-frame = 14
+frame = 21
 playing = true
 centered = false
 
@@ -247,9 +247,9 @@ margin_left = 96.0
 margin_right = 430.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
-max_value = 5.0
-step = 0.1
-value = 3.0
+max_value = 2.0
+step = 0.05
+value = 2.0
 script = ExtResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false

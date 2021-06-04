@@ -36,7 +36,8 @@ func _ready():
 	dLacunarity = (hight_hp_lac - low_hp_lac) / max_lifes
 	dColor = (hight_color - low_color) / max_lifes
 	health.connect("lives_increased",self,"_setLife")
-	health.connect("lives_decreased",self,"_setLife")
+	health.connect("lives_decreased",self,"_hurted")
+	_setLife(health.health)
 	pass # Replace with function body.
 
 func setNoise(period, persistence, lacunarity, color : Color):
@@ -48,9 +49,17 @@ func setNoise(period, persistence, lacunarity, color : Color):
 	new_noise.lacunarity = lacunarity
 	noiseTexture.noise = new_noise
 	var tmp = Vector2(color.r, color.g).normalized()
+	var color_final = Color(tmp.x, tmp.y, 0, 1)
 	
-	$batteryBar/lightTexture.material.set_shader_param("color", Color(tmp.x, tmp.y, 0, 1))
-	$batteryBar/lightTexture.material.set_shader_param("border_color", color)
+	$batteryBar/lightTexture.material.set_shader_param("color", color_final)
+	$batteryBar/lightTexture.material.set_shader_param("border_color", color_final)
+	
+	#Cambiar colo de ojos del player
+	player.get_node("Sprite").material.set_shader_param("eyesColor", color_final)
+
+func _hurted(amount):
+	$AnimationPlayer.play("hurt")
+	_setLife(amount)
 
 func _setLife(lifes):
 	if noiseTexture == null:

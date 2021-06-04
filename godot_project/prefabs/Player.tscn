@@ -20,7 +20,7 @@
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
-uniform vec4 eyesColor;
+uniform vec4 eyesColor: hint_color;
 
 void fragment(){
 	vec4 pixelColor = texture(TEXTURE, UV);
@@ -33,7 +33,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=9]
 shader = SubResource( 8 )
-shader_param/eyesColor = Plane( 0, 1, 1, 1 )
+shader_param/eyesColor = Color( 0.262745, 0.984314, 0, 1 )
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
@@ -110,7 +110,7 @@ resource_name = "hurt"
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("Sprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -118,8 +118,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -218,6 +218,7 @@ DECREASE_IN_RELEASE = 0.209
 [node name="Grab" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
 SLIDE_ACCEL = 3.0
+MAX_SLIDE_SPEED = 150.0
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )

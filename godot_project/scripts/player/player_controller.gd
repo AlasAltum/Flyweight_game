@@ -19,12 +19,19 @@ const decreaseBuffFx = preload("res://prefabs/vfx/decreaseBuffEffect.tscn")
 const maxBuffFx = preload("res://prefabs/vfx/maxBuffEffect.tscn")
 const zeroBuffFx = preload("res://prefabs/vfx/zeroBuffEffect.tscn")
 
+export(bool) var left_start_direction = true
+
 signal buff_changed(buff_amount)
 
 func _ready():
 	LevelManager.player = self
 	$JumpPressedTimer.connect("timeout", self, "_on_Player_jump_not_pressed")
 	$GroundedTimer.connect("timeout", self, "_on_Player_is_not_grounded")
+	
+	if left_start_direction:
+		change_direction()
+	
+	
 
 func _input(event):
 	if event.is_action_pressed("simulate_damage"):

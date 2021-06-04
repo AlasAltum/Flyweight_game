@@ -1,0 +1,494 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://scripts/skill_menu/Slot.gd" type="Script" id=1]
+[ext_resource path="res://sprites/default_inventory_background.png" type="Texture" id=2]
+[ext_resource path="res://sprites/board.png" type="Texture" id=3]
+[ext_resource path="res://scripts/skill_menu/SkillMenu.gd" type="Script" id=4]
+[ext_resource path="res://sprites/s_chip_shape.png" type="Texture" id=5]
+[ext_resource path="res://sprites/chip_hook.png" type="Texture" id=6]
+[ext_resource path="res://sprites/chip_speed.png" type="Texture" id=7]
+[ext_resource path="res://sprites/chip_health.png" type="Texture" id=8]
+[ext_resource path="res://sprites/m_chip_shape.png" type="Texture" id=9]
+[ext_resource path="res://sprites/chip_dash.png" type="Texture" id=10]
+[ext_resource path="res://sprites/item_slot_default_background.png" type="Texture" id=11]
+[ext_resource path="res://scripts/skill_menu/SkillMenuLayer.gd" type="Script" id=12]
+[ext_resource path="res://scripts/skill_menu/ChipSlot.gd" type="Script" id=13]
+[ext_resource path="res://scripts/skill_menu/ContinueButton.gd" type="Script" id=14]
+[ext_resource path="res://prefabs/Chip.tscn" type="PackedScene" id=15]
+[ext_resource path="res://fonts/PressStart2P.tres" type="DynamicFontData" id=16]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="VisualShader" id=2]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Output:0
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 0, 75 )
+nodes/fragment/0/position = Vector2( 500, 180 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "enabled"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ChipShape/Shape:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3, 1.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "enabled"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ChipShape/Shape:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3, 1.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "enabled"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ChipShape/Shape:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3, 1.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0.470588 ), Color( 1, 0, 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=8]
+size = 18
+font_data = ExtResource( 16 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.415686, 0.611765, 0.772549, 1 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 13
+font_data = ExtResource( 16 )
+
+[node name="SkillMenuLayer" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 12 )
+
+[node name="SkillMenu" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="SkillMenu"]
+anchor_right = 0.43
+margin_left = 104.0
+margin_top = 112.0
+margin_right = 824.0
+margin_bottom = 568.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="SkillMenu"]
+margin_left = 496.0
+margin_top = 304.0
+margin_right = 796.0
+margin_bottom = 448.0
+custom_constants/vseparation = 12
+custom_constants/hseparation = 12
+columns = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Panel" parent="SkillMenu/GridContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="JumpChip" parent="SkillMenu/GridContainer/Slot1" instance=ExtResource( 15 )]
+position = Vector2( 20, 20 )
+description = "Aumenta la fuerza de salto"
+skill_name = "Jump"
+skill_value = 130.0
+
+[node name="Slot2" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 52.0
+margin_right = 92.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="HealthChip" parent="SkillMenu/GridContainer/Slot2" instance=ExtResource( 15 )]
+position = Vector2( 20, 20 )
+enabled_tex = ExtResource( 8 )
+description = "Aumenta la vida maxima"
+skill_name = "Health"
+skill_value = 2.0
+
+[node name="Slot3" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 104.0
+margin_right = 144.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="SpeedChip" parent="SkillMenu/GridContainer/Slot3" instance=ExtResource( 15 )]
+position = Vector2( 20, 20 )
+enabled_tex = ExtResource( 7 )
+description = "Aumenta la velocidad de movimiento"
+skill_name = "Speed"
+skill_value = 100.0
+
+[node name="Slot4" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 156.0
+margin_right = 196.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="DashChip" parent="SkillMenu/GridContainer/Slot4" instance=ExtResource( 15 )]
+position = Vector2( 20, 20 )
+scale = Vector2( 0.7, 0.7 )
+enabled_tex = ExtResource( 10 )
+special_skill = true
+description = "Permite usar la habilidade de Dash  con el click derecho"
+skill_name = "Dash"
+
+[node name="Slot5" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 208.0
+margin_right = 248.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="HookChip" parent="SkillMenu/GridContainer/Slot5" instance=ExtResource( 15 )]
+position = Vector2( 20, 20 )
+scale = Vector2( 0.7, 0.7 )
+enabled_tex = ExtResource( 6 )
+special_skill = true
+description = "Permite usar la habilidad de Gancho con el click derecho"
+skill_name = "Hook"
+
+[node name="Slot6" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 260.0
+margin_right = 300.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Slot7" type="Panel" parent="SkillMenu/GridContainer"]
+margin_top = 52.0
+margin_right = 40.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Slot8" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 52.0
+margin_top = 52.0
+margin_right = 92.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Slot9" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 104.0
+margin_top = 52.0
+margin_right = 144.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Slot10" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 156.0
+margin_top = 52.0
+margin_right = 196.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Slot11" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 208.0
+margin_top = 52.0
+margin_right = 248.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Slot12" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 260.0
+margin_top = 52.0
+margin_right = 300.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Slot13" type="Panel" parent="SkillMenu/GridContainer"]
+margin_top = 104.0
+margin_right = 40.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Slot14" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 52.0
+margin_top = 104.0
+margin_right = 92.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Slot15" type="Panel" parent="SkillMenu/GridContainer"]
+margin_left = 104.0
+margin_top = 104.0
+margin_right = 144.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Board" type="Node2D" parent="SkillMenu"]
+
+[node name="BoardImage" type="Node2D" parent="SkillMenu/Board"]
+position = Vector2( 230, 197 )
+scale = Vector2( 1.7, 1.7 )
+
+[node name="TextureRect2" type="TextureRect" parent="SkillMenu/Board/BoardImage"]
+material = SubResource( 3 )
+margin_right = 160.0
+margin_bottom = 160.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slots" type="Node2D" parent="SkillMenu/Board"]
+
+[node name="ChipSlot" type="Panel" parent="SkillMenu/Board/Slots"]
+margin_left = 351.0
+margin_top = 321.0
+margin_right = 391.0
+margin_bottom = 361.0
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChipShape" type="Node2D" parent="SkillMenu/Board/Slots/ChipSlot"]
+position = Vector2( -14, -8 )
+scale = Vector2( 1.7, 1.7 )
+
+[node name="Shape" type="TextureRect" parent="SkillMenu/Board/Slots/ChipSlot/ChipShape"]
+modulate = Color( 1, 0, 0, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChipPosition" type="Node2D" parent="SkillMenu/Board/Slots/ChipSlot"]
+position = Vector2( 21, 23 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SkillMenu/Board/Slots/ChipSlot"]
+anims/enabled = SubResource( 5 )
+
+[node name="ChipSlot2" type="Panel" parent="SkillMenu/Board/Slots"]
+margin_left = 352.0
+margin_top = 372.0
+margin_right = 392.0
+margin_bottom = 412.0
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChipShape" type="Node2D" parent="SkillMenu/Board/Slots/ChipSlot2"]
+position = Vector2( -14, -8 )
+scale = Vector2( 1.7, 1.7 )
+
+[node name="Shape" type="TextureRect" parent="SkillMenu/Board/Slots/ChipSlot2/ChipShape"]
+modulate = Color( 1, 0, 0, 0.178008 )
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChipPosition" type="Node2D" parent="SkillMenu/Board/Slots/ChipSlot2"]
+position = Vector2( 21, 23 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SkillMenu/Board/Slots/ChipSlot2"]
+anims/enabled = SubResource( 6 )
+
+[node name="ChipSlot3" type="Panel" parent="SkillMenu/Board/Slots"]
+margin_left = 347.028
+margin_top = 252.028
+margin_right = 397.028
+margin_bottom = 299.028
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+special_skill = true
+
+[node name="ChipShape" type="Node2D" parent="SkillMenu/Board/Slots/ChipSlot3"]
+position = Vector2( -9, -7 )
+scale = Vector2( 1.7, 1.7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Shape" type="TextureRect" parent="SkillMenu/Board/Slots/ChipSlot3/ChipShape"]
+modulate = Color( 1, 0, 0, 0.178008 )
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 9 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChipPosition" type="Node2D" parent="SkillMenu/Board/Slots/ChipSlot3"]
+position = Vector2( 25, 20 )
+z_index = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SkillMenu/Board/Slots/ChipSlot3"]
+anims/enabled = SubResource( 7 )
+
+[node name="Tittle" type="Label" parent="SkillMenu"]
+margin_left = 337.0
+margin_top = 132.423
+margin_right = 733.0
+margin_bottom = 162.423
+custom_fonts/font = SubResource( 8 )
+text = "Tarjeta de habilidades"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionPanel" type="Panel" parent="SkillMenu"]
+margin_left = 504.0
+margin_top = 202.0
+margin_right = 789.0
+margin_bottom = 278.0
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tittle" type="Label" parent="SkillMenu/DescriptionPanel"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 84.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 10 )
+text = "Descripcion"
+max_lines_visible = 1
+
+[node name="SkillInfo" type="Label" parent="SkillMenu/DescriptionPanel"]
+margin_left = 2.0
+margin_top = 26.0
+margin_right = 279.0
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 11 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="SkillMenu"]
+margin_left = 648.0
+margin_top = 459.0
+margin_right = 792.0
+margin_bottom = 490.0
+text = "Continuar"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HoldingChip" type="Node2D" parent="SkillMenu"]
+z_index = 1

@@ -1,0 +1,149 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://sprites/gui/gear/gear0 0.png" type="Texture" id=1]
+[ext_resource path="res://sprites/gui/gear/gear0 2.png" type="Texture" id=2]
+[ext_resource path="res://sprites/gui/gear/gear0 3.png" type="Texture" id=3]
+[ext_resource path="res://sprites/gui/gear/gear0 4.png" type="Texture" id=4]
+[ext_resource path="res://sprites/gui/heart.png" type="Texture" id=5]
+[ext_resource path="res://sprites/gui/battery.png" type="Texture" id=6]
+[ext_resource path="res://sprites/gui/gear/gear0 1.png" type="Texture" id=7]
+[ext_resource path="res://sprites/gui/gear/gear0 5.png" type="Texture" id=8]
+[ext_resource path="res://sprites/gui/gear/gear0 7.png" type="Texture" id=9]
+[ext_resource path="res://sprites/gui/gear/gear0 6.png" type="Texture" id=10]
+[ext_resource path="res://scripts/GUI/healthBar.gd" type="Script" id=11]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float line_width;
+uniform vec4 color : hint_color;
+uniform vec4 border_color : hint_color;
+
+void fragment() {
+	float variance = UV.y;
+	if(variance > 0.5) {
+		variance = 1.0 - variance;
+	}
+	variance = variance * 3.0;
+	float weight = texture(TEXTURE, UV + TIME).r;
+	float xpos = UV.x + ((((weight / 2.0) - 0.25)) * variance);
+	if(xpos > 0.5) {
+		xpos = 1.0 - xpos;
+	}
+	if(xpos > (0.5 - line_width)) {
+		COLOR = color;
+	}
+	else {
+		if(xpos > (0.5 - (line_width * 2.0))) {
+			// convert the distance
+			float alpha = (xpos - (0.5 - (line_width * 2.0))) / line_width;
+			alpha = 1.0 - alpha;
+			if(alpha < 0.5) {
+				alpha = 0.0;
+			}
+			COLOR = border_color;
+			COLOR.a = alpha;
+		}
+		else {
+			COLOR = vec4(0, 0, 0, 0);	
+		}
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/line_width = 0.02
+shader_param/color = Color( 0.196078, 1, 0, 1 )
+shader_param/border_color = Color( 0.0196078, 0.564706, 0, 1 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+persistence = 0.305
+lacunarity = 2.05
+
+[sub_resource type="NoiseTexture" id=4]
+seamless = true
+noise = SubResource( 3 )
+
+[sub_resource type="AnimatedTexture" id=5]
+flags = 4
+frames = 8
+fps = 16.0
+frame_0/texture = ExtResource( 1 )
+frame_1/texture = ExtResource( 7 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 2 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 3 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 4 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 8 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 10 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 9 )
+frame_7/delay_sec = 0.0
+
+[node name="Control" type="Control"]
+margin_left = 39.2444
+margin_top = 46.384
+margin_right = 79.2444
+margin_bottom = 86.384
+rect_scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="batteryBar" type="NinePatchRect" parent="."]
+margin_left = 63.0
+margin_top = -10.0
+margin_right = 242.0
+margin_bottom = 39.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lightTexture" type="TextureRect" parent="batteryBar"]
+material = SubResource( 2 )
+anchor_left = 0.056
+anchor_top = 0.459
+anchor_right = 0.056
+anchor_bottom = 0.459
+margin_left = 163.307
+margin_top = -46.1397
+margin_right = 259.307
+margin_bottom = 122.86
+rect_rotation = 90.0
+texture = SubResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -20.6547
+margin_top = -43.8728
+margin_right = 506.345
+margin_bottom = 509.127
+rect_scale = Vector2( 0.15, 0.15 )
+texture = SubResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_top = -10.5
+margin_right = 635.0
+margin_bottom = 551.5
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}

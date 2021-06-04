@@ -4,7 +4,7 @@ extends Node2D
 var mainMenu = preload("res://scenes/Menu.tscn")
 var first_cinematic = preload("res://scenes/cinematics/intro_cinematic1.tscn")
 var second_cinematic = preload("res://scenes/cinematics/intro_cinematic2.tscn")
-var firstLevel = preload("res://scenes/first_level.tscn")
+var firstLevel = preload("res://scenes/first_level_dev.tscn")
 
 
 var skillMenu = preload("res://prefabs/SkillMenuLayer.tscn")

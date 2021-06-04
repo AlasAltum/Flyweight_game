@@ -28,6 +28,8 @@ func _input(event):
 
 func apply_damage(amount):
 	$Health.take_damage(amount)
+	if $Health.health == 0:
+		get_tree().reload_current_scene()
 
 func get_motion() -> Vector2 :
 	return motion

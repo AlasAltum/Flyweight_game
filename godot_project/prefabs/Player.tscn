@@ -176,6 +176,8 @@ anims/hurt = SubResource( 6 )
 anims/normal = SubResource( 7 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 13 )]
+limit_left = -600
+limit_right = 600
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )

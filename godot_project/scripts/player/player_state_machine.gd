@@ -21,6 +21,11 @@ func _change_state(state_name):
 		return
 	if state_name == "jump" and (current_state == $Run or current_state == $Grab):
 		$Jump.initialize()
+	if (owner.jump_buff != 0 and
+		not (current_state == $Grab and state_name == 'jump' or 
+			current_state == $Jump and state_name == 'grab')):
+		# Buff de salto debe volver a 0
+		owner.jump_buff = 0
 	._change_state(state_name)
 	
 func _physics_process(delta):

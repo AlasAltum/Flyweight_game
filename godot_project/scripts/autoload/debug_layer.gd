@@ -4,6 +4,7 @@ onready var player := LevelManager.player as PlayerController
 onready var state_label := $PushDownDebug/State as Label
 onready var life_label := $LifeDebug/Amount as Label
 onready var cd_time_label := $CooldownDebug/Time as Label
+onready var jump_buff_label := $JumpBuffDebug/Value as Label
 var timer: Timer
 
 
@@ -18,6 +19,8 @@ func _ready():
 	health.connect("lives_decreased",self,"_on_Player_health_changed")
 	life_label.set_text(str(health.health))
 	timer = player.get_node("StateMachine/Skill/CooldownTimer")
+	# Connect to player Node
+	player.connect("buff_changed", self, "_on_Player_buff_changed")
 
 func _on_Player_state_changed(state):
 	state_label.set_text(state.get_name())
@@ -31,3 +34,5 @@ func _physics_process(_delta):
 			cd_time_label.text = "READY!"
 		else:
 			cd_time_label.text = str(stepify(timer.get_time_left(), 0.01)) + " s"
+func _on_Player_buff_changed(buff_value):
+	jump_buff_label.set_text(str(buff_value))

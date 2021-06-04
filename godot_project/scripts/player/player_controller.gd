@@ -8,9 +8,18 @@ var previous_direction : Vector2 = Vector2.ZERO
 var direction : Vector2 = Vector2.RIGHT
 var is_jump_pressed = false
 var is_grounded = false
+var jump_buff : float = 0.0 setget set_jump_buff
 onready var health_object := $Health as Health
 onready var player_state_machine := $StateMachine as PlayerStateMachine 
 
+# Valores para el efecto al cambiar los valores del buff de salto
+const buffFxPosition = Vector2(0, -20)
+const increaseBuffFx = preload("res://prefabs/vfx/increaseBuffEffect.tscn")
+const decreaseBuffFx = preload("res://prefabs/vfx/decreaseBuffEffect.tscn")
+const maxBuffFx = preload("res://prefabs/vfx/maxBuffEffect.tscn")
+const zeroBuffFx = preload("res://prefabs/vfx/zeroBuffEffect.tscn")
+
+signal buff_changed(buff_amount)
 
 func _ready():
 	LevelManager.player = self
@@ -122,3 +131,33 @@ func enter_station():
 
 func exit_station():
 	pass
+	
+func set_jump_buff(value : float):
+	if (value == 0 and jump_buff != 0):
+		zero_buff_effect()
+	jump_buff = value
+	emit_signal("buff_changed", value)
+
+func increase_buff_effect():
+	# Instancia efecto de aumento del buff de salto
+	var effectInstance = increaseBuffFx.instance()
+	get_parent().add_child(effectInstance)
+	effectInstance.position = self.position + buffFxPosition
+	
+func decrease_buff_effect():
+	# Instancia efecto de decremento del buff de salto
+	var effectInstance = decreaseBuffFx.instance()
+	get_parent().add_child(effectInstance)
+	effectInstance.position = self.position + buffFxPosition
+	
+func max_buff_effect():
+	# Instancia efecto de valor maximo alcanzado del buff de salto
+	var effectInstance = maxBuffFx.instance()
+	get_parent().add_child(effectInstance)
+	effectInstance.position = self.position + buffFxPosition
+	
+func zero_buff_effect():
+	# Instancia efecto del buff de salto nulo
+	var effectInstance = zeroBuffFx.instance()
+	get_parent().add_child(effectInstance)
+	effectInstance.position = self.position + buffFxPosition

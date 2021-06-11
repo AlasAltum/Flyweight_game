@@ -13,5 +13,4 @@ func _ready():
 
 
 func delete_effect():
-	#print("delete")
 	self.queue_free()

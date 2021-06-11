@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://sprites/Dialogue/dialogTexture.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Dialogue/ContinueButton.png" type="Texture" id=2]
 [ext_resource path="res://scripts/dialogs/Dialogue.gd" type="Script" id=3]
 [ext_resource path="res://prefabs/DialoguePlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/PressStart2P.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/PressStart2P.tres" type="DynamicFontData" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ButtonMovement"
@@ -24,6 +25,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="DynamicFont" id=2]
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 20
 extra_spacing_top = 3
 extra_spacing_bottom = 2
@@ -78,6 +83,7 @@ margin_left = 750.0
 margin_top = 330.0
 margin_right = 802.0
 margin_bottom = 380.0
+rect_pivot_offset = Vector2( 10.2402, 9.46198 )
 icon = ExtResource( 2 )
 flat = true
 __meta__ = {
@@ -87,6 +93,22 @@ __meta__ = {
 [node name="ContinueButtonAnimation" type="AnimationPlayer" parent="DialogueBoxQuad/Panel/ButtonNext"]
 anims/ButtonMovement = SubResource( 1 )
 
+[node name="ButtonSkip" type="Button" parent="DialogueBoxQuad/Panel"]
+margin_left = 21.6642
+margin_top = 330.0
+margin_right = 97.6642
+margin_bottom = 380.0
+rect_pivot_offset = Vector2( 10.2402, 9.46198 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.121569, 0.972549, 0, 1 )
+custom_colors/font_color_hover = Color( 0.427451, 0.972549, 0.145098, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "SKIP"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DialogText" type="Label" parent="."]
 margin_left = 162.0
 margin_top = 278.0
@@ -95,7 +117,7 @@ margin_bottom = 469.0
 rect_min_size = Vector2( 30, 30 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.0784314, 0.788235, 0.0117647, 1 )
 autowrap = true
 __meta__ = {
@@ -105,3 +127,4 @@ __meta__ = {
 [node name="DialoguePlayer" parent="." instance=ExtResource( 4 )]
 
 [connection signal="pressed" from="DialogueBoxQuad/Panel/ButtonNext" to="." method="_on_ButtonNext_pressed"]
+[connection signal="pressed" from="DialogueBoxQuad/Panel/ButtonSkip" to="." method="_on_ButtonSkip_pressed"]

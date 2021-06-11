@@ -5,17 +5,19 @@ var mainMenu = preload("res://scenes/Menu.tscn")
 var first_cinematic = preload("res://scenes/cinematics/intro_cinematic1.tscn")
 var second_cinematic = preload("res://scenes/cinematics/intro_cinematic2.tscn")
 var firstLevel = preload("res://scenes/first_level_dev.tscn")
-
-
 var skillMenu = preload("res://prefabs/SkillMenuLayer.tscn")
-
-
 
 var Levels = [mainMenu,
 	first_cinematic,
 	second_cinematic,
 	firstLevel
 ]
+
+# insert here level codes
+var level_codes = {
+	'level1': firstLevel
+}
+
 
 var current_level = 0
 var current_world: Node = null
@@ -25,14 +27,13 @@ onready var fade := $CanvasLayer/Fade as ColorRect
 
 
 func _ready():
-	print('ready game')
 	fade.connect("faded", self, "on_faded")
 	current_world = Levels[0].instance()
 	world.add_child(current_world)
-	print('ready game finalizado')
+
 
 func change_scene(scene):
-	var s = load(scene).instance()
+	var s = scene.instance()
 	world.remove_child(current_world)
 	current_world.queue_free()
 	current_world = s
@@ -56,7 +57,7 @@ func remove_scene(scene_node):
 
 func next():
 	if current_level + 1 >= Levels.size():
-		return
+		current_level = current_level % Levels.size()
 	loading = true
 	fade.fade_in()
 
@@ -74,3 +75,11 @@ func reset():
 	current_level = -1
 	loading = true
 	fade.fade_in()
+
+func charge_code_level(code_text : String):
+	if code_text in level_codes:
+		print(level_codes[code_text])
+		self.change_scene(level_codes[code_text])
+		return true
+	return false
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://sprites/Menu/MenuFrames/menu0008.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Menu/MenuFrames/menu0006.png" type="Texture" id=2]
@@ -33,11 +33,12 @@
 [ext_resource path="res://audio/Menu/rain_menu_theme.wav" type="AudioStream" id=31]
 [ext_resource path="res://scripts/main_menu/master_volume_slider.gd" type="Script" id=32]
 [ext_resource path="res://sprites/cinematics/MenuOption.png" type="Texture" id=33]
-[ext_resource path="res://sprites/Menu/OptionsTextureRect.gd" type="Script" id=34]
+[ext_resource path="res://scripts/skill_menu/OptionsTextureRect.gd" type="Script" id=34]
 [ext_resource path="res://prefabs/TextLabel.tscn" type="PackedScene" id=35]
 [ext_resource path="res://fonts/Bwahh.ttf" type="DynamicFontData" id=36]
 [ext_resource path="res://scripts/main_menu/ray_effect.gd" type="Script" id=37]
 [ext_resource path="res://audio/Menu/ThunderClap.mp3" type="AudioStream" id=38]
+[ext_resource path="res://scripts/main_menu/ContinueRect.tscn" type="PackedScene" id=39]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -111,7 +112,7 @@ __meta__ = {
 position = Vector2( 2.38419e-07, -2.38419e-07 )
 scale = Vector2( 0.8, 0.833333 )
 frames = SubResource( 1 )
-frame = 21
+frame = 4
 playing = true
 centered = false
 
@@ -120,6 +121,7 @@ modulate = Color( 1, 1, 1, 0 )
 light_mask = 0
 margin_right = 1078.0
 margin_bottom = 647.0
+color = Color( 0.721569, 0.992157, 0.713726, 0.67451 )
 script = ExtResource( 37 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -143,10 +145,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGameButton" type="Button" parent="MainButtons"]
+[node name="ContinueButton" type="Button" parent="MainButtons"]
 modulate = Color( 0, 1, 0.203922, 1 )
 margin_right = 213.0
 margin_bottom = 49.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "NEW GAME"
+icon = ExtResource( 30 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueLabel" parent="MainButtons/ContinueButton" instance=ExtResource( 35 )]
+text = "Continue "
+
+[node name="NewGameButton" type="Button" parent="MainButtons"]
+modulate = Color( 0, 1, 0.203922, 1 )
+margin_top = 53.0
+margin_right = 213.0
+margin_bottom = 102.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "NEW GAME"
@@ -163,9 +183,9 @@ scene_to_load = ExtResource( 29 )
 
 [node name="OptionsButton" type="Button" parent="MainButtons"]
 modulate = Color( 0, 1, 0.203922, 1 )
-margin_top = 53.0
+margin_top = 106.0
 margin_right = 213.0
-margin_bottom = 102.0
+margin_bottom = 155.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "NEW GAME"
@@ -181,9 +201,9 @@ text = "Options"
 
 [node name="ExitButton" type="Button" parent="MainButtons"]
 modulate = Color( 0, 1, 0.203922, 1 )
-margin_top = 106.0
+margin_top = 159.0
 margin_right = 213.0
-margin_bottom = 155.0
+margin_bottom = 208.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "NEW GAME"
@@ -198,6 +218,7 @@ __meta__ = {
 text = "Exit Game"
 
 [node name="OptionsTextureRect" type="TextureRect" parent="."]
+visible = false
 material = SubResource( 3 )
 margin_left = 269.0
 margin_top = 195.5
@@ -274,7 +295,11 @@ autoplay = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
 
+[node name="ContinueRect" parent="." instance=ExtResource( 39 )]
+visible = false
+
 [connection signal="timeout" from="RayFade/RayTimer" to="RayFade" method="_on_RayTimer_timeout"]
+[connection signal="pressed" from="MainButtons/ContinueButton" to="ContinueRect" method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MainButtons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="MainButtons/OptionsButton" to="OptionsTextureRect" method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="MainButtons/ExitButton" to="." method="_on_ExitButton_pressed"]

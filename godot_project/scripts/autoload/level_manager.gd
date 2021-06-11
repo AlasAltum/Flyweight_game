@@ -11,7 +11,9 @@ func set_checkpoint(value):
 	checkpoint.on()
 
 func next():
-	Game.next()  
+	if !is_instance_valid(Game):
+		Game = get_tree().get_root().get_node("Game")
+	Game.next()
 
 func change_scene(scene):
 	Game.change_scene(scene)
@@ -24,3 +26,6 @@ func add_scene(scene):
 
 func remove_scene(scene_node):
 	Game.remove_scene(scene_node)
+
+func try_level_by_code(code_text : String):
+	return Game.charge_code_level(code_text)

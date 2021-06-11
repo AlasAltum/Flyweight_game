@@ -30,7 +30,6 @@ func update_skill(delta):
 	if player.is_front_ray_colliding() and $ActivateTimer.get_time_left() < time_threshold:
 		get_parent().finish_skill("grab")
 		$ActivateTimer.stop()
-	#print($ActivateTimer.get_time_left())
 
 func _on_dash_finish_skill():
 	player.set_motion(Vector2.ZERO)

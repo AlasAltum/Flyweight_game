@@ -10,7 +10,6 @@ script = ExtResource( 1 )
 pause_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -10
 
 [node name="Fade" parent="CanvasLayer" instance=ExtResource( 2 )]
 

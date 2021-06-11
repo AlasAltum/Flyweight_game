@@ -17,7 +17,7 @@
 [ext_resource path="res://scripts/player/jump_sound.gd" type="Script" id=15]
 [ext_resource path="res://audio/player/player_hurt.ogg" type="AudioStream" id=16]
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform vec4 eyesColor: hint_color;
@@ -31,16 +31,15 @@ void fragment(){
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/eyesColor = Color( 0.262745, 0.984314, 0, 1 )
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 9.0
 height = 7.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "fall"
+[sub_resource type="Animation" id=4]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -55,8 +54,7 @@ tracks/0/keys = {
 "values": [ 12 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "grab"
+[sub_resource type="Animation" id=5]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -71,8 +69,7 @@ tracks/0/keys = {
 "values": [ 13 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "jump"
+[sub_resource type="Animation" id=6]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -87,8 +84,7 @@ tracks/0/keys = {
 "values": [ 11 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "run"
+[sub_resource type="Animation" id=7]
 length = 0.55
 loop = true
 step = 0.05
@@ -105,8 +101,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "hurt"
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -122,8 +117,7 @@ tracks/0/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "normal"
+[sub_resource type="Animation" id=9]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
@@ -145,7 +139,7 @@ collision_layer = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 9 )
+material = SubResource( 2 )
 position = Vector2( -2.31671, -4.57175 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
@@ -153,7 +147,7 @@ hframes = 14
 frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="FrontRayCast" type="RayCast2D" parent="."]
 enabled = true
@@ -186,14 +180,14 @@ enabled = true
 cast_to = Vector2( 0, -14 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fall = SubResource( 2 )
-anims/grab = SubResource( 3 )
-anims/jump = SubResource( 4 )
-anims/run = SubResource( 5 )
+anims/fall = SubResource( 4 )
+anims/grab = SubResource( 5 )
+anims/jump = SubResource( 6 )
+anims/run = SubResource( 7 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/hurt = SubResource( 6 )
-anims/normal = SubResource( 7 )
+anims/hurt = SubResource( 8 )
+anims/normal = SubResource( 9 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 13 )]
 limit_left = -600

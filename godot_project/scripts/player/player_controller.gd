@@ -45,7 +45,8 @@ func _input(event):
 func apply_damage(amount):
 	$Health.take_damage(amount)
 	if $Health.health == 0:
-		get_tree().reload_current_scene()
+		LevelManager.reset()
+#		get_tree().reload_current_scene()
 
 func get_motion() -> Vector2 :
 	return motion
@@ -131,14 +132,7 @@ func skill_off(skill_name, skill_value):
 		"Jump":
 			$StateMachine/Jump.JUMP_SPEED_X -= skill_value
 			$StateMachine/Jump.JUMP_SPEED_Y -= skill_value
-	
 
-func enter_station():
-	print('Enter station')
-
-func exit_station():
-	pass
-	
 func set_jump_buff(value : float):
 	if (value == 0 and jump_buff != 0):
 		zero_buff_effect()

@@ -56,3 +56,8 @@ func _on_dialogue_finished():
 	finished = true
 	emit_signal('dialogue_finished')
 
+
+
+func _on_ButtonSkip_pressed():
+	# Al presionar se salta la cinemática
+	emit_signal('dialogue_finished')

@@ -9,6 +9,7 @@ var direction : Vector2 = Vector2.RIGHT
 var is_jump_pressed = false
 var is_grounded = false
 var jump_buff : float = 0.0 setget set_jump_buff
+var is_alive = true
 onready var health_object := $Health as Health
 onready var player_state_machine := $StateMachine as PlayerStateMachine 
 
@@ -30,11 +31,11 @@ func _ready():
 	
 	if left_start_direction:
 		change_direction()
-	
-	
+
 
 func _input(event):
 	if event.is_action_pressed("simulate_damage"):
+		player_death()  	# TODO: Erase
 		$Health.take_damage(1)
 	if event.is_action_pressed("simulate_heal"):
 		$Health.heal(1)
@@ -42,11 +43,23 @@ func _input(event):
 		is_jump_pressed = true
 		$JumpPressedTimer.start()
 
+func player_death():
+	is_alive = false
+	self.visible = false
+	$DeathAnimation/player_death_explosion.position = self.position
+	$DeathAnimation/player_death_explosion.visible = true
+	$DeathAnimation.play("deathAnimation")
+
+
+func _on_DeathAnimation_animation_finished(anim_name):
+	LevelManager.game_over()
+
+
 func apply_damage(amount):
 	$Health.take_damage(amount)
 	if $Health.health == 0:
-		LevelManager.reset()
-#		get_tree().reload_current_scene()
+		player_death()
+
 
 func get_motion() -> Vector2 :
 	return motion
@@ -162,3 +175,4 @@ func zero_buff_effect():
 	var effectInstance = zeroBuffFx.instance()
 	get_parent().add_child(effectInstance)
 	effectInstance.position = self.position + buffFxPosition
+

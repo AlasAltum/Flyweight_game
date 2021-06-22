@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/player/states/motion/on_ground/run.gd" type="Script" id=1]
 [ext_resource path="res://scripts/player/player_controller.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://audio/player/player_jump.ogg" type="AudioStream" id=14]
 [ext_resource path="res://scripts/player/jump_sound.gd" type="Script" id=15]
 [ext_resource path="res://audio/player/player_hurt.ogg" type="AudioStream" id=16]
+[ext_resource path="res://sprites/character/player_death_explosion.png" type="Texture" id=17]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -132,6 +133,22 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "deathAnimation"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("DeathAnimation/player_death_explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 5, 6, 7, 8 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 64, -40 )
 z_index = 1
@@ -188,6 +205,15 @@ anims/run = SubResource( 7 )
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/hurt = SubResource( 8 )
 anims/normal = SubResource( 9 )
+
+[node name="DeathAnimation" type="AnimationPlayer" parent="."]
+anims/deathAnimation = SubResource( 10 )
+
+[node name="player_death_explosion" type="Sprite" parent="DeathAnimation"]
+position = Vector2( 64, -46.3568 )
+scale = Vector2( 1.6, 1.6 )
+texture = ExtResource( 17 )
+hframes = 12
 
 [node name="Camera2D" parent="." instance=ExtResource( 13 )]
 limit_left = -600
@@ -282,3 +308,5 @@ script = ExtResource( 15 )
 [node name="SoundHurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
 volume_db = -8.0
+
+[connection signal="animation_finished" from="DeathAnimation" to="." method="_on_DeathAnimation_animation_finished"]

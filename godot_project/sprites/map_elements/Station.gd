@@ -29,5 +29,7 @@ func activate_skill_menu():
 	skill_menu.activate_skill_menu()
 
 func _close_menu():
-	LevelManager.player.motion = previous_motion
-
+	if previous_motion:
+		LevelManager.player.motion = previous_motion
+	else:
+		pass

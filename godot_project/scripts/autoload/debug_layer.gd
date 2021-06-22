@@ -39,7 +39,7 @@ func _physics_process(_delta):
 			cd_time_label.text = str(stepify(timer.get_time_left(), 0.01)) + " s"
 func _on_Player_buff_changed(buff_value):
 	jump_buff_label.set_text(str(buff_value))
-	
+
 func _input(event):
 	if event.is_action_pressed("debug_info"):
 		for child in get_children():

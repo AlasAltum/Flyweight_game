@@ -3,6 +3,7 @@ extends Node
 var player : PlayerController
 onready var Game = get_tree().get_root().get_node("Game")
 
+
 var checkpoint: Node setget set_checkpoint
 func set_checkpoint(value):
 	if checkpoint:
@@ -27,5 +28,15 @@ func add_scene(scene):
 func remove_scene(scene_node):
 	Game.remove_scene(scene_node)
 
-func try_level_by_code(code_text : String):
-	return Game.charge_code_level(code_text)
+func is_text_valid(code_text: String):
+	if code_text in Game.level_codes:
+		return true
+
+func load_code_level(code_text : String):
+	Game.load_code_level(code_text)
+
+func change_scene_to_main_menu():
+	Game.change_scene_to_main_menu()
+
+func game_over():
+	Game.game_over()

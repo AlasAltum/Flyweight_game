@@ -119,9 +119,6 @@ tracks/0/keys = {
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 64, -41 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )

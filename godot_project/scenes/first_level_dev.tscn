@@ -605,7 +605,7 @@ scroll_base_offset = Vector2( 0, -137 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -70.4723, 877.444 )
+position = Vector2( 41.6186, 1234.23 )
 scale = Vector2( 3.34619, 3.21635 )
 texture = ExtResource( 2 )
 

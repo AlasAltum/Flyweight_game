@@ -34,7 +34,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 resource_name = "modulation"
 length = 2.0
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -42,7 +41,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 2 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -50,13 +49,17 @@ tracks/0/keys = {
 
 [node name="Game Over" type="Node2D"]
 pause_mode = 2
+visible = false
 script = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="YouDied" type="Label" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 400.0
+margin_bottom = 400.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.0784314, 1, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -73,7 +76,7 @@ __meta__ = {
 anims/GameOverAnimation = SubResource( 1 )
 
 [node name="Buttons" type="Node2D" parent="CanvasLayer"]
-modulate = Color( 1, 1, 1, 0.565411 )
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="RestartLevelButton" type="Button" parent="CanvasLayer/Buttons"]
 margin_left = 436.862

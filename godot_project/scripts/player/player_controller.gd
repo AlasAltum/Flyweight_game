@@ -47,13 +47,11 @@ func player_death():
 	is_alive = false
 	self.visible = false
 	$DeathAnimation/player_death_explosion.position = self.position
-	$DeathAnimation/player_death_explosion.visible = true
 	$DeathAnimation.play("deathAnimation")
 
 
 func _on_DeathAnimation_animation_finished(anim_name):
 	LevelManager.game_over()
-
 
 func apply_damage(amount):
 	$Health.take_damage(amount)

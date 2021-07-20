@@ -5,6 +5,7 @@ onready var buttons_animation := $CanvasLayer/Buttons/ButtonsAppear as Animation
 func _ready():
 	get_tree().paused = true
 	$CanvasLayer/YouDied/GameOverAnimation.play("GameOverAnimation") 
+	self.visible = true
 
 func make_buttons_appear():
 	buttons_animation.play("modulation")

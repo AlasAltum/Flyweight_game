@@ -26,22 +26,15 @@ func _input(event):
 		activate_skill_menu()
 
 func activate_skill_menu():
-	skill_menu.set_visible(true)
-#	skill_menu.pause_mode = PAUSE_MODE_PROCESS
+	if player.is_alive == false:
+		return
+
+	skill_menu.visible = true
 	get_tree().paused = true
 
 func _on_skill_menu_continue():
-	if player == null or skill_menu == null:
+	if player == null or skill_menu == null or player.is_alive == false:
 		return
-		
+
+	skill_menu.visible = false
 	get_tree().paused = false
-#	skill_menu.pause_mode = PAUSE_MODE_INHERIT
-#	for slot in board_slots.get_children():
-#		slot.connect("activate_skill", player, "skill_on")
-#		slot.connect("deactivate_skill", player, "skill_off")
-#	skill_menu.get_node("Button").disconnect("continue_skill_menu", self, "_on_skill_menu_continue")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

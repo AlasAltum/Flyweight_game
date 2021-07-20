@@ -29,8 +29,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/dialogs/Dialogue.gd"
 }, {
-"base": "Node",
+"base": "ResourcePreloader",
 "class": "DialoguePlayer",
+"language": "GDScript",
+"path": "res://prefabs/DialoguePlayerRes.gd"
+}, {
+"base": "Node",
+"class": "DialoguePlayerA",
 "language": "GDScript",
 "path": "res://scripts/DialoguePlayer.gd"
 }, {
@@ -125,6 +130,7 @@ _global_script_class_icons={
 "Dash": "",
 "DialogueBox": "",
 "DialoguePlayer": "",
+"DialoguePlayerA": "",
 "Grab": "",
 "Health": "",
 "Hook": "",

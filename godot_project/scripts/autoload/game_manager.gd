@@ -38,7 +38,6 @@ func _ready():
 		second_cinematic,
 		firstLevel
 	]
-	print(levels)
 
 func change_scene(scene):
 	var s = scene.instance()
@@ -88,7 +87,6 @@ func load_code_level(code_text : String):
 		self.change_scene(level_codes[code_text])
 
 func change_scene_to_main_menu():
-	print('change_scene_to_main_menu:', current_level)
 	self.change_scene(mainMenu)
 
 func game_over():

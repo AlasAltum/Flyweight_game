@@ -3,9 +3,9 @@
 [ext_resource path="res://sprites/Dialogue/dialogTexture.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Dialogue/ContinueButton.png" type="Texture" id=2]
 [ext_resource path="res://scripts/dialogs/Dialogue.gd" type="Script" id=3]
-[ext_resource path="res://prefabs/DialoguePlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/PressStart2P.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://fonts/PressStart2P.tres" type="DynamicFontData" id=6]
+[ext_resource path="res://prefabs/DialoguePlayerRes.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ButtonMovement"
@@ -124,7 +124,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialoguePlayer" parent="." instance=ExtResource( 4 )]
+[node name="DialoguePlayer" type="ResourcePreloader" parent="."]
+script = ExtResource( 7 )
 
 [connection signal="pressed" from="DialogueBoxQuad/Panel/ButtonNext" to="." method="_on_ButtonNext_pressed"]
 [connection signal="pressed" from="DialogueBoxQuad/Panel/ButtonSkip" to="." method="_on_ButtonSkip_pressed"]

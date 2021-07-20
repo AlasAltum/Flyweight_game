@@ -1,5 +1,5 @@
-extends Node
-class_name DialoguePlayerA
+extends ResourcePreloader
+class_name DialoguePlayer
 
 
 signal dialogue_finished

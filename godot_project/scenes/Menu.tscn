@@ -76,7 +76,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
-frame = 9
+frame = 11
 
 [node name="RayFade" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -150,6 +150,7 @@ margin_right = 213.0
 margin_bottom = 155.0
 grow_horizontal = 0
 grow_vertical = 0
+rect_pivot_offset = Vector2( -374.2, -2.91037 )
 text = "NEW GAME"
 icon = ExtResource( 30 )
 flat = true
@@ -161,11 +162,30 @@ __meta__ = {
 [node name="OptionsLabel" parent="MainButtons/OptionsButton" instance=ExtResource( 35 )]
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="MainButtons"]
+[node name="Credits" type="Button" parent="MainButtons"]
 modulate = Color( 0, 1, 0.203922, 1 )
 margin_top = 159.0
 margin_right = 213.0
 margin_bottom = 208.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_pivot_offset = Vector2( -374.2, -2.91037 )
+text = "CREDITS"
+icon = ExtResource( 30 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsLabel" parent="MainButtons/Credits" instance=ExtResource( 35 )]
+text = "CREDiTS"
+
+[node name="ExitButton" type="Button" parent="MainButtons"]
+modulate = Color( 0, 1, 0.203922, 1 )
+margin_top = 212.0
+margin_right = 213.0
+margin_bottom = 261.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "NEW GAME"
@@ -264,6 +284,7 @@ visible = false
 [connection signal="pressed" from="MainButtons/ContinueButton" to="ContinueRect" method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MainButtons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="MainButtons/OptionsButton" to="OptionsTextureRect" method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="MainButtons/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="MainButtons/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="value_changed" from="OptionsTextureRect/MenuOptions/Volume/MasterVolumeSlider" to="OptionsTextureRect/MenuOptions/Volume/MasterVolumeSlider" method="_on_MasterVolumeSlider_value_changed"]
 [connection signal="pressed" from="OptionsTextureRect/CloseOptionsButton" to="OptionsTextureRect" method="_on_CloseOptionsButton_pressed"]

@@ -12,7 +12,6 @@ func start(dialogue_dict : Dictionary) -> void:
 	"""
 	Sets the conversation as the values of the dictionary
 	"""
-	print(dialogue_dict.values())
 	_conversation = dialogue_dict.values()
 	_index_current = 0
 	_update()

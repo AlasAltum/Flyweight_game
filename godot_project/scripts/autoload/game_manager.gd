@@ -7,6 +7,7 @@ var second_cinematic = preload("res://scenes/cinematics/intro_cinematic2.tscn")
 var firstLevel = preload("res://scenes/first_level_dev.tscn")
 var skillMenu = preload("res://prefabs/SkillMenuLayer.tscn")
 var game_over_scene = preload("res://scenes/cinematics/Game Over.tscn")
+var credits = preload("res://scenes/credits.tscn")
 
 
 var levels = [mainMenu,
@@ -17,7 +18,8 @@ var levels = [mainMenu,
 
 # insert here level codes
 var level_codes = {
-	'level1': firstLevel
+	'level1': firstLevel,
+	'credits': credits,
 }
 
 
@@ -91,3 +93,6 @@ func change_scene_to_main_menu():
 
 func game_over():
 	world.add_child(game_over_scene.instance())
+
+func go_to_credits():
+	self.change_scene(level_codes['credits'])

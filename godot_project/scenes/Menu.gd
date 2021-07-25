@@ -14,3 +14,6 @@ func _on_NewGameButton_pressed():
 
 func _on_ExitButton_pressed():
 	get_tree().quit()
+
+func _on_Credits_pressed():
+	LevelManager.go_to_credits() #TODO

@@ -10,7 +10,6 @@ func _on_CloseContinueButton_pressed():
 	self.visible = false;
 
 func _on_EnterCodeButton_pressed():
-	print(text_input.text)
 	if LevelManager.is_text_valid(text_input.text) == true:
 		LevelManager.load_code_level(text_input.text)
 	else:

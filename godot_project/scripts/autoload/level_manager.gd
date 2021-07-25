@@ -40,3 +40,6 @@ func change_scene_to_main_menu():
 
 func game_over():
 	Game.game_over()
+
+func go_to_credits():
+	Game.go_to_credits()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://prefabs/Canvas/PerformanceLayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefabs/map_elements/Gate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://prefabs/Canvas/DebugLayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tileset/first_level/platforms.png" type="Texture" id=4]
 [ext_resource path="res://tileset/first_level/Windows.png" type="Texture" id=5]
@@ -17,6 +18,7 @@
 [ext_resource path="res://prefabs/WorkStation.tscn" type="PackedScene" id=16]
 [ext_resource path="res://audio/levels/first_level.mp3" type="AudioStream" id=17]
 [ext_resource path="res://prefabs/gui/healthBar.tscn" type="PackedScene" id=18]
+[ext_resource path="res://sprites/chip_hook.png" type="Texture" id=19]
 
 [sub_resource type="TileSet" id=1]
 0/name = "new_animatedtexture.tres 0"
@@ -583,7 +585,6 @@ __meta__ = {
 }
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 scale = Vector2( 2, 2 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
@@ -799,3 +800,10 @@ autoplay = true
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="HUD" instance=ExtResource( 18 )]
+
+[node name="Gate" parent="." instance=ExtResource( 2 )]
+position = Vector2( -376.362, 722.29 )
+
+[node name="WorkStation2" parent="." instance=ExtResource( 16 )]
+position = Vector2( 224.285, 3384.95 )
+chip_texture = ExtResource( 19 )

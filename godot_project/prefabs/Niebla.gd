@@ -14,4 +14,4 @@ func _physics_process(delta):
 		if body is PlayerController:
 			body.apply_damage(1)
 	if Moving:
-		$Body.move_and_slide(Vector2(0,speed))
+		$Body.move_and_slide(Vector2(0,-20))

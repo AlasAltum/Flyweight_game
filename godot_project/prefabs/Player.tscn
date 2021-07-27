@@ -20,7 +20,7 @@
 [ext_resource path="res://sprites/character/PivotArrow.gd" type="Script" id=18]
 [ext_resource path="res://sprites/arrow_dir.png" type="Texture" id=19]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=11]
 code = "shader_type canvas_item;
 
 uniform vec4 eyesColor: hint_color;
@@ -35,7 +35,7 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+shader = SubResource( 11 )
 shader_param/eyesColor = Color( 0.262745, 0.984314, 0, 1 )
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -218,8 +218,8 @@ texture = ExtResource( 17 )
 hframes = 12
 
 [node name="Camera2D" parent="." instance=ExtResource( 13 )]
-limit_left = -600
-limit_right = 600
+limit_left = -700
+limit_right = 700
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )

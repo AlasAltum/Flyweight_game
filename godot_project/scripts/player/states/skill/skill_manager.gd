@@ -2,7 +2,7 @@ class_name SkillManager
 extends State
 
 export(NodePath) var START_SKILL
-var current_skill : Skill = null
+onready var current_skill : Skill = $Null
 var can_use_skill = true
 
 func _ready():

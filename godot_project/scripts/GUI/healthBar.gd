@@ -54,8 +54,10 @@ func setNoise(period, persistence, lacunarity, color : Color):
 	$batteryBar/lightTexture.material.set_shader_param("color", color_final)
 	$batteryBar/lightTexture.material.set_shader_param("border_color", color_final)
 	
-	#Cambiar colo de ojos del player
+	#Cambiar color de ojos del player
 	player.get_node("Sprite").material.set_shader_param("eyesColor", color_final)
+	#Cambiar luz del player
+	player.get_node("Light2D").color = color_final
 
 func _hurted(amount):
 	$AnimationPlayer.play("hurt")

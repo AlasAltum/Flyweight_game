@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/enemies/wallAirEnemy.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemies/enemy2sheet.png" type="Texture" id=2]
 [ext_resource path="res://prefabs/vfx/lightning.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/player/light.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 26.9654 )
@@ -31,6 +32,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Sprite" type="Sprite" parent="Body"]
+light_mask = 0
 scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 hframes = 6
@@ -59,6 +61,16 @@ scale = Vector2( 0.0501684, 0.0552028 )
 [node name="lightning2" parent="Body" instance=ExtResource( 3 )]
 position = Vector2( 7.7478, 23.8034 )
 scale = Vector2( 0.0539693, 0.0581618 )
+
+[node name="Light2D" type="Light2D" parent="Body"]
+position = Vector2( 0.701538, -5.1403 )
+scale = Vector2( 1.00945, 1.00189 )
+texture = ExtResource( 4 )
+texture_scale = 0.29
+color = Color( 0.705882, 0.00392157, 0.00392157, 1 )
+energy = 0.82
+range_layer_min = -200
+range_layer_max = 287
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/anim = SubResource( 2 )

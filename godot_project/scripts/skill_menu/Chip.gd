@@ -16,6 +16,7 @@ export(Vector2) var board_position = Vector2(0, 0)
 export(Vector2) var board_scale = Vector2(1.7, 1.7)
 
 func _ready():
+	self.visible = false
 	slot_position = position
 	slot_scale = scale
 	refresh_texture()
@@ -38,3 +39,7 @@ func refresh_texture():
 	else:
 		$TextureRect.set_texture(disabled_tex)
 		
+func appear_texture():
+	self.visible = true
+	get_parent().visible = true
+	$ChipAppear.play("ChipAppear")

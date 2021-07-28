@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://prefabs/Canvas/PerformanceLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/map_elements/Gate.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://audio/levels/first_level.mp3" type="AudioStream" id=17]
 [ext_resource path="res://prefabs/gui/healthBar.tscn" type="PackedScene" id=18]
 [ext_resource path="res://sprites/chip_hook.png" type="Texture" id=19]
+[ext_resource path="res://sprites/chip_dash.png" type="Texture" id=20]
 
 [sub_resource type="TileSet" id=1]
 0/name = "new_animatedtexture.tres 0"
@@ -786,6 +787,7 @@ position = Vector2( 0, 2.67 )
 position = Vector2( 0, -246.945 )
 
 [node name="Niebla" parent="." instance=ExtResource( 14 )]
+visible = false
 position = Vector2( 0, 3800 )
 z_index = 2
 
@@ -805,5 +807,14 @@ autoplay = true
 position = Vector2( -376.362, 722.29 )
 
 [node name="WorkStation2" parent="." instance=ExtResource( 16 )]
-position = Vector2( 224.285, 3384.95 )
+position = Vector2( 85.1775, 3364.79 )
 chip_texture = ExtResource( 19 )
+new_chip_path = "SkillMenu/GridContainer/Slot5/HookChip"
+
+[node name="WorkStation3" parent="." instance=ExtResource( 16 )]
+position = Vector2( 114.116, 3365.51 )
+chip_texture = ExtResource( 20 )
+new_chip_path = "SkillMenu/GridContainer/Slot4/DashChip"
+
+[node name="Gate2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 329.796, 3413.47 )

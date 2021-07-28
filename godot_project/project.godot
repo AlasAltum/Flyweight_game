@@ -160,6 +160,7 @@ config/icon="res://icon.png"
 
 LevelManager="*res://scripts/autoload/level_manager.gd"
 PlayerStatus="*res://scripts/autoload/player_status.gd"
+SkillMenuLayer="*res://prefabs/SkillMenuLayer.tscn"
 
 [input]
 

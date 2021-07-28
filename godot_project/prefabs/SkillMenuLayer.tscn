@@ -185,7 +185,7 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="SpeedChip" parent="SkillMenu/GridContainer/Slot3" instance=ExtResource( 15 )]
-position = Vector2( 20, 20 )
+position = Vector2( 19.9603, 20 )
 enabled_tex = ExtResource( 7 )
 description = "Aumenta la velocidad de movimiento"
 skill_name = "Speed"
@@ -200,7 +200,7 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="DashChip" parent="SkillMenu/GridContainer/Slot4" instance=ExtResource( 15 )]
-position = Vector2( 20, 20 )
+position = Vector2( 20.6674, 20 )
 scale = Vector2( 0.7, 0.7 )
 enabled_tex = ExtResource( 10 )
 special_skill = true
@@ -467,6 +467,9 @@ margin_bottom = 18.0
 custom_fonts/font = SubResource( 10 )
 text = "Descripcion"
 max_lines_visible = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SkillInfo" type="Label" parent="SkillMenu/DescriptionPanel"]
 margin_left = 2.0

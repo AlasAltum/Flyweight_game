@@ -3,6 +3,11 @@ extends Node
 var player : PlayerController
 onready var Game = get_tree().get_root().get_node("Game")
 
+var master_audio_bus_name := "Master"
+var _bus_index := AudioServer.get_bus_index(master_audio_bus_name)
+
+onready var first_time_skills = []
+onready var available_skills = []
 
 var checkpoint: Node setget set_checkpoint
 func set_checkpoint(value):

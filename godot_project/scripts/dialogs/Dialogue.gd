@@ -5,7 +5,7 @@ signal event_after_dialogue_begin()
 signal dialogue_finished()
 
 export (String, FILE, "*.json") var dialogue_file_path : String
-
+export var play_on_init : bool  = true
 
 onready var dialogue_player: DialoguePlayer = $DialoguePlayer
 onready var text_label : = $DialogText as Label
@@ -13,17 +13,22 @@ onready var button_next : = $DialogueBoxQuad/Panel/ButtonNext as Button
 onready var animation_buttton = $DialogueBoxQuad/Panel/ButtonNext/ContinueButtonAnimation
 
 var finished : bool = false
+var dialogue_dict
+
 
 func _ready():
 	dialogue_player.connect('dialogue_finished', self, '_on_dialogue_finished')
-	var dialogue_dict = load_dialogue(dialogue_file_path)
-	start(dialogue_dict)
-	animation_buttton.play('ButtonMovement')
+	dialogue_dict = load_dialogue(dialogue_file_path)
+	if play_on_init:
+		start()
+		animation_buttton.play('ButtonMovement')
 
-func start(dialogue : Dictionary) -> void:
+func start() -> void:
 	"""
 	Initializes the dialogue
 	"""
+	self.visible = true
+	var dialogue = dialogue_dict
 	button_next.show()
 	button_next.grab_focus()
 	dialogue_player.start(dialogue)
@@ -55,7 +60,10 @@ func _on_ButtonNext_pressed():
 func _on_dialogue_finished():
 	finished = true
 	emit_signal('dialogue_finished')
+	hide()
 
 func _on_ButtonSkip_pressed():
 	# Al presionar se salta la cinemática
 	emit_signal('dialogue_finished')
+	emit_signal('event_after_dialogue_begin')
+	hide()

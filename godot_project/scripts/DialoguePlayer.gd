@@ -12,6 +12,7 @@ func start(dialogue_dict : Dictionary) -> void:
 	"""
 	Sets the conversation as the values of the dictionary
 	"""
+	self.visible = true
 	_conversation = dialogue_dict.values()
 	_index_current = 0
 	_update()

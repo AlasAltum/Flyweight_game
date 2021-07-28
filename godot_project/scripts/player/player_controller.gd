@@ -12,6 +12,7 @@ var jump_buff : float = 0.0 setget set_jump_buff
 var is_alive = true
 onready var health_object := $Health as Health
 onready var player_state_machine := $StateMachine as PlayerStateMachine 
+onready var player_camera := $Camera2D as Camera2D
 
 # Valores para el efecto al cambiar los valores del buff de salto
 const buffFxPosition = Vector2(0, -20)

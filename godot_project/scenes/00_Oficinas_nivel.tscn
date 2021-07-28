@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://prefabs/Canvas/PerformanceLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset/Level 0/decorations.png" type="Texture" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://prefabs/enemies/ControlPoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefabs/enemies/basicGroundEnemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://prefabs/enemies/basicAirEnemy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scripts/map_elements/event_smoke_ascending.gd" type="Script" id=14]
+[ext_resource path="res://audio/cinematic/warning_sound.wav" type="AudioStream" id=15]
+[ext_resource path="res://prefabs/Area2D.tscn" type="PackedScene" id=16]
+[ext_resource path="res://prefabs/Dialogue.tscn" type="PackedScene" id=17]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Windows"
@@ -1923,7 +1927,88 @@ points = PoolVector2Array( 4, 16, 4, 14, 7, 14, 7, 0, 9, 0, 9, 14, 12, 14, 12, 1
 11/shapes = [  ]
 11/z_index = 0
 
+[sub_resource type="Animation" id=55]
+resource_name = "ascending_smoke"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 22.915, 0 ), Vector2( 22.915, 900 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../DialogueContainer/DialogueBox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Niebla:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0745098 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Niebla:Moving")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("../AlarmSound2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 15 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
 [node name="World" type="Node2D"]
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_vertical_guides_": [ -432.0 ]
 }
@@ -1934,7 +2019,7 @@ scroll_base_offset = Vector2( 0, -137 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 25.155, 2600 )
+position = Vector2( 12.0868, 2618.3 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -2021,7 +2106,9 @@ format = 1
 tile_data = PoolIntArray( 14024690, 536870922, 0, 14024691, 536870913, 0, 14024692, 536870913, 0, 14024693, 536870913, 0, 14024694, 536870913, 0, 14024695, 536870913, 0, 14024696, 536870913, 0, 14024697, 536870913, 0, 14024698, 536870913, 0, 14024699, 536870913, 0, 14024700, 536870913, 0, 14024701, 536870913, 0, 14024702, 536870915, 0, 14024703, 536870912, 0, 14680065, 536870918, 0, 14680066, 536870917, 0, 14680067, 536870915, 0, 14680068, 536870923, 0, 14680069, 536870912, 0, 14811135, 536870918, 0, 14745600, 536870917, 0, 14745601, 536870920, 0, 14745602, 536870919, 0, 14876651, 536870922, 0, 14876652, 536870923, 0, 14876653, 536870915, 0, 14876654, 536870923, 0, 14876655, 536870913, 0, 14876656, 536870923, 0, 14876657, 536870916, 0, 14876658, 536870916, 0, 14876659, 536870912, 0, 14876668, 0, 0, 14876669, 2, 0, 14876670, 1, 0, 14876671, 536870920, 0, 15532019, 0, 0, 15532020, 3, 0, 15532021, 3, 0, 15532022, 3, 0, 15532023, 3, 0, 15532024, 3, 0, 15532025, 3, 0, 15532026, 3, 0, 15532027, 3, 0, 20512748, 536870916, 0, 20512749, 536870916, 0, 20512750, 536870916, 0, 20512751, 536870916, 0, 20512752, 536870916, 0, 20512753, 536870916, 0, 20512754, 536870916, 0, 20512755, 536870916, 0 )
 
 [node name="Niebla" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0.253637 )
 position = Vector2( 0, 4300 )
+Moving = false
 
 [node name="Enemigos" type="Node2D" parent="."]
 
@@ -2087,3 +2174,43 @@ position = Vector2( 288, 1640 )
 
 [node name="ControlPoint2" parent="Enemigos/basicGroundEnemy4" instance=ExtResource( 11 )]
 position = Vector2( -584, 8 )
+
+[node name="event" parent="." instance=ExtResource( 16 )]
+pause_mode = 2
+position = Vector2( -45.829, 2409.3 )
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="event" index="0"]
+position = Vector2( -67.2661, -10.1395 )
+
+[node name="AnimationCamera" type="Camera2D" parent="event"]
+position = Vector2( 22.915, 484.615 )
+scale = Vector2( 0.5, 0.5 )
+current = true
+
+[node name="CameraAnimPlayer" type="AnimationPlayer" parent="event/AnimationCamera"]
+anims/ascending_smoke = SubResource( 55 )
+
+[node name="DialogueContainer" type="CanvasLayer" parent="event"]
+pause_mode = 2
+
+[node name="DialogueBox" parent="event/DialogueContainer" instance=ExtResource( 17 )]
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+dialogue_file_path = "res://dialogues/smoke_ascending_dialog.json"
+play_on_init = false
+
+[node name="AlarmSound2" type="AudioStreamPlayer" parent="event"]
+stream = ExtResource( 15 )
+
+[connection signal="body_entered" from="event" to="event" method="_on_Area2D_body_entered"]
+[connection signal="tree_exiting" from="event" to="." method="_on_event_tree_exiting"]
+[connection signal="dialogue_finished" from="event/DialogueContainer/DialogueBox" to="event" method="_on_DialogueBox_dialogue_finished"]
+[connection signal="event_after_dialogue_begin" from="event/DialogueContainer/DialogueBox" to="event" method="_on_DialogueBox_event_after_dialogue_begin"]
+
+[editable path="event"]

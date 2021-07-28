@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scripts/skill_menu/Slot.gd" type="Script" id=1]
 [ext_resource path="res://sprites/default_inventory_background.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scripts/skill_menu/ContinueButton.gd" type="Script" id=14]
 [ext_resource path="res://prefabs/Chip.tscn" type="PackedScene" id=15]
 [ext_resource path="res://fonts/PressStart2P.tres" type="DynamicFontData" id=16]
+[ext_resource path="res://sprites/chip_backJump.png" type="Texture" id=17]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 11 )
@@ -230,6 +231,15 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
+
+[node name="backJumpChip" parent="SkillMenu/GridContainer/Slot6" instance=ExtResource( 15 )]
+position = Vector2( 20, 20 )
+scale = Vector2( 0.7, 0.7 )
+enabled_tex = ExtResource( 17 )
+special_skill = true
+description = "Permite realizar un salto rapido hacia atras con el click derecho"
+skill_name = "BackJump"
+skill_value = 250.0
 
 [node name="Slot7" type="Panel" parent="SkillMenu/GridContainer"]
 margin_top = 52.0
@@ -453,7 +463,7 @@ __meta__ = {
 margin_left = 504.0
 margin_top = 202.0
 margin_right = 789.0
-margin_bottom = 278.0
+margin_bottom = 292.0
 custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -472,10 +482,10 @@ __meta__ = {
 }
 
 [node name="SkillInfo" type="Label" parent="SkillMenu/DescriptionPanel"]
-margin_left = 2.0
-margin_top = 26.0
-margin_right = 279.0
-margin_bottom = 73.0
+margin_left = 5.0
+margin_top = 28.0
+margin_right = 280.0
+margin_bottom = 78.0
 custom_fonts/font = SubResource( 11 )
 autowrap = true
 __meta__ = {

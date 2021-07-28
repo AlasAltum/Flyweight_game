@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Skill",
+"class": "BackJump",
+"language": "GDScript",
+"path": "res://scripts/player/states/skill/skills/backJump.gd"
+}, {
 "base": "Node2D",
 "class": "Chip",
 "language": "GDScript",
@@ -125,6 +130,7 @@ _global_script_classes=[ {
 "path": "res://scripts/player/state_machine.gd"
 } ]
 _global_script_class_icons={
+"BackJump": "",
 "Chip": "",
 "ChipSlot": "",
 "Dash": "",

@@ -18,12 +18,16 @@ var hook_tip_position = Vector2.ZERO
 var hooked = false
 var throwing_hook = false
 
+
 func _ready():
 	player = owner
 	raycast = player.get_node("HookRayCast")
 	enable = false
 	waiting_input = false
 	$ThrowingTimer.connect("timeout", self, "_on_Hook_fail_throw")
+	var direction = player.get_mouse_direction()
+	var dir_amount = direction.dot(player.direction)
+	
 
 func activation_input(event):
 	if event.is_action_pressed("skill") and not throwing_hook:
@@ -35,6 +39,8 @@ func activation_input(event):
 		raycast.set_cast_to(MAX_GRAPPLING_DISTANCE * direction)
 		point_is_stored = false
 		throwing_hook = true
+		$HookObject.global_rotation = player.get_global_mouse_position().angle_to_point(player.global_position)
+		
 		
 
 func prepare_skill_update(delta):
@@ -62,6 +68,7 @@ func prepare_skill_update(delta):
 					throwing_hook = false
 					$ThrowingTimer.set_wait_time(SKILL_WAIT_TIME)
 					$ThrowingTimer.start()
+	$HookObject.global_position = hook_tip_position
 	if can_draw_line:
 		$GripplingLine.clear_points()
 		$GripplingLine.add_point(player.global_position)

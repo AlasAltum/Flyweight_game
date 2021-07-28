@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scripts/player/states/motion/on_ground/run.gd" type="Script" id=1]
 [ext_resource path="res://scripts/player/player_controller.gd" type="Script" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://sprites/character/PivotArrow.gd" type="Script" id=18]
 [ext_resource path="res://sprites/arrow_dir.png" type="Texture" id=19]
 [ext_resource path="res://scripts/player/states/skill/skills/backJump.gd" type="Script" id=20]
+[ext_resource path="res://sprites/player/rope.png" type="Texture" id=21]
+[ext_resource path="res://sprites/player/hook.png" type="Texture" id=22]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -294,8 +296,23 @@ MAX_GRAPPLING_DISTANCE = 500.0
 one_shot = true
 
 [node name="GripplingLine" type="Line2D" parent="StateMachine/Skill/Hook"]
-width = 1.0
-default_color = Color( 0.733333, 0.733333, 0.733333, 1 )
+z_index = 2
+width = 6.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 21 )
+texture_mode = 1
+
+[node name="HookObject" type="Node2D" parent="StateMachine/Skill/Hook"]
+position = Vector2( 64, -41.3387 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="StateMachine/Skill/Hook/HookObject"]
+rotation = 1.5708
+scale = Vector2( 0.8, 0.8 )
+z_index = 1
+texture = ExtResource( 22 )
 
 [node name="BackJump" type="Node" parent="StateMachine/Skill"]
 script = ExtResource( 20 )

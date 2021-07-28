@@ -24,7 +24,9 @@ var levels = [mainMenu,
 # insert here level codes
 var level_codes = {
 	'level1': firstLevel,
-	'credits': credits,
+	'level2': SecondLevel,
+	'level3': ThirdLevel,
+	'credits': credits
 }
 
 
@@ -41,9 +43,12 @@ func _ready():
 	current_world = levels[0].instance()
 	world.add_child(current_world)
 	levels = [mainMenu,
-		first_cinematic,
-		second_cinematic,
-		firstLevel
+	first_cinematic,
+	second_cinematic,
+	firstLevel,
+	SecondLevel,
+	ThirdLevel,
+	credits
 	]
 
 func change_scene(scene):

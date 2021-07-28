@@ -8,7 +8,7 @@
 [ext_resource path="res://prefabs/Canvas/PerformanceLayer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://prefabs/Canvas/DebugLayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://prefabs/SkillMenuLayer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://prefabs/WorkStation.tscn" type="PackedScene" id=9]
 [ext_resource path="res://prefabs/enemies/basicAirEnemy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://prefabs/enemies/ControlPoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefabs/enemies/basicGroundEnemy.tscn" type="PackedScene" id=12]
@@ -2015,8 +2015,6 @@ position = Vector2( -9.29181, 4014.94 )
 [node name="GameManager" type="Node" parent="."]
 script = SubResource( 54 )
 
-[node name="SkillMenuLayer" parent="." instance=ExtResource( 9 )]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -20.0
@@ -2335,3 +2333,6 @@ position = Vector2( 352, 1184 )
 
 [node name="Niebla" parent="." instance=ExtResource( 17 )]
 position = Vector2( 0, 4400 )
+
+[node name="WorkStation" parent="." instance=ExtResource( 9 )]
+position = Vector2( -128, 4003 )

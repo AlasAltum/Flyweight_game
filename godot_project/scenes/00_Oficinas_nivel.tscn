@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://prefabs/Canvas/PerformanceLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset/Level 0/decorations.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://tileset/Level 0/platforms.png" type="Texture" id=7]
 [ext_resource path="res://prefabs/Niebla.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://prefabs/SkillMenuLayer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://prefabs/enemies/ControlPoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefabs/enemies/basicGroundEnemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://prefabs/enemies/basicAirEnemy.tscn" type="PackedScene" id=13]
@@ -2032,8 +2031,6 @@ position = Vector2( -9.29181, 4014.94 )
 
 [node name="GameManager" type="Node" parent="."]
 script = SubResource( 54 )
-
-[node name="SkillMenuLayer" parent="." instance=ExtResource( 10 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )

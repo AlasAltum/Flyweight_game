@@ -4,7 +4,9 @@ extends Node2D
 var mainMenu = preload("res://scenes/Menu.tscn")
 var first_cinematic = preload("res://scenes/cinematics/intro_cinematic1.tscn")
 var second_cinematic = preload("res://scenes/cinematics/intro_cinematic2.tscn")
-var firstLevel = preload("res://scenes/first_level_dev.tscn")
+var firstLevel = preload("res://scenes/00_Oficinas_nivel.tscn")
+var SecondLevel = preload("res://scenes/01_Fabrica_nivel.tscn")
+var ThirdLevel = preload("res://scenes/02_Servidores_nivel.tscn")
 var skillMenu = preload("res://prefabs/SkillMenuLayer.tscn")
 var game_over_scene = preload("res://scenes/cinematics/Game Over.tscn")
 var credits = preload("res://scenes/credits.tscn")
@@ -13,7 +15,10 @@ var credits = preload("res://scenes/credits.tscn")
 var levels = [mainMenu,
 	first_cinematic,
 	second_cinematic,
-	firstLevel
+	firstLevel,
+	SecondLevel,
+	ThirdLevel,
+	credits
 ]
 
 # insert here level codes

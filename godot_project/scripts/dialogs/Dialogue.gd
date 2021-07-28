@@ -54,7 +54,7 @@ func _on_ButtonNext_pressed():
 		dialogue_player.next()
 		update_content()
 	else:
-		hide()
+		_on_dialogue_finished()
 		emit_signal('event_after_dialogue_begin')
 
 func _on_dialogue_finished():

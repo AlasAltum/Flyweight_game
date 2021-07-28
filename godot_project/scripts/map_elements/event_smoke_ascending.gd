@@ -11,7 +11,11 @@ func _on_Area2D_body_entered(body):
 func _on_DialogueBox_dialogue_finished():
 	camera.current = false
 	LevelManager.player.player_camera.current = true
+	get_tree().paused = false
 	queue_free()
 
 func _on_event_tree_exiting():
 	get_tree().paused = false
+
+func init_second_camera():
+	$AnimationCamera.position = LevelManager.player.position

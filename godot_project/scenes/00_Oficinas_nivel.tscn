@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://prefabs/Canvas/PerformanceLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset/Level 0/decorations.png" type="Texture" id=2]
@@ -9,12 +9,15 @@
 [ext_resource path="res://tileset/Level 0/platforms.png" type="Texture" id=7]
 [ext_resource path="res://prefabs/Niebla.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://prefabs/Dialogue.tscn" type="PackedScene" id=10]
 [ext_resource path="res://prefabs/enemies/ControlPoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefabs/enemies/basicGroundEnemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://prefabs/enemies/basicAirEnemy.tscn" type="PackedScene" id=13]
 [ext_resource path="res://audio/levels/first_level.mp3" type="AudioStream" id=14]
 [ext_resource path="res://prefabs/gui/healthBar.tscn" type="PackedScene" id=15]
 [ext_resource path="res://prefabs/map_elements/Gate.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scripts/map_elements/event_smoke_ascending.gd" type="Script" id=17]
+[ext_resource path="res://audio/cinematic/warning_sound.wav" type="AudioStream" id=18]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Windows"
@@ -1925,6 +1928,101 @@ points = PoolVector2Array( 4, 16, 4, 14, 7, 14, 7, 0, 9, 0, 9, 14, 12, 14, 12, 1
 
 [sub_resource type="GDScript" id=54]
 
+[sub_resource type="Animation" id=56]
+resource_name = "ascending_smoke"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 3.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 400 ), Vector2( 0, 700 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../DialogueContainer/DialogueBox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Niebla:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0745098 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Niebla:Moving")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("../AlarmSound2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 18 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Niebla:pause_mode")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 3.4, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=55]
+extents = Vector2( 53.503, 16.1702 )
+
 [node name="World" type="Node2D"]
 script = ExtResource( 14 )
 __meta__ = {
@@ -1937,7 +2035,7 @@ scroll_base_offset = Vector2( 0, -137 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 12.0868, 2618.3 )
+position = Vector2( 133.709, 2912.46 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -1950,7 +2048,7 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 64
 format = 1
-tile_data = PoolIntArray( -4259863, 0, 65536, -4259848, 0, 65536, -3342354, 0, 65536, -3342337, 0, 65536, -3407861, 0, 65536, -2359299, 0, 1, -983043, 0, 1, 12, 0, 1, 983016, 0, 1, 983034, 0, 1, 917518, 0, 1, 1703912, 0, 1, 1703931, 0, 1, 2686956, 536870912, 65537, 3211255, 536870912, 1, 3407855, 536870912, 0, 4128747, 536870912, 1, 4718568, 0, 1, 4718574, 0, 1, 4718580, 0, 1, 4718586, 0, 1, 4653056, 0, 1, 5308410, 0, 1, 5898239, 536870912, 1, 6422500, 0, 0, 6422506, 0, 0, 6422512, 0, 0, 6422518, 0, 0, 6422524, 0, 0, 6356994, 0, 0, 6357000, 0, 0, 6357006, 0, 0, 6357012, 0, 0, 6357018, 0, 0 )
+tile_data = PoolIntArray( -4259863, 0, 65536, -4259848, 0, 65536, -3342354, 0, 65536, -3342337, 0, 65536, -3407861, 0, 65536, -2359299, 0, 1, -983043, 0, 1, 12, 0, 1, 196602, 0, 0, 983016, 0, 1, 983034, 0, 1, 917518, 0, 1, 1703912, 0, 1, 1703931, 0, 1, 2686956, 536870912, 65537, 3211255, 536870912, 1, 3407855, 536870912, 0, 4128747, 536870912, 1, 4718568, 0, 1, 4718574, 0, 1, 4718580, 0, 1, 4718586, 0, 1, 4653056, 0, 1, 5308410, 0, 1, 5898239, 536870912, 1, 6422500, 0, 0, 6422506, 0, 0, 6422512, 0, 0, 6422518, 0, 0, 6422524, 0, 0, 6356994, 0, 0, 6357000, 0, 0, 6357006, 0, 0, 6357012, 0, 0, 6357018, 0, 0 )
 
 [node name="Background Walls" type="TileMap" parent="."]
 position = Vector2( 82.7601, -955.745 )
@@ -2020,7 +2118,9 @@ format = 1
 tile_data = PoolIntArray( 9633770, 0, 0, 9633771, 3, 0, 9633772, 1, 0, 9633773, 1, 0, 9633774, 1, 0, 9633775, 1, 0, 9633776, 11, 0, 9633777, 1, 0, 9633778, 1, 0, 9633779, 1, 0, 9633780, 1, 0, 9633781, 1, 0, 9633782, 11, 0, 9633783, 10, 0, 10747885, 0, 0, 10747886, 1, 0, 10747887, 1, 0, 10747888, 1, 0, 10747889, 11, 0, 10747890, 1, 0, 10747891, 1, 0, 10747892, 1, 0, 10747893, 1, 0, 10747894, 1, 0, 10747895, 3, 0, 10747896, 1, 0, 10747897, 1, 0, 10747898, 1, 0, 10747899, 1, 0, 10747900, 1, 0, 10747901, 3, 0, 10747902, 1, 0, 10747903, 1, 0, 10682368, 1, 0, 10682369, 1, 0, 10682370, 11, 0, 10682371, 1, 0, 10682372, 1, 0, 10682373, 10, 0, 10747906, 1, 0, 11730930, 0, 0, 11730931, 3, 0, 11730932, 1, 0, 11730933, 1, 0, 11730934, 1, 0, 11730935, 1, 0, 11730936, 1, 0, 11730937, 1, 0, 11730938, 1, 0, 11730939, 3, 0, 11730940, 1, 0, 11730941, 1, 0, 11730942, 1, 0, 11730943, 1, 0, 11665408, 1, 0, 11665409, 1, 0, 11665410, 11, 0, 11665411, 10, 0, 12255213, 0, 0, 12255214, 1, 0, 12255215, 1, 0, 12255216, 1, 0, 12255217, 1, 0, 12255218, 2, 0, 12255219, 1, 0, 12255220, 1, 0, 12255221, 1, 0, 12255222, 3, 0, 12255223, 1, 0, 12255224, 1, 0, 12255225, 10, 0, 12845043, 0, 0, 12845044, 9, 0, 12845045, 5, 0, 12845046, 6, 0, 12910581, 1073741828, 0, 12910582, 8, 0, 12910583, 5, 0, 12910584, 6, 0, 12976119, 1610612738, 0, 12976120, 8, 0, 12976121, 5, 0, 12976122, 6, 0, 13041657, 1610612738, 0, 13041658, 8, 0, 13041659, 5, 0, 13041660, 6, 0, 13107195, 1610612738, 0, 13107196, 8, 0, 13107197, 5, 0, 13107198, 6, 0, 13172733, 1610612738, 0, 13172734, 8, 0, 13172735, 5, 0, 13107200, 6, 0, 14024690, 536870922, 0, 14024691, 536870913, 0, 14024692, 536870913, 0, 14024693, 536870913, 0, 14024694, 536870913, 0, 14024695, 536870913, 0, 14024696, 536870913, 0, 14024697, 536870913, 0, 14024698, 536870913, 0, 14024699, 536870913, 0, 14024700, 536870913, 0, 14024701, 536870913, 0, 14024702, 536870915, 0, 14024703, 536870912, 0, 14680065, 536870918, 0, 14680066, 536870917, 0, 14680067, 536870915, 0, 14680068, 536870923, 0, 14680069, 536870912, 0, 14811135, 536870918, 0, 14745600, 536870917, 0, 14745601, 536870920, 0, 14745602, 536870919, 0, 14876651, 536870922, 0, 14876652, 536870923, 0, 14876653, 536870915, 0, 14876654, 536870923, 0, 14876655, 536870913, 0, 14876656, 536870923, 0, 14876657, 536870916, 0, 14876658, 536870916, 0, 14876659, 536870912, 0, 14876668, 0, 0, 14876669, 2, 0, 14876670, 1, 0, 14876671, 536870920, 0, 15532002, 0, 0, 15532003, 2, 0, 15532004, 9, 0, 15532005, 9, 0, 15532006, 9, 0, 15532007, 3, 0, 15532008, 10, 0, 15532019, 0, 0, 15532020, 3, 0, 15532021, 3, 0, 15532022, 3, 0, 15532023, 3, 0, 15532024, 3, 0, 15532025, 3, 0, 15532026, 3, 0, 15532027, 3, 0, 18677739, 0, 0, 18677740, 2, 0, 18677741, 2, 0, 18677742, 1, 0, 18677743, 1, 0, 18677744, 11, 0, 18677745, 11, 0, 18677746, 1, 0, 18677747, 1, 0, 18677748, 1, 0, 18677749, 2, 0, 18677750, 2, 0, 18677751, 10, 0, 20512743, 0, 0, 20512744, 1, 0, 20512745, 3, 0, 20512746, 1, 0, 20512747, 2, 0, 20512748, 536870916, 0, 20512749, 536870916, 0, 20512750, 2, 0, 20512751, 536870916, 0, 20512752, 3, 0, 20512753, 536870916, 0, 20512754, 2, 0, 20512755, 536870916, 0, 20512756, 5, 0, 20512757, 6, 0, 20447235, 0, 0, 20447236, 1, 0, 20447237, 3, 0, 20447238, 1, 0, 20447239, 3, 0, 20447240, 11, 0, 20447241, 1, 0, 20447242, 1, 0, 20447243, 11, 0, 20447244, 1, 0, 20447245, 1, 0, 20447246, 3, 0, 20447247, 1, 0, 20447248, 1, 0, 20447249, 1, 0, 20447250, 1, 0, 20447251, 1, 0, 20447252, 1, 0, 20447253, 10, 0 )
 
 [node name="Niebla" parent="." instance=ExtResource( 8 )]
-position = Vector2( 0, 4700 )
+pause_mode = 2
+modulate = Color( 1, 1, 1, 0.959761 )
+position = Vector2( 0, 4488.32 )
 z_index = 10
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
@@ -2109,3 +2209,36 @@ position = Vector2( -584, 8 )
 
 [node name="Gate" parent="." instance=ExtResource( 16 )]
 position = Vector2( 48, 1368 )
+
+[node name="event" type="Area2D" parent="."]
+pause_mode = 2
+scale = Vector2( 5, 6 )
+script = ExtResource( 17 )
+
+[node name="AnimationCamera" type="Camera2D" parent="event"]
+position = Vector2( 0, 700 )
+scale = Vector2( 1, 1 )
+current = true
+
+[node name="CameraAnimPlayer" type="AnimationPlayer" parent="event/AnimationCamera"]
+anims/ascending_smoke = SubResource( 56 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="event"]
+position = Vector2( -26.665, 396.826 )
+shape = SubResource( 55 )
+
+[node name="AlarmSound2" type="AudioStreamPlayer" parent="event"]
+stream = ExtResource( 18 )
+
+[node name="DialogueContainer" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="DialogueBox" parent="DialogueContainer" instance=ExtResource( 10 )]
+pause_mode = 2
+visible = false
+dialogue_file_path = "res://dialogues/smoke_ascending_dialog.json"
+play_on_init = false
+
+[connection signal="body_entered" from="event" to="event" method="_on_Area2D_body_entered"]
+[connection signal="dialogue_finished" from="DialogueContainer/DialogueBox" to="event" method="_on_DialogueBox_dialogue_finished"]
+[connection signal="event_after_dialogue_begin" from="DialogueContainer/DialogueBox" to="event" method="_on_DialogueBox_event_after_dialogue_begin"]

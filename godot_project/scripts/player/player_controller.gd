@@ -121,6 +121,9 @@ func skill_on(skill_name, skill_value):
 			$StateMachine/Skill.current_skill = $StateMachine/Skill/Hook
 		"Dash":
 			$StateMachine/Skill.current_skill = $StateMachine/Skill/Dash
+		"BackJump":
+			$StateMachine/Skill.current_skill = $StateMachine/Skill/BackJump
+			$StateMachine/Skill/BackJump.JUMP_FORCE += skill_value
 		"Health":
 			$Health.increase_max_health(skill_value)
 		"Speed":
@@ -136,6 +139,9 @@ func skill_off(skill_name, skill_value):
 			$StateMachine/Skill.current_skill = $StateMachine/Skill/Null
 		"Dash":
 			$StateMachine/Skill.current_skill = $StateMachine/Skill/Null
+		"BackJump":
+			$StateMachine/Skill.current_skill = $StateMachine/Skill/Null
+			$StateMachine/Skill/BackJump.JUMP_FORCE -= skill_value
 		"Health":
 			$Health.decrease_max_health(skill_value)
 		"Speed":

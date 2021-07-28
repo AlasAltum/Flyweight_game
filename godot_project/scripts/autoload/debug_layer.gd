@@ -23,7 +23,7 @@ func _ready():
 	player.connect("buff_changed", self, "_on_Player_buff_changed")
 	
 	for child in get_children():
-			child.set_visible(false) 
+			child.set_visible(true) 
 
 func _on_Player_state_changed(state):
 	state_label.set_text(state.get_name())

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/enemies/basicGroundEnemy.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/vfx/lightning.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/enemies/enemy0sheet.png" type="Texture" id=3]
+[ext_resource path="res://sprites/player/light.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
@@ -59,6 +60,7 @@ position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
+light_mask = 0
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 3 )
 hframes = 13
@@ -77,6 +79,15 @@ shape = SubResource( 2 )
 [node name="lightning" parent="Body" instance=ExtResource( 2 )]
 position = Vector2( 4.36417e-06, 6.63341 )
 scale = Vector2( 0.0981861, 0.0478038 )
+
+[node name="Light2D" type="Light2D" parent="Body"]
+position = Vector2( 0, 3.56762 )
+texture = ExtResource( 4 )
+texture_scale = 0.32
+color = Color( 0.705882, 0.00392157, 0.00392157, 1 )
+energy = 0.82
+range_layer_min = -200
+range_layer_max = 287
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 3 )

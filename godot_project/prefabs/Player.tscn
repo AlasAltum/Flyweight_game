@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scripts/player/states/motion/on_ground/run.gd" type="Script" id=1]
 [ext_resource path="res://scripts/player/player_controller.gd" type="Script" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://scripts/player/states/skill/skills/backJump.gd" type="Script" id=20]
 [ext_resource path="res://sprites/player/rope.png" type="Texture" id=21]
 [ext_resource path="res://sprites/player/hook.png" type="Texture" id=22]
+[ext_resource path="res://sprites/player/light.png" type="Texture" id=23]
+[ext_resource path="res://scripts/player/states/skill/skills/HookObject.gd" type="Script" id=24]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -178,14 +180,22 @@ z_index = 1
 collision_layer = 5
 script = ExtResource( 2 )
 
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 23 )
+texture_scale = 0.27
+color = Color( 0.219608, 1, 0, 1 )
+energy = 0.85
+range_layer_min = -200
+
 [node name="Sprite" type="Sprite" parent="."]
+light_mask = 0
 material = SubResource( 2 )
 position = Vector2( -2.31671, -4.57175 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 hframes = 5
 vframes = 4
-frame = 3
+frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
@@ -303,7 +313,9 @@ texture = ExtResource( 21 )
 texture_mode = 1
 
 [node name="HookObject" type="Node2D" parent="StateMachine/Skill/Hook"]
+visible = false
 position = Vector2( 64, -41.3387 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_group_": true
 }

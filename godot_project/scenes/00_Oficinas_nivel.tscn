@@ -2210,6 +2210,9 @@ position = Vector2( -584, 8 )
 [node name="Gate" parent="." instance=ExtResource( 16 )]
 position = Vector2( 48, 1368 )
 
+[node name="Gate" parent="Gate" instance=ExtResource( 16 )]
+position = Vector2( -86.4, 884.833 )
+
 [node name="event" type="Area2D" parent="."]
 pause_mode = 2
 scale = Vector2( 5, 6 )

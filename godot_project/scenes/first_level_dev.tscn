@@ -580,7 +580,7 @@ load_path = "res://.import/Sky.png-c8fb3af3a5a69e0d1b3617a898ec80fc.stex"
 
 [sub_resource type="GDScript" id=45]
 
-[node name="World2" type="Node2D"]
+[node name="World3" type="Node2D"]
 __meta__ = {
 "_edit_vertical_guides_": [ -432.0, -614.102 ]
 }
@@ -815,6 +815,3 @@ new_chip_path = "SkillMenu/GridContainer/Slot5/HookChip"
 position = Vector2( 114.116, 3365.51 )
 chip_texture = ExtResource( 20 )
 new_chip_path = "SkillMenu/GridContainer/Slot4/DashChip"
-
-[node name="Gate2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 329.796, 3413.47 )

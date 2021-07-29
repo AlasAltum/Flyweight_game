@@ -12,6 +12,6 @@ func _ready():
 func _physics_process(delta):
 	for body in $Body/Area2D.get_overlapping_bodies():
 		if body is PlayerController:
-			body.apply_damage(1)
+			body.apply_damage_from_mist(1)
 	if Moving:
 		$Body.move_and_slide(Vector2(0,-20))

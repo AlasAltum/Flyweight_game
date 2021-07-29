@@ -58,7 +58,11 @@ func apply_damage(amount):
 	$Health.take_damage(amount)
 	if $Health.health == 0:
 		player_death()
-
+		
+func apply_damage_from_mist(amount):
+	$Health.take_damage_from_mist(amount)
+	if $Health.health == 0:
+		player_death()
 
 func get_motion() -> Vector2 :
 	return motion

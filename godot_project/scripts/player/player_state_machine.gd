@@ -11,7 +11,7 @@ func _ready():
 		"skill" : $Skill
 	}
 	var health = owner.get_node("Health")
-	health.connect("lives_decreased",self,"_on_Player_change_to_hurt")
+	health.connect("lives_decreased_frozen",self,"_on_Player_change_to_hurt")
 
 func _on_Player_change_to_hurt(amount):
 	_change_state("hurt")

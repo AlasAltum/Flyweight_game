@@ -4,6 +4,8 @@ extends Node
 signal lives_increased
 signal lives_decreased
 
+signal lives_decreased_frozen
+
 var health = 0
 export(int) var max_health = 3
 
@@ -14,6 +16,18 @@ func _ready():
 	$InvincibleTimer.connect("timeout", self, "_on_InvincibleTimer_timeout")
 			 
 func take_damage(amount, effect=null):
+	if status == PlayerStatus.INVINCIBLE:
+		return
+	
+	owner.get_node("SoundHurt").play()
+	status = PlayerStatus.INVINCIBLE
+	health -= amount
+	owner.get_node("AnimationPlayer2").play("hurt")
+	$InvincibleTimer.start()
+	health = max(0, health)
+	emit_signal("lives_decreased_frozen", health)
+	
+func take_damage_from_mist(amount, effect=null):
 	if status == PlayerStatus.INVINCIBLE:
 		return
 	

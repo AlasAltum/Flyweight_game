@@ -1928,7 +1928,7 @@ points = PoolVector2Array( 4, 16, 4, 14, 7, 14, 7, 0, 9, 0, 9, 14, 12, 14, 12, 1
 
 [sub_resource type="GDScript" id=54]
 
-[sub_resource type="Animation" id=56]
+[sub_resource type="Animation" id=55]
 resource_name = "ascending_smoke"
 length = 5.0
 tracks/0/type = "value"
@@ -2020,10 +2020,10 @@ tracks/6/keys = {
 "values": [ 2, 0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=55]
+[sub_resource type="RectangleShape2D" id=56]
 extents = Vector2( 53.503, 16.1702 )
 
-[node name="World" type="Node2D"]
+[node name="World2" type="Node2D"]
 script = ExtResource( 14 )
 __meta__ = {
 "_edit_vertical_guides_": [ -432.0 ]
@@ -2217,15 +2217,14 @@ script = ExtResource( 17 )
 
 [node name="AnimationCamera" type="Camera2D" parent="event"]
 position = Vector2( 0, 700 )
-scale = Vector2( 1, 1 )
 current = true
 
 [node name="CameraAnimPlayer" type="AnimationPlayer" parent="event/AnimationCamera"]
-anims/ascending_smoke = SubResource( 56 )
+anims/ascending_smoke = SubResource( 55 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="event"]
 position = Vector2( -26.665, 396.826 )
-shape = SubResource( 55 )
+shape = SubResource( 56 )
 
 [node name="AlarmSound2" type="AudioStreamPlayer" parent="event"]
 stream = ExtResource( 18 )

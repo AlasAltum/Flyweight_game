@@ -37,6 +37,7 @@ func _ready():
 	dColor = (hight_color - low_color) / max_lifes
 	health.connect("lives_increased",self,"_setLife")
 	health.connect("lives_decreased",self,"_hurted")
+	health.connect("lives_decreased_frozen",self,"_hurted")
 	_setLife(health.health)
 	pass # Replace with function body.
 

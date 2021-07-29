@@ -290,7 +290,6 @@ START_SKILL = NodePath("Null")
 
 [node name="Dash" type="Node" parent="StateMachine/Skill"]
 script = ExtResource( 9 )
-cooldown = 2.0
 DASH_SPEED = 450.0
 
 [node name="ActivateTimer" type="Timer" parent="StateMachine/Skill/Dash"]

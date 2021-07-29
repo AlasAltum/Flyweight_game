@@ -24,12 +24,17 @@ const zeroBuffFx = preload("res://prefabs/vfx/zeroBuffEffect.tscn")
 export(bool) var left_start_direction = true
 
 signal buff_changed(buff_amount)
+signal switch_skill()
+
+var skill_index = 0
+var skill_switch = false
 
 func _ready():
 	LevelManager.player = self
 	$JumpPressedTimer.connect("timeout", self, "_on_Player_jump_not_pressed")
 	$GroundedTimer.connect("timeout", self, "_on_Player_is_not_grounded")
-	
+	$StateMachine/Skill.current_skill = $StateMachine/Skill/Hook
+
 	if left_start_direction:
 		change_direction()
 
@@ -43,6 +48,13 @@ func _input(event):
 	if event.is_action_pressed("basic_jump") and not is_jump_pressed:
 		is_jump_pressed = true
 		$JumpPressedTimer.start()
+	if event.is_action_pressed("switch_skill"):
+		skill_index = (skill_index + 1) % 2
+		if skill_index == 0:
+			$StateMachine/Skill.current_skill = $StateMachine/Skill/Hook
+		if skill_index == 1:
+			$StateMachine/Skill.current_skill = $StateMachine/Skill/Dash
+		emit_signal("switch_skill")
 
 func player_death():
 	is_alive = false

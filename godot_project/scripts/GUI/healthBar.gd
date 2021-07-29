@@ -1,3 +1,4 @@
+class_name HealthBar
 extends Control
 
 
@@ -24,7 +25,8 @@ export(Color) var low_color = Color.red;
 export(Color) var hight_color = Color.green;
 
 var health : Health
-
+var skill_names = ["Hook", "Air Dash"]
+var skill_cooldowns = [1.0, 1.0]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +40,8 @@ func _ready():
 	health.connect("lives_increased",self,"_setLife")
 	health.connect("lives_decreased",self,"_hurted")
 	_setLife(health.health)
+	$SkillName.text = skill_names[player.skill_index]
+	$ProgressClock.value = 100
 	pass # Replace with function body.
 
 func setNoise(period, persistence, lacunarity, color : Color):
@@ -53,11 +57,8 @@ func setNoise(period, persistence, lacunarity, color : Color):
 	
 	$batteryBar/lightTexture.material.set_shader_param("color", color_final)
 	$batteryBar/lightTexture.material.set_shader_param("border_color", color_final)
-	
-	#Cambiar color de ojos del player
+	#Cambiar colo de ojos del player
 	player.get_node("Sprite").material.set_shader_param("eyesColor", color_final)
-	#Cambiar luz del player
-	player.get_node("Light2D").color = color_final
 
 func _hurted(amount):
 	$AnimationPlayer.play("hurt")
@@ -71,7 +72,8 @@ func _setLife(lifes):
 	var tmp_lacunarity = low_hp_lac + dLacunarity*lifes
 	var tmp_color = low_color + dColor*lifes
 	setNoise(tmp_period, tmp_persistance, tmp_lacunarity, tmp_color)
-	
+	#$ProgressClock.value = player.cooldown_progress.get_time_left()
+	#print(player.cooldown_progress.get_time_left())
 	if lifes == 0:
 		noiseTexture.as_normalmap = true
 	else:
@@ -79,3 +81,18 @@ func _setLife(lifes):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func _process(delta):
+	var globals = get_node("/root/PlayerStatus")
+	if globals.isSkillused == 1:
+		$ProgressClock.value = 0
+		globals.isSkillused = 2
+	if globals.isSkillused == 2:
+		print("Porcentaje Carga: " + str($ProgressClock.value))
+		$ProgressClock.value = $ProgressClock.value + 100/Engine.get_frames_per_second()
+	if $ProgressClock.value >= 100:
+		globals.isSkillused = 0 
+		
+
+func _on_Player_switch_skill():
+	$SkillName.text = skill_names[player.skill_index]

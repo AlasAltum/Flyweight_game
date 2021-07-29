@@ -2,7 +2,7 @@ class_name Skill
 extends Node
 
 var player : PlayerController
-export(float) var cooldown = 1
+export(float) var cooldown = 1 # Este corresponde al cooldown del Hook
 var enable = true
 var waiting_input = true
 

@@ -2,7 +2,7 @@ class_name SkillManager
 extends State
 
 export(NodePath) var START_SKILL
-onready var current_skill : Skill = $Null
+var current_skill : Skill = null
 var can_use_skill = true
 
 func _ready():
@@ -33,8 +33,12 @@ func finish_skill(state):
 	can_use_skill = false
 	current_skill.enable = false
 	current_skill.waiting_input = false
+	print("Tiempo de espera Skill Actual: " + str(current_skill.cooldown))
 	$CooldownTimer.set_wait_time(current_skill.cooldown)
 	$CooldownTimer.start()
+	get_node("/root/PlayerStatus").isSkillused = 1
+	get_node("/root/PlayerStatus").remainingCooldown = $CooldownTimer.get_wait_time()
+	#print("Test HealthBar: " + str(healthbar.testo_cambio))
 	emit_signal("finished", state)
 	
 func _on_Manager_cooldown_is_over():

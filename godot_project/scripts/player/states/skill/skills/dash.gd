@@ -16,6 +16,7 @@ func prepare_skill_update(delta):
 	waiting_input = true
 
 func start_skill():
+	player.get_node("AnimationPlayer").play("dash")
 	$ActivateTimer.start()
 	if player.is_front_ray_colliding():
 		player.change_direction()

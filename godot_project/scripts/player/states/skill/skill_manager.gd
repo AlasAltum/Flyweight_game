@@ -33,12 +33,10 @@ func finish_skill(state):
 	can_use_skill = false
 	current_skill.enable = false
 	current_skill.waiting_input = false
-	print("Tiempo de espera Skill Actual: " + str(current_skill.cooldown))
 	$CooldownTimer.set_wait_time(current_skill.cooldown)
 	$CooldownTimer.start()
 	get_node("/root/PlayerStatus").isSkillused = 1
 	get_node("/root/PlayerStatus").remainingCooldown = $CooldownTimer.get_wait_time()
-	#print("Test HealthBar: " + str(healthbar.testo_cambio))
 	emit_signal("finished", state)
 	
 func _on_Manager_cooldown_is_over():

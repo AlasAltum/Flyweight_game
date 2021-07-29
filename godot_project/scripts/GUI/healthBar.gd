@@ -73,8 +73,6 @@ func _setLife(lifes):
 	var tmp_lacunarity = low_hp_lac + dLacunarity*lifes
 	var tmp_color = low_color + dColor*lifes
 	setNoise(tmp_period, tmp_persistance, tmp_lacunarity, tmp_color)
-	#$ProgressClock.value = player.cooldown_progress.get_time_left()
-	#print(player.cooldown_progress.get_time_left())
 	if lifes == 0:
 		noiseTexture.as_normalmap = true
 	else:
@@ -89,7 +87,6 @@ func _process(delta):
 		$ProgressClock.value = 0
 		globals.isSkillused = 2
 	if globals.isSkillused == 2:
-		print("Porcentaje Carga: " + str($ProgressClock.value))
 		$ProgressClock.value = $ProgressClock.value + 100/Engine.get_frames_per_second()
 	if $ProgressClock.value >= 100:
 		globals.isSkillused = 0 

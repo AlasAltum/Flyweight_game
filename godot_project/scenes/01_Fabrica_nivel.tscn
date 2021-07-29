@@ -2336,3 +2336,5 @@ position = Vector2( 0, 4400 )
 
 [node name="WorkStation" parent="." instance=ExtResource( 9 )]
 position = Vector2( -128, 4003 )
+
+[connection signal="switch_skill" from="Player" to="HUD/Control" method="_on_Player_switch_skill"]

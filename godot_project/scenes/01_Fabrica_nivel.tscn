@@ -2333,6 +2333,7 @@ position = Vector2( 352, 1184 )
 
 [node name="Niebla" parent="." instance=ExtResource( 17 )]
 position = Vector2( 0, 4400 )
+z_index = 10
 
 [node name="WorkStation" parent="." instance=ExtResource( 9 )]
 position = Vector2( -128, 4003 )

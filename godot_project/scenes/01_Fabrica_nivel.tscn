@@ -12,7 +12,7 @@
 [ext_resource path="res://prefabs/enemies/basicAirEnemy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://prefabs/enemies/ControlPoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefabs/enemies/basicGroundEnemy.tscn" type="PackedScene" id=12]
-[ext_resource path="res://audio/levels/first_level.mp3" type="AudioStream" id=13]
+[ext_resource path="res://audio/levels/second_level.mp3" type="AudioStream" id=13]
 [ext_resource path="res://prefabs/gui/healthBar.tscn" type="PackedScene" id=14]
 [ext_resource path="res://prefabs/enemies/platformAirEnemy.tscn" type="PackedScene" id=15]
 [ext_resource path="res://prefabs/map_elements/Gate.tscn" type="PackedScene" id=16]
@@ -2333,6 +2333,7 @@ position = Vector2( 352, 1184 )
 
 [node name="Niebla" parent="." instance=ExtResource( 17 )]
 position = Vector2( 0, 4400 )
+z_index = 10
 
 [node name="WorkStation" parent="." instance=ExtResource( 9 )]
 position = Vector2( -128, 4003 )

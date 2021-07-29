@@ -2,8 +2,14 @@ extends Node2D
 
 # Levels and cinematics
 var mainMenu = preload("res://scenes/Menu.tscn")
+
+# Cinematics
 var first_cinematic = preload("res://scenes/cinematics/intro_cinematic1.tscn")
 var second_cinematic = preload("res://scenes/cinematics/intro_cinematic2.tscn")
+var third_cinematic = preload("res://scenes/cinematics/cinematic_level_1_to_2.tscn")
+var fourth_cinematic = preload("res://scenes/cinematics/cinematic_level_2_to_3.tscn")
+
+# Levels
 var firstLevel = preload("res://scenes/00_Oficinas_nivel.tscn")
 var SecondLevel = preload("res://scenes/01_Fabrica_nivel.tscn")
 var ThirdLevel = preload("res://scenes/02_Servidores_nivel.tscn")
@@ -16,7 +22,9 @@ onready var levels = [mainMenu,
 	first_cinematic,
 	second_cinematic,
 	firstLevel,
+	third_cinematic,
 	SecondLevel,
+	fourth_cinematic,
 	ThirdLevel,
 	credits
 ]
@@ -24,11 +32,12 @@ onready var levels = [mainMenu,
 # insert here level codes
 var level_codes = {
 	'level1': firstLevel,
+	'cinematic1': third_cinematic,
 	'level2': SecondLevel,
+	'cinematic2': fourth_cinematic,
 	'level3': ThirdLevel,
 	'credits': credits
 }
-
 
 
 var current_level = 0
@@ -42,14 +51,7 @@ func _ready():
 	fade.connect("faded", self, "on_faded")
 	current_world = levels[0].instance()
 	world.add_child(current_world)
-	levels = [mainMenu,
-	first_cinematic,
-	second_cinematic,
-	firstLevel,
-	SecondLevel,
-	ThirdLevel,
-	credits
-	]
+
 
 func change_scene(scene):
 	var s = scene.instance()

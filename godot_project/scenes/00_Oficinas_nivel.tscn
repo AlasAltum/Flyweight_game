@@ -2238,6 +2238,7 @@ visible = false
 dialogue_file_path = "res://dialogues/smoke_ascending_dialog.json"
 play_on_init = false
 
+[connection signal="switch_skill" from="Player" to="HUD/Control" method="_on_Player_switch_skill"]
 [connection signal="body_entered" from="event" to="event" method="_on_Area2D_body_entered"]
 [connection signal="dialogue_finished" from="DialogueContainer/DialogueBox" to="event" method="_on_DialogueBox_dialogue_finished"]
 [connection signal="event_after_dialogue_begin" from="DialogueContainer/DialogueBox" to="event" method="_on_DialogueBox_event_after_dialogue_begin"]

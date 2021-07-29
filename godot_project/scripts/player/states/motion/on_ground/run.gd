@@ -1,8 +1,8 @@
 class_name Run
 extends OnGround
 
-export(float) var RUN_ACCEL = 5
-export(float) var MAX_RUN_SPEED = 150
+export(float) var RUN_ACCEL = 20
+export(float) var MAX_RUN_SPEED = 300
 
 func enter():
 	player = owner

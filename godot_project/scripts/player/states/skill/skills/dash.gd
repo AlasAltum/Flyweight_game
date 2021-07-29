@@ -1,7 +1,7 @@
 class_name Dash
 extends Skill
 
-export(float) var DASH_SPEED = 300
+export(float) var DASH_SPEED = 400
 var motion : Vector2
 var direction : Vector2
 var time_threshold

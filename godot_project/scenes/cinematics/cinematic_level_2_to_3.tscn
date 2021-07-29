@@ -64,7 +64,7 @@ margin_left = 3.05609
 margin_top = 69.0359
 margin_right = 1027.06
 margin_bottom = 669.036
-dialogue_file_path = "res://dialogues/intro2_cinematic_dialog.json"
+dialogue_file_path = "res://dialogues/level_2_to_3_cinematic_dialog.json"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

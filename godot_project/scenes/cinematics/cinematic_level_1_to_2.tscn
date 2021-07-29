@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scripts/cinematics/intro_cinematic.gd" type="Script" id=1]
+[ext_resource path="res://scenes/cinematics/cinematic_level_1_to_2.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/Fade.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/AnimationPlayer.gd" type="Script" id=3]
 [ext_resource path="res://prefabs/Dialogue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/cinematics/robot_eyes.png" type="Texture" id=5]
 [ext_resource path="res://audio/cinematic/intro2.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sprites/map_elements/gen_anim.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "RobotEyes"
@@ -22,6 +23,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 5, 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "workstation"
+length = 5.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4, 4.4, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 }
 
 [node name="Cinematic" type="Node2D"]
@@ -61,14 +78,45 @@ script = ExtResource( 3 )
 
 [node name="DialogueBox" parent="Control" instance=ExtResource( 4 )]
 margin_left = 3.05609
-margin_top = 69.0359
+margin_top = 67.8467
 margin_right = 1027.06
-margin_bottom = 669.036
-dialogue_file_path = "res://dialogues/intro2_cinematic_dialog.json"
+margin_bottom = 667.847
+dialogue_file_path = "res://dialogues/level_1_to_2_cinematic_dialog_pre_workstation.json"
+
+[node name="DialogueBoxAfterWorkstation" parent="Control" instance=ExtResource( 4 )]
+visible = false
+margin_left = 138.063
+margin_top = 327.413
+margin_right = 138.063
+margin_bottom = 327.413
+dialogue_file_path = "res://dialogues/level_1_to_2_cinematic_dialog_after_workstation.json"
+play_on_init = false
+
+[node name="DialogText" parent="Control/DialogueBoxAfterWorkstation" index="1"]
+margin_left = 24.052
+margin_top = 23.5097
+margin_right = 720.052
+margin_bottom = 214.51
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -16.0
 autoplay = true
 
+[node name="workstation" type="Sprite" parent="."]
+visible = false
+position = Vector2( 504.389, 443.977 )
+texture = ExtResource( 7 )
+hframes = 3
+vframes = 5
+frame = 12
+
+[node name="worktstationAnimation" type="AnimationPlayer" parent="workstation"]
+playback_speed = 2.0
+anims/workstation = SubResource( 2 )
+
 [connection signal="dialogue_finished" from="Control/DialogueBox" to="." method="_on_DialogueBox_dialogue_finished"]
+[connection signal="dialogue_finished" from="Control/DialogueBoxAfterWorkstation" to="." method="_on_DialogueBoxAfterWorkstation_dialogue_finished"]
+[connection signal="animation_finished" from="workstation/worktstationAnimation" to="." method="_on_worktstationAnimation_animation_finished"]
+
+[editable path="Control/DialogueBoxAfterWorkstation"]

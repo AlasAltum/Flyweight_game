@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/map_elements/Station.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/SkillMenuLayer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/chip_hook.png" type="Texture" id=3]
 [ext_resource path="res://sprites/map_elements/gen_anim.png" type="Texture" id=4]
 [ext_resource path="res://sprites/cinematics/station_access.wav" type="AudioStream" id=5]
 
@@ -39,42 +38,10 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Fade"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -5 ), Vector2( 0, 5 ), Vector2( 0, -5 ) ]
-}
-
 [node name="WorkStation" type="Area2D"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 1 )
-new_chip_path = "SkillMenu/GridContainer/Slot2/Hoo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.86554, -8.32116 )
@@ -100,13 +67,3 @@ pause_mode = 2
 stream = ExtResource( 5 )
 
 [node name="SkillMenuLayer" parent="." instance=ExtResource( 2 )]
-
-[node name="FloatingChip" type="Sprite" parent="."]
-position = Vector2( 0, -5 )
-texture = ExtResource( 3 )
-
-[node name="FloatingChipAnimation" type="AnimationPlayer" parent="FloatingChip"]
-anims/Fade = SubResource( 3 )
-anims/FloatingChip = SubResource( 4 )
-
-[connection signal="animation_finished" from="FloatingChip/FloatingChipAnimation" to="." method="_on_FloatingChipAnimation_animation_finished"]

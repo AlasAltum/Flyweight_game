@@ -21,7 +21,7 @@ func _input(event):
 	
 	if not current_skill.enable:
 		current_skill.activation_input(event)
-	
+
 func _physics_process(delta):
 	if current_skill == null :
 		return

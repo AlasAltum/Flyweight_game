@@ -8,6 +8,7 @@ var first_cinematic = preload("res://scenes/cinematics/intro_cinematic1.tscn")
 var second_cinematic = preload("res://scenes/cinematics/intro_cinematic2.tscn")
 var third_cinematic = preload("res://scenes/cinematics/cinematic_level_1_to_2.tscn")
 var fourth_cinematic = preload("res://scenes/cinematics/cinematic_level_2_to_3.tscn")
+var fifth_cinematic = preload("res://scenes/cinematics/ending_cinematic.tscn")
 
 # Levels
 var firstLevel = preload("res://scenes/00_Oficinas_nivel.tscn")
@@ -26,7 +27,8 @@ onready var levels = [mainMenu,
 	SecondLevel,
 	fourth_cinematic,
 	ThirdLevel,
-	credits
+	fifth_cinematic,
+	credits,
 ]
 
 # insert here level codes
@@ -36,7 +38,8 @@ var level_codes = {
 	'level2': SecondLevel,
 	'cinematic2': fourth_cinematic,
 	'level3': ThirdLevel,
-	'credits': credits
+	'cinematic3': fifth_cinematic,
+	'credits': credits,
 }
 
 

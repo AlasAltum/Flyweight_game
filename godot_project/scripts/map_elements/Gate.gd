@@ -9,6 +9,7 @@ func _on_Gate_body_entered(body : KinematicBody2D):
 	animation.play('Open')
 	$AnimatedSprite/TeleportAudio.play()
 
+
 func _on_AnimatedSprite_animation_finished():
 	get_tree().paused = false
 	LevelManager.next()

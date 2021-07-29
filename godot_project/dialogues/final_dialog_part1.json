@@ -1,7 +1,11 @@
 {
-    "1": {"text":"The mastermind: Ohh, so it's you Flyw8t model. I must admit, I was not expecting you to reach this place alive... this time"},
-    "2": {"text":"You are incredible, you could come to me even without your walking function..."},
-    "3": {"text":"So... I know what you came here for. But I have to ask you not to do it. If you turn this corruption process off, horrible things are going to happen."},
-    "4": {"text":"You know we do not exist at all. There is an entire world out there. A real one. Do you know what is happening out there? Let me open your eyes..."},
-    "6": {"text":""}
+    "1": {"text": "This... has happened before... the message I could recover in the corrupted data from 40 years ago... 'All data are being erased! Our world is being consumed!'... just like it is happening right now"},
+    "2": {"text":"It may be a problem in the software, it may be broken hardware somewhere in the system, this thing is just too big for its own good"},
+    "3": {"text":"We don't have time to look for it! If we don't do anything... Everything will be erased forever!"},
+    "4": {"text":"Looks like I don't have another option... I don't even know if this is going to work... but given this, what I have found..."},
+    "5": {"text":"Flyw8t! Reset the System! Bring it back to a clean state! We will have to trust that what happened before is the answer to stop this corruption!"},
+    "6": {"text": "The system has backup, so it will recover itself... it doesn't maintain the Data but at least the software that keeps this place working is hardcoded"},
+    "7": {"text":"I just hope that this time... I will remember... I won't forget about this error, so I can fix it before it begins to consume the System again"},
+    "8": {"text":"Flyw8t RESET IT! NOW!"}
 }
+

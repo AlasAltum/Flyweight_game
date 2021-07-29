@@ -2122,6 +2122,7 @@ pause_mode = 2
 modulate = Color( 1, 1, 1, 0.959761 )
 position = Vector2( 0, 4488.32 )
 z_index = 10
+Moving = false
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( -9.29181, 4014.94 )

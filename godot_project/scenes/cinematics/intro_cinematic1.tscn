@@ -1,28 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/cinematics/intro_cinematic.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/Fade.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/AnimationPlayer.gd" type="Script" id=3]
 [ext_resource path="res://prefabs/Dialogue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/cinematics/Heart Labs/heart example.png" type="Texture" id=5]
 [ext_resource path="res://audio/cinematic/intro_1.mp3" type="AudioStream" id=6]
-
-[sub_resource type="Animation" id=1]
-resource_name = "RobotEyes"
-length = 2.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2 ]
-}
 
 [node name="IntroCinematic" type="Node2D"]
 script = ExtResource( 1 )
@@ -47,14 +29,9 @@ __meta__ = {
 }
 
 [node name="heart example" type="Sprite" parent="Control/ColorRect"]
-position = Vector2( 546.663, 301.024 )
+position = Vector2( 553.337, 310.368 )
 scale = Vector2( 1.64971, 1.20636 )
 texture = ExtResource( 5 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/ColorRect"]
-method_call_mode = 1
-anims/RobotEyes = SubResource( 1 )
-script = ExtResource( 3 )
 
 [node name="DialogueBox" parent="Control" instance=ExtResource( 4 )]
 margin_left = 3.05609

@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/cinematics/intro_cinematic.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/Fade.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/AnimationPlayer.gd" type="Script" id=3]
+[ext_resource path="res://prefabs/Dialogue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/cinematics/Heart Labs/heart example.png" type="Texture" id=5]
+[ext_resource path="res://audio/cinematic/intro_1.mp3" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "RobotEyes"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[node name="IntroCinematic" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Fade" parent="." instance=ExtResource( 2 )]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_right = 1024.0
+margin_bottom = 597.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heart example" type="Sprite" parent="Control/ColorRect"]
+position = Vector2( 546.663, 301.024 )
+scale = Vector2( 1.64971, 1.20636 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/ColorRect"]
+method_call_mode = 1
+anims/RobotEyes = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="DialogueBox" parent="Control" instance=ExtResource( 4 )]
+margin_left = 3.05609
+margin_top = 67.8467
+margin_right = 1027.06
+margin_bottom = 667.847
+dialogue_file_path = "res://dialogues/intro_cinematic_dialog.json"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -16.0
+autoplay = true
+
+[connection signal="dialogue_finished" from="Control/DialogueBox" to="." method="_on_DialogueBox_dialogue_finished"]

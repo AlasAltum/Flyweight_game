@@ -1,0 +1,126 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprites/Dialogue/dialogTexture.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Dialogue/ContinueButton.png" type="Texture" id=2]
+[ext_resource path="res://scripts/dialogs/Dialogue.gd" type="Script" id=3]
+[ext_resource path="res://fonts/PressStart2P.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/PressStart2P.tres" type="DynamicFontData" id=6]
+[ext_resource path="res://prefabs/DialoguePlayerRes.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ButtonMovement"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 750, 330 ), Vector2( 750, 320 ), Vector2( 750, 330 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+extra_spacing_top = 3
+extra_spacing_bottom = 2
+extra_spacing_char = 2
+font_data = ExtResource( 5 )
+
+[node name="DialogueBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueBoxQuad" type="TextureRect" parent="."]
+anchor_left = 0.12052
+anchor_top = 0.433869
+anchor_right = 0.873716
+anchor_bottom = 0.956319
+margin_right = 79.7277
+margin_bottom = 105.53
+rect_scale = Vector2( 0.904443, 0.616931 )
+texture = ExtResource( 1 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="DialogueBoxQuad"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -404.5
+margin_top = -194.5
+margin_right = 404.5
+margin_bottom = 194.5
+rect_clip_content = true
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonNext" type="Button" parent="DialogueBoxQuad/Panel"]
+margin_left = 750.0
+margin_top = 330.0
+margin_right = 802.0
+margin_bottom = 380.0
+rect_pivot_offset = Vector2( 10.2402, 9.46198 )
+icon = ExtResource( 2 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButtonAnimation" type="AnimationPlayer" parent="DialogueBoxQuad/Panel/ButtonNext"]
+anims/ButtonMovement = SubResource( 1 )
+
+[node name="ButtonSkip" type="Button" parent="DialogueBoxQuad/Panel"]
+margin_left = 21.6642
+margin_top = 330.0
+margin_right = 97.6642
+margin_bottom = 380.0
+rect_pivot_offset = Vector2( 10.2402, 9.46198 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.121569, 0.972549, 0, 1 )
+custom_colors/font_color_hover = Color( 0.427451, 0.972549, 0.145098, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "SKIP"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogText" type="Label" parent="."]
+margin_left = 162.0
+margin_top = 278.0
+margin_right = 858.0
+margin_bottom = 469.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0784314, 0.788235, 0.0117647, 1 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialoguePlayer" type="ResourcePreloader" parent="."]
+script = ExtResource( 7 )
+
+[connection signal="pressed" from="DialogueBoxQuad/Panel/ButtonNext" to="." method="_on_ButtonNext_pressed"]
+[connection signal="pressed" from="DialogueBoxQuad/Panel/ButtonSkip" to="." method="_on_ButtonSkip_pressed"]

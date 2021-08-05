@@ -1,0 +1,160 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/autoload/debug_layer.gd" type="Script" id=4]
+
+[node name="DebugLayer" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="PushDownDebug" type="Panel" parent="."]
+visible = false
+margin_left = 19.3228
+margin_top = 406.409
+margin_right = 235.323
+margin_bottom = 433.409
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tittle" type="Label" parent="PushDownDebug"]
+visible = false
+anchor_left = 0.317
+anchor_top = 0.067
+anchor_right = 0.381
+anchor_bottom = 0.092
+margin_left = -76.472
+margin_top = 5.856
+margin_right = -11.296
+margin_bottom = 19.856
+text = "STATE:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="State" type="Label" parent="PushDownDebug"]
+visible = false
+margin_left = 64.0
+margin_top = 7.464
+margin_right = 104.0
+margin_bottom = 21.464
+text = "aa"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeDebug" type="Panel" parent="."]
+visible = false
+anchor_top = 0.26
+anchor_bottom = 0.313
+margin_left = 19.3228
+margin_top = 282.409
+margin_right = 235.323
+margin_bottom = 277.609
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tittle" type="Label" parent="LifeDebug"]
+visible = false
+anchor_top = 0.175
+anchor_right = 0.327
+anchor_bottom = 0.486
+margin_left = -27.75
+margin_top = -1.25
+margin_right = 12.25
+margin_bottom = 12.75
+text = "LIFE: "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="LifeDebug"]
+visible = false
+margin_left = 64.0
+margin_top = 6.45
+margin_right = 104.0
+margin_bottom = 20.45
+text = "aa"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CooldownDebug" type="Panel" parent="."]
+visible = false
+anchor_top = 0.26
+anchor_bottom = 0.313
+margin_left = 19.3228
+margin_top = 314.987
+margin_right = 235.323
+margin_bottom = 310.187
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tittle" type="Label" parent="CooldownDebug"]
+visible = false
+anchor_top = 0.175
+anchor_right = 0.327
+anchor_bottom = 0.486
+margin_top = -0.77806
+margin_right = 40.0
+margin_bottom = 13.2219
+text = "COOLDOWN: "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="CooldownDebug"]
+visible = false
+margin_left = 110.632
+margin_top = 7.39388
+margin_right = 150.632
+margin_bottom = 21.3939
+text = "aa"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JumpBuffDebug" type="Panel" parent="."]
+visible = false
+anchor_top = 0.26
+anchor_bottom = 0.313
+margin_left = 19.3228
+margin_top = 351.304
+margin_right = 235.323
+margin_bottom = 346.504
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tittle" type="Label" parent="JumpBuffDebug"]
+visible = false
+anchor_top = 0.175
+anchor_right = 0.327
+anchor_bottom = 0.486
+margin_left = -4.67722
+margin_top = -0.555327
+margin_right = 35.3228
+margin_bottom = 13.4446
+text = "JUMP BUFF: "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="JumpBuffDebug"]
+visible = false
+margin_left = 99.7805
+margin_top = 7.98848
+margin_right = 139.78
+margin_bottom = 21.9885
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/map_elements/door_anim2.png" type="Texture" id=1]
+[ext_resource path="res://sprites/map_elements/door_open.png" type="Texture" id=2]
+[ext_resource path="res://sprites/map_elements/door_anim1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/map_elements/door_shut.png" type="Texture" id=4]
+[ext_resource path="res://scripts/map_elements/Gate.gd" type="Script" id=5]
+[ext_resource path="res://audio/cinematic/teleportation_sound.wav" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.71392, 10 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "Open",
+"speed": 2.5
+} ]
+
+[node name="Gate" type="Area2D"]
+pause_mode = 2
+scale = Vector2( 2.5, 3 )
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0177212, 0.4214 )
+z_index = 1
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 2 )
+animation = "Idle"
+
+[node name="TeleportAudio" type="AudioStreamPlayer2D" parent="AnimatedSprite"]
+stream = ExtResource( 6 )
+
+[connection signal="body_entered" from="." to="." method="_on_Gate_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

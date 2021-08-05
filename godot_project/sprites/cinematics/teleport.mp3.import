@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/teleport.mp3-c2d057f973b88079387c68d8ff6501f2.mp3str"
+
+[deps]
+
+source_file="res://sprites/cinematics/teleport.mp3"
+dest_files=[ "res://.import/teleport.mp3-c2d057f973b88079387c68d8ff6501f2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

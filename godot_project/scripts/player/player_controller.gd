@@ -127,7 +127,6 @@ func _on_Player_is_not_grounded():
 	is_grounded = false
 	
 func skill_on(skill_name, skill_value):
-
 	match skill_name:
 		"Hook":
 			$StateMachine/Skill.current_skill = $StateMachine/Skill/Hook

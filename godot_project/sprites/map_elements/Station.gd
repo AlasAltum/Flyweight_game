@@ -13,7 +13,7 @@ func _ready() -> void:
 	# Solucion temporal para cerrar el menu luego de abrirlo con la tecla S
 	previous_motion = LevelManager.player.get_motion()
 	connect("body_entered", self, "on_body_entered")
-	connect("body_exited", self, "on_body_exited")
+	#connect("body_exited", self, "on_body_exited")
 	skill_menu.connect("continue_skill_menu", self, "_close_menu")
 
 func on_body_entered(body: Node):

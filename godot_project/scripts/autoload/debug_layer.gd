@@ -12,7 +12,7 @@ func _ready():
 # pass
 	# Connect state machine
 	player.player_state_machine.connect("state_changed", self, "_on_Player_state_changed")
-	player.connect("health_changed", self, "_on_Player_health_changed")
+	# player.connect("health_changed", self, "_on_Player_health_changed")
 #	# Connect to health Node
 	var health = player.health_object as Health
 	health.connect("lives_increased",self,"_on_Player_health_changed")
@@ -23,7 +23,7 @@ func _ready():
 	player.connect("buff_changed", self, "_on_Player_buff_changed")
 	
 	for child in get_children():
-			child.set_visible(true) 
+			child.set_visible(false) 
 
 func _on_Player_state_changed(state):
 	state_label.set_text(state.get_name())

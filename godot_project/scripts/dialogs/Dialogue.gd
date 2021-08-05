@@ -18,6 +18,7 @@ var dialogue_dict
 
 func _ready():
 	dialogue_player.connect('dialogue_finished', self, '_on_dialogue_finished')
+	self.connect('event_after_dialogue_begin', self, '_dummy')
 	dialogue_dict = load_dialogue(dialogue_file_path)
 	if play_on_init:
 		start()
@@ -55,7 +56,7 @@ func _on_ButtonNext_pressed():
 		update_content()
 	else:
 		_on_dialogue_finished()
-		emit_signal('event_after_dialogue_begin')
+		#emit_signal('event_after_dialogue_begin')
 
 func _on_dialogue_finished():
 	finished = true
@@ -65,5 +66,8 @@ func _on_dialogue_finished():
 func _on_ButtonSkip_pressed():
 	# Al presionar se salta la cinemática
 	emit_signal('dialogue_finished')
-	emit_signal('event_after_dialogue_begin')
+	#emit_signal('event_after_dialogue_begin')
 	hide()
+
+func _dummy():
+	pass

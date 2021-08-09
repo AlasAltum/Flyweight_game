@@ -157,7 +157,7 @@ script = ExtResource( 1 )
 
 [node name="JumpChip" parent="SkillMenu/GridContainer/Slot1" instance=ExtResource( 15 )]
 position = Vector2( 20, 20 )
-description = "Aumenta la fuerza de salto"
+description = "Increases jump force"
 skill_name = "Jump"
 skill_value = 130.0
 
@@ -172,7 +172,7 @@ script = ExtResource( 1 )
 [node name="HealthChip" parent="SkillMenu/GridContainer/Slot2" instance=ExtResource( 15 )]
 position = Vector2( 20, 20 )
 enabled_tex = ExtResource( 8 )
-description = "Aumenta la vida maxima"
+description = "Increases max health"
 skill_name = "Health"
 skill_value = 2.0
 
@@ -187,7 +187,7 @@ script = ExtResource( 1 )
 [node name="SpeedChip" parent="SkillMenu/GridContainer/Slot3" instance=ExtResource( 15 )]
 position = Vector2( 20, 20 )
 enabled_tex = ExtResource( 7 )
-description = "Aumenta la velocidad de movimiento"
+description = "Increases movement speed"
 skill_name = "Speed"
 skill_value = 100.0
 
@@ -204,7 +204,7 @@ position = Vector2( 20, 20 )
 scale = Vector2( 0.7, 0.7 )
 enabled_tex = ExtResource( 10 )
 special_skill = true
-description = "Permite usar la habilidade de Dash  con el click derecho"
+description = "Enables the dash active skill"
 skill_name = "Dash"
 
 [node name="Slot5" type="Panel" parent="SkillMenu/GridContainer"]
@@ -220,7 +220,7 @@ position = Vector2( 20, 20 )
 scale = Vector2( 0.7, 0.7 )
 enabled_tex = ExtResource( 6 )
 special_skill = true
-description = "Permite usar la habilidad de Gancho con el click derecho"
+description = "Enables the hook active skill"
 skill_name = "Hook"
 
 [node name="Slot6" type="Panel" parent="SkillMenu/GridContainer"]
@@ -444,7 +444,8 @@ margin_top = 132.423
 margin_right = 733.0
 margin_bottom = 162.423
 custom_fonts/font = SubResource( 8 )
-text = "Tarjeta de habilidades"
+text = "Skills Board"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -465,7 +466,7 @@ margin_top = 4.0
 margin_right = 84.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 10 )
-text = "Descripcion"
+text = "Description"
 max_lines_visible = 1
 
 [node name="SkillInfo" type="Label" parent="SkillMenu/DescriptionPanel"]
@@ -484,7 +485,7 @@ margin_left = 648.0
 margin_top = 459.0
 margin_right = 792.0
 margin_bottom = 490.0
-text = "Continuar"
+text = "Continue"
 script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false

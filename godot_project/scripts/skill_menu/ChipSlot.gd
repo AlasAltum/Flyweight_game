@@ -20,7 +20,7 @@ func pick_from_board():
 	menu_node.add_child(chip)
 	chip.set_to_board_position()
 	chip.set_to_board_scale()
-#	chip = null
+	chip = null
 	
 func put_into_board(new_chip):
 	$ChipShape/Shape.set_visible(false)

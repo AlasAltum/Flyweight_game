@@ -24,7 +24,7 @@ const zeroBuffFx = preload("res://prefabs/vfx/zeroBuffEffect.tscn")
 export(bool) var left_start_direction = true
 
 signal buff_changed(buff_amount)
-signal switch_skill()
+signal switch_skill(skill_name)
 
 var skill_index = 0
 var skill_switch = false
@@ -33,7 +33,7 @@ func _ready():
 	LevelManager.player = self
 	$JumpPressedTimer.connect("timeout", self, "_on_Player_jump_not_pressed")
 	$GroundedTimer.connect("timeout", self, "_on_Player_is_not_grounded")
-	$StateMachine/Skill.current_skill = $StateMachine/Skill/Hook
+	#$StateMachine/Skill.current_skill = $StateMachine/Skill/Hook
 
 	if left_start_direction:
 		change_direction()
@@ -54,7 +54,6 @@ func _input(event):
 			$StateMachine/Skill.current_skill = $StateMachine/Skill/Hook
 		if skill_index == 1:
 			$StateMachine/Skill.current_skill = $StateMachine/Skill/Dash
-		emit_signal("switch_skill")
 
 func player_death():
 	is_alive = false
@@ -133,6 +132,8 @@ func _on_Player_is_not_grounded():
 	
 func skill_on(skill_name, skill_value):
 	print("activate: " + skill_name + ", " + str(skill_value))
+	# Update Skill name GUI
+	emit_signal("switch_skill", skill_name)
 	match skill_name:
 		"Hook":
 			$StateMachine/Skill.current_skill = $StateMachine/Skill/Hook
@@ -151,6 +152,8 @@ func skill_on(skill_name, skill_value):
 
 func skill_off(skill_name, skill_value):
 	print("deactivate: " + skill_name + ", " + str(skill_value))
+	# Clean Skill name GUI
+	emit_signal("switch_skill", "clean")
 	match skill_name:
 		"Hook":
 			$StateMachine/Skill.current_skill = $StateMachine/Skill/Null

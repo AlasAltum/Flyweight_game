@@ -300,8 +300,10 @@ one_shot = true
 
 [node name="Hook" type="Node" parent="StateMachine/Skill"]
 script = ExtResource( 11 )
-THROW_SPEED = 500.0
+cooldown = 2.0
+THROW_SPEED = 700.0
 MAX_GRAPPLING_DISTANCE = 500.0
+TIME_TO_HOOK = 0.2
 
 [node name="ThrowingTimer" type="Timer" parent="StateMachine/Skill/Hook"]
 one_shot = true

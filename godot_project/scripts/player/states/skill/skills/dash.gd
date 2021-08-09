@@ -6,6 +6,7 @@ var motion : Vector2
 var direction : Vector2
 var time_threshold
 var was_on_wall = false
+var last_motion_x
 
 func _ready():
 	player = owner
@@ -16,6 +17,7 @@ func prepare_skill_update(delta):
 	waiting_input = true
 
 func start_skill():
+	last_motion_x = player.get_motion().x
 	player.get_node("AnimationPlayer").play("dash")
 	$ActivateTimer.start()
 	if player.is_front_ray_colliding():
@@ -33,7 +35,7 @@ func update_skill(delta):
 		$ActivateTimer.stop()
 
 func _on_dash_finish_skill():
-	player.set_motion(Vector2.ZERO)
+	player.set_motion(Vector2(last_motion_x * 0.7, 0))
 	if player.is_down_ray_colliding():
 		get_parent().finish_skill("run")
 	elif player.is_front_ray_colliding():

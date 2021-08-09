@@ -40,6 +40,10 @@ func _ready():
 	health.connect("lives_increased",self,"_setLife")
 	health.connect("lives_decreased",self,"_hurted")
 	health.connect("lives_decreased_frozen",self,"_hurted")
+	# signal already connect somehow
+	#player.connect("switch_skill", self, "_on_Player_switch_skill")
+	cleanSkillName()
+	
 	_setLife(health.health)
 	$SkillName.text = skill_names[player.skill_index]
 	$ProgressClock.value = 100
@@ -60,6 +64,7 @@ func setNoise(period, persistence, lacunarity, color : Color):
 	$batteryBar/lightTexture.material.set_shader_param("border_color", color_final)
 	#Cambiar colo de ojos del player
 	player.get_node("Sprite").material.set_shader_param("eyesColor", color_final)
+	player.get_node("Light2D").color = color_final
 
 func _hurted(amount):
 	$AnimationPlayer.play("hurt")
@@ -91,6 +96,21 @@ func _process(delta):
 	if $ProgressClock.value >= 100:
 		globals.isSkillused = 0 
 		
+func _on_Player_switch_skill(skill_name):
+	if skill_name == "Hook":
+		setSkillVisible(true) 
+		$SkillName.text = "Hook"
+	elif skill_name == "Dash":
+		setSkillVisible(true) 
+		$SkillName.text = "Dash"
+	else:
+		setSkillVisible(false) 
 
-func _on_Player_switch_skill():
-	$SkillName.text = skill_names[player.skill_index]
+func cleanSkillName():
+	setSkillVisible(false)
+	pass
+
+func setSkillVisible(value):
+	$SkillTextbox.set_visible(value)
+	$ProgressClock.set_visible(value) 
+	$SkillName.set_visible(value) 

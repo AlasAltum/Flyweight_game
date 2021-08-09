@@ -40,7 +40,10 @@ func activation_input(event):
 		point_is_stored = false
 		throwing_hook = true
 		$HookObject.global_rotation = player.get_global_mouse_position().angle_to_point(player.global_position)
-		
+		if !player.is_down_ray_colliding():
+			var temp_motion = Vector2(0, 0)
+			player.set_motion(temp_motion)
+			player.move(temp_motion)
 		
 
 func prepare_skill_update(delta):
@@ -66,6 +69,10 @@ func prepare_skill_update(delta):
 					hooked = true
 					waiting_input = true
 					throwing_hook = false
+					var temp_motion = Vector2(0, 0)
+					player.set_motion(temp_motion)
+					player.move(temp_motion)
+				
 					$ThrowingTimer.set_wait_time(SKILL_WAIT_TIME)
 					$ThrowingTimer.start()
 	$HookObject.global_position = hook_tip_position
@@ -76,6 +83,7 @@ func prepare_skill_update(delta):
 
 func start_skill():
 	player.set_motion(Vector2.ZERO)
+	player.move(Vector2.ZERO)
 	$ThrowingTimer.stop()
 	$ThrowingTimer.set_wait_time(MAX_ACTIVE_TIME)
 	$ThrowingTimer.start()

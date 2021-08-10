@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://scripts/player/states/motion/on_ground/run.gd" type="Script" id=1]
 [ext_resource path="res://scripts/player/player_controller.gd" type="Script" id=2]
@@ -25,6 +25,11 @@
 [ext_resource path="res://sprites/player/light.png" type="Texture" id=23]
 [ext_resource path="res://scripts/player/states/skill/skills/HookObject.gd" type="Script" id=24]
 [ext_resource path="res://scripts/player/states/die.gd" type="Script" id=25]
+[ext_resource path="res://audio/player/dash.ogg" type="AudioStream" id=26]
+[ext_resource path="res://audio/player/hook_shoot.ogg" type="AudioStream" id=27]
+[ext_resource path="res://audio/player/hook_throwing.ogg" type="AudioStream" id=28]
+[ext_resource path="res://audio/player/hook_impact.ogg" type="AudioStream" id=29]
+[ext_resource path="res://audio/player/hook_zip.ogg" type="AudioStream" id=30]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -298,9 +303,12 @@ DASH_SPEED = 450.0
 wait_time = 0.3
 one_shot = true
 
+[node name="DashSound" type="AudioStreamPlayer" parent="StateMachine/Skill/Dash"]
+stream = ExtResource( 26 )
+volume_db = 6.058
+
 [node name="Hook" type="Node" parent="StateMachine/Skill"]
 script = ExtResource( 11 )
-cooldown = 2.0
 THROW_SPEED = 700.0
 MAX_GRAPPLING_DISTANCE = 500.0
 TIME_TO_HOOK = 0.2
@@ -328,6 +336,22 @@ rotation = 1.5708
 scale = Vector2( 0.8, 0.8 )
 z_index = 1
 texture = ExtResource( 22 )
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="StateMachine/Skill/Hook"]
+stream = ExtResource( 27 )
+volume_db = -7.068
+
+[node name="ThrowingSound" type="AudioStreamPlayer" parent="StateMachine/Skill/Hook"]
+stream = ExtResource( 28 )
+volume_db = -6.227
+
+[node name="ImpactSound" type="AudioStreamPlayer" parent="StateMachine/Skill/Hook"]
+stream = ExtResource( 29 )
+volume_db = 0.058
+
+[node name="ZipSound" type="AudioStreamPlayer" parent="StateMachine/Skill/Hook"]
+stream = ExtResource( 30 )
+volume_db = 8.011
 
 [node name="BackJump" type="Node" parent="StateMachine/Skill"]
 script = ExtResource( 20 )

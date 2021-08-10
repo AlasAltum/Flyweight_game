@@ -76,7 +76,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
-frame = 15
+frame = 11
 
 [node name="RayFade" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -182,6 +182,7 @@ __meta__ = {
 text = "CREDiTS"
 
 [node name="ExitButton" type="Button" parent="MainButtons"]
+visible = false
 modulate = Color( 0, 1, 0.203922, 1 )
 margin_top = 212.0
 margin_right = 213.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/autoload/game_manager.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/Fade.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/MouseCursor.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,3 +15,5 @@ pause_mode = 1
 [node name="Fade" parent="CanvasLayer" instance=ExtResource( 2 )]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="MouseCursor" parent="." instance=ExtResource( 3 )]

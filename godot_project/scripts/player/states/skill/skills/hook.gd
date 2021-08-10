@@ -53,6 +53,8 @@ func prepare_skill_update(delta):
 				grippling_point = raycast.get_collision_point()
 				point_is_stored = true
 				can_draw_line = true
+				$ShootSound.play()
+				$ThrowingSound.play()
 			else:
 				throwing_hook = false
 		raycast.enabled = false
@@ -72,6 +74,7 @@ func prepare_skill_update(delta):
 					var temp_motion = Vector2(0, 0)
 					player.set_motion(temp_motion)
 					player.move(temp_motion)
+					$ThrowingSound.stop()
 				
 					$ThrowingTimer.set_wait_time(SKILL_WAIT_TIME)
 					$ThrowingTimer.start()
@@ -89,7 +92,7 @@ func start_skill():
 	$ThrowingTimer.start()
 	if player.is_front_ray_colliding():
 		player.change_direction()
-	player.get_node("AnimationPlayer").play("fall")
+	player.get_node("AnimationPlayer").play("jump")
 
 func update_skill(delta):
 	var active_time = MAX_ACTIVE_TIME - $ThrowingTimer.get_time_left()
@@ -98,6 +101,7 @@ func update_skill(delta):
 		can_draw_line = false
 		throwing_hook = false
 		$GripplingLine.clear_points()
+		$ZipSound.stop()
 		get_parent().finish_skill("fall")
 		return
 
@@ -108,6 +112,7 @@ func update_skill(delta):
 			can_draw_line = false
 			throwing_hook = false
 			$GripplingLine.clear_points()
+			$ZipSound.stop()
 			get_parent().finish_skill("grab")
 			return
 		if player.is_down_ray_colliding():
@@ -115,6 +120,7 @@ func update_skill(delta):
 			can_draw_line = false
 			throwing_hook = false
 			$GripplingLine.clear_points()
+			$ZipSound.stop()
 			get_parent().finish_skill("run")
 			return
 		if player.is_up_ray_colliding():
@@ -122,6 +128,7 @@ func update_skill(delta):
 			can_draw_line = false
 			throwing_hook = false
 			$GripplingLine.clear_points()
+			$ZipSound.stop()
 			get_parent().finish_skill("fall")
 			return
 		if player.is_back_ray_colliding():
@@ -129,6 +136,7 @@ func update_skill(delta):
 			can_draw_line = false
 			throwing_hook = false
 			$GripplingLine.clear_points()
+			$ZipSound.stop()
 			get_parent().finish_skill("fall")
 			return
 	
@@ -136,6 +144,7 @@ func update_skill(delta):
 	var motion = player.get_motion()
 	if motion.length_squared() < pow(MAX_CLIMB_SPEED, 2):
 		motion += CLIMB_ACCEl * direction
+		_playZipSound()
 	player.move(motion)
 	
 	
@@ -154,3 +163,7 @@ func _on_Hook_fail_throw():
 		can_draw_line = false
 		waiting_input = false
 
+func _playZipSound():
+	if (not $ZipSound.is_playing()):
+		$ZipSound.play()
+	

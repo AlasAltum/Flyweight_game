@@ -19,6 +19,7 @@ func prepare_skill_update(delta):
 func start_skill():
 	last_motion_x = player.get_motion().x
 	player.get_node("AnimationPlayer").play("dash")
+	$DashSound.play()
 	$ActivateTimer.start()
 	if player.is_front_ray_colliding():
 		player.change_direction()
